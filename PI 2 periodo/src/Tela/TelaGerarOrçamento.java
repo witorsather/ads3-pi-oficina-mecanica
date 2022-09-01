@@ -185,7 +185,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jEscolherTipoBuscaServico = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtOS = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jButtonCriarOrçamento = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jButtonVoltarO = new javax.swing.JButton();
@@ -205,7 +204,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jButtonBuscarVeiculo = new javax.swing.JToggleButton();
         jEscolherTipoBuscaVeiculo = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        jData = new com.toedter.calendar.JDateChooser();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -339,7 +337,7 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jPanel1.add(jButtonBuscarPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 610, 30, 22));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,7 +402,7 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 1140, 90));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Serviço\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Serviço\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 255));
@@ -431,7 +429,7 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 320, 180));
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Peça", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Peça", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 255));
@@ -483,11 +481,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
         jPanel1.add(txtOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 60, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel4.setText("Emissão");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-
         jButtonCriarOrçamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icones/icons8-create-64.png"))); // NOI18N
         jButtonCriarOrçamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -528,7 +521,7 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jPanel1.add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 160, -1));
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Problema Relatado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Problema Relatado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         txtProblemaRelatado.setColumns(20);
         txtProblemaRelatado.setRows(5);
@@ -615,9 +608,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Valor Total :");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
-
-        jData.setDateFormatString("dd");
-        jPanel1.add(jData, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         jOrçamento.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1043,7 +1033,7 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
         jEscolherTipoBuscaPeca.setSelectedIndex(0);
         jEscolherTipoBuscaServico.setSelectedIndex(0);
         Date datasistema = new Date();
-        jData.setDate(datasistema);
+        //jData.setDate(datasistema);
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void jTipoPessoaOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTipoPessoaOSActionPerformed
@@ -1446,7 +1436,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
     public javax.swing.JLabel jCNPJOS;
     public javax.swing.JLabel jCPFOS;
     public javax.swing.JComboBox<String> jComboBoxFuncionario;
-    public com.toedter.calendar.JDateChooser jData;
     public javax.swing.JComboBox<String> jEscolherTipoBuscaCliente;
     public javax.swing.JComboBox<String> jEscolherTipoBuscaPeca;
     public javax.swing.JComboBox<String> jEscolherTipoBuscaServico;
@@ -1466,7 +1455,6 @@ public class TelaGerarOrçamento extends javax.swing.JInternalFrame {
     public javax.swing.JLabel jLabel20;
     public javax.swing.JLabel jLabel21;
     public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
