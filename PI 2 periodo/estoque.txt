@@ -1,0 +1,4 @@
+48;RODA BMW;9898;150.0;14
+82;Pneu aro 16 pirelli;789;50.0;60
+84;cabeçote gol ano 2016;789546;1.5;15
+83;Freio Strada 2015/2016;789;50.0;96

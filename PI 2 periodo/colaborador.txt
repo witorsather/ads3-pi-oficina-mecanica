@@ -1,0 +1,2 @@
+Lucas;CELULAR,(62)98573-8612;67;5 QUADRA 8,45,novo MUNDO,RUA D,goiania,goias,74703-015,AVENIDA;tuter15@gmail.com;737.896.320-82;12/07/1999;3000.0;25.0;Pintor
+Paulo ;TRABALHO,(62)98573-8612;70;5 quadra 10 lt 15,255,goias,vila nova,null,goiania,74703-010,AVENIDA;asterty15@gmail.com;065.232.441-05;12/07/1999;2000.0;25.0;Eletrcista Veicular
