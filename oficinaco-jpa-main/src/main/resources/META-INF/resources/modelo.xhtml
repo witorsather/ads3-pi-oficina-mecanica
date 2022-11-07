@@ -35,10 +35,21 @@
         
 		<p:dialog header="Modelo" widgetVar="formulario" minHeight="40" showEffect="fade" closeOnEscape="true">
 			<p:panelGrid id="modeloDiag" columns="2">
-				<h:outputText value="Nome:"/>
-				<p:inputText value="#{modeloControl.modelo.nome}"/>
-				<h:outputText value="Marca:"/>
-				<p:inputText value="#{modeloControl.modelo.marca}"/>
+				<h:outputText value="Nome:" />
+				<p:inputText value="#{modeloControl.modelo.nome}" style="width: 280px; height: 40px"/>
+				
+             <h:outputText value="Marca:"/>
+            <p:selectOneListbox value="#{modeloControl.modelo.marca}" converter="#{countryConverter}"
+                var="c" filter="true" filterMatchMode="contains">
+<!--                 <f:selectItems value="#{selectOneView.countries}" var="country" itemLabel="#{country.name}" itemValue="#{country}"/>
+ -->                <p:column>
+                    <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{c.name}"/>
+                </p:column>
+            </p:selectOneListbox>
+        
 			</p:panelGrid>
 
 			<p:commandButton value="Salvar" action="#{modeloControl.salvar}" onclick="PF('formulario').close()"/>

@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.example.oficinaco.jpa.dao.*;
+
 @Entity
 public class Modelo {
 	
@@ -14,7 +16,7 @@ public class Modelo {
 	
 	private String nome;
 	
-	private String marca;
+	private Marca marca;
 
 	public Integer getId() {
 		return id;
@@ -32,13 +34,13 @@ public class Modelo {
 		this.nome = nome;
 	}
 
-	public String getMarca() {
+	public Marca getMarca() {
 		return marca;
 	}
 
-	public void setMarca(String marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
-	
+
 	
 }
