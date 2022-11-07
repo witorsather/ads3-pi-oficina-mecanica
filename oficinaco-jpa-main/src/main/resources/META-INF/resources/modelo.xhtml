@@ -3,7 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <title>Oficinaço - Modelo</title>
@@ -39,15 +40,9 @@
 				<p:inputText value="#{modeloControl.modelo.nome}" style="width: 280px; height: 40px"/>
 				
              <h:outputText value="Marca:"/>
-            <p:selectOneListbox value="#{modeloControl.modelo.marca}" converter="#{countryConverter}"
-                var="c" filter="true" filterMatchMode="contains">
-<!--                 <f:selectItems value="#{selectOneView.countries}" var="country" itemLabel="#{country.name}" itemValue="#{country}"/>
- -->                <p:column>
-                    <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{c.name}"/>
-                </p:column>
+            <p:selectOneListbox value="#{marcaControl.marcas}" var="m" filter="true" filterMatchMode="contains">
+                <f:selectItems  value="#{marcaControl.marcas}" var="marcas" itemLabel="#{marcas.nome}" itemValue="#{marcas}"/>
+          
             </p:selectOneListbox>
         
 			</p:panelGrid>

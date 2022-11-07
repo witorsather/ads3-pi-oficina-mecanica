@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+
+	<p:menubar>
+		
+		<p:menuitem icon="pi pi-fw pi-home"/>
+
+		<p:submenu label="Cadastro" icon="pi pi-fw pi-file" style="margin-left: 850px;"  >
+			<p:menuitem value="Modelo" icon="pi pi-fw pi-pencil" outcome="modelo"/>
+			<p:menuitem value="Cliente" icon="pi pi-fw pi-users" />
+			<p:menuitem value="Funcionário" icon="pi pi-fw pi-users" />
+			<p:menuitem value="OS" icon="pi pi-fw pi-users" />
+		</p:submenu>
+
+		<p:submenu label="Busca" icon="pi pi-fw pi-search">
+			<p:menuitem value="Veiculo" icon="pi pi-fw pi-home" outcome="home" />
+			<p:menuitem value="Cliente" icon="pi pi-fw pi-pencil"
+				outcome="modelo" />
+			<p:menuitem value="Ordem Serviço" icon="pi pi-fw pi-pencil"
+				outcome="modelo" />
+			<p:menuitem value="Produtos" icon="pi pi-fw pi-pencil"
+				outcome="modelo" />
+		</p:submenu>
+
+		<p:submenu label="Relatorios" icon="pi pi-fw pi-file">
+			<p:menuitem value="Serviços" icon="pi pi-fw pi-home" outcome="home" />
+			<p:menuitem value="Estoque" icon="pi pi-fw pi-pencil"
+				outcome="modelo" />
+		</p:submenu>
+
+	</p:menubar>
+</ui:composition>

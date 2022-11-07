@@ -9,7 +9,9 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.oficinaco.jpa.dao.MarcaDao;
 import com.example.oficinaco.jpa.dao.ModeloDao;
+import com.example.oficinaco.jpa.entidade.Marca;
 import com.example.oficinaco.jpa.entidade.Modelo;
 
 @Component
@@ -17,11 +19,11 @@ import com.example.oficinaco.jpa.entidade.Modelo;
 public class MarcaControl {
 	
 	@Autowired
-	private ModeloDao modeloDao;
+	private MarcaDao marcaDao;
 	
-	private Modelo modelo = new Modelo();
+	private Marca marca = new Marca();
 	
-	private List<Modelo> modelos = new ArrayList<>();
+	private List<Marca> marcas = new ArrayList<>();
 	
 	@PostConstruct
 	public void init() {
@@ -29,38 +31,48 @@ public class MarcaControl {
 	}
 	
 	public void salvar() {
-		modeloDao.save(modelo);
-		modelo = new Modelo();
+		marcaDao.save(marca);
+		marca = new Marca();
 		listar();
 	}
 	
 	public void listar() {
-		modelos = modeloDao.findAll();
+		marcas = marcaDao.findAll();
 	}
 	
 	public void excluir(Integer id) {
-		modeloDao.deleteById(id);
+		marcaDao.deleteById(id);
 		listar();
 	}
 
-	public Modelo getModelo() {
-		return modelo;
+	public MarcaDao getMarcaDao() {
+		return marcaDao;
 	}
 
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
+	public void setMarcaDao(MarcaDao marcaDao) {
+		this.marcaDao = marcaDao;
 	}
 
-	public List<Modelo> getModelos() {
-		return modelos;
+	public Marca getMarca() {
+		return marca;
 	}
 
-	public void setModelos(List<Modelo> modelos) {
-		this.modelos = modelos;
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public List<Marca> getMarcas() {
+		return marcas;
+	}
+
+	public void setMarcas(List<Marca> marcas) {
+		this.marcas = marcas;
 	}
 
 	
-}
+	}
+	
+
 
 
 
