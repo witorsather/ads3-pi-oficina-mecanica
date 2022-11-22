@@ -23,6 +23,12 @@ public class Veiculo {
 	private Integer km;
 	
 	private String placa;
+	
+	@Override
+	public String toString() {
+		return String.format("%s %d %d Km", modelo, ano, km);
+	}
+
 
 	public Integer getId() {
 		return id;
