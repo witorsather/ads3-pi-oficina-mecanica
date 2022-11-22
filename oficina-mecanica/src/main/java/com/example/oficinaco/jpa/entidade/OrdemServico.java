@@ -59,6 +59,14 @@ public class OrdemServico {
 	
 	private BigDecimal desconto;
 
+	public BigDecimal getTotalServicos() {
+		BigDecimal vlr = BigDecimal.ZERO;
+		for(OrdemServicoServico oss : servicos) {
+			vlr = vlr.add(oss.getTotal());
+		}
+		return vlr;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -145,5 +153,13 @@ public class OrdemServico {
 
 	public void setDesconto(BigDecimal desconto) {
 		this.desconto = desconto;
+	}
+	
+	public List<OrdemServicoServico> getServicos() {
+		return servicos;
+	}
+
+	public List<OrdemServicoProduto> getProdutos() {
+		return produtos;
 	}
 }

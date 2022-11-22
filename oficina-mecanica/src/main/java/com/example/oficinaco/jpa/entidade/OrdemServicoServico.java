@@ -16,11 +16,15 @@ public class OrdemServicoServico {
 	private Integer id;
 	
 	@ManyToOne(optional = false)
-	private Produto produto;
+	private Servico servico;
 	
 	private Integer quantidade;
 	
 	private BigDecimal preco;
+	
+	public BigDecimal getTotal() {
+		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
+	}
 
 	public Integer getId() {
 		return id;
@@ -30,12 +34,12 @@ public class OrdemServicoServico {
 		this.id = id;
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public Servico getServico() {
+		return servico;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 	public Integer getQuantidade() {
