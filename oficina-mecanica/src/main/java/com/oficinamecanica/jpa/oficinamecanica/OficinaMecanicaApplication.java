@@ -1,13 +1,13 @@
-package com.oficinamecanica.jpa.demo;
+package com.oficinamecanica.jpa.oficinamecanica;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class OficinaMecanicaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(OficinaMecanicaApplication.class, args);
 	}
 
 }
