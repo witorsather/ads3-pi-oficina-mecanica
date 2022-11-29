@@ -17,11 +17,8 @@ public class Marca {
 	
 	private String nome;
 	
-	
 	@OneToMany(mappedBy = "marca")
 	private List<Modelo> modelos;
-
-	
 
 	public Marca() {
 		

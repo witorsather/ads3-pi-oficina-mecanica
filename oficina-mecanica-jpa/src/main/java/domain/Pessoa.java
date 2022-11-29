@@ -1,26 +1,43 @@
 package domain;
 
+import java.util.List;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Pessoa {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;
 	
 	private String cpf;
 	
-	private String endereco;
+	@OneToMany(mappedBy = "pessoa")
+	private List<Endereco> enderecos;
 	
-	private String bairro;
-	
-	private String telefone;
+	private Set<String> telefones;
 	
 	private boolean whatsapp;
 	
-	private String cep;
-	
 	private boolean funcionario;
+
+	@OneToMany(mappedBy = "pessoa")
+	private List<OrdemServico> ordemServicos;
 	
-	private Municipio municipio;
+	public Set<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
+	}
 
 	public Integer getId() {
 		return id;
@@ -46,29 +63,14 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
 
 	public boolean isWhatsapp() {
 		return whatsapp;
@@ -78,14 +80,6 @@ public class Pessoa {
 		this.whatsapp = whatsapp;
 	}
 
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
 	public boolean isFuncionario() {
 		return funcionario;
 	}
@@ -93,14 +87,5 @@ public class Pessoa {
 	public void setFuncionario(boolean funcionario) {
 		this.funcionario = funcionario;
 	}
-
-	public Municipio getMunicipio() {
-		return municipio;
-	}
-
-	public void setMunicipio(Municipio municipio) {
-		this.municipio = municipio;
-	}
-
 	
 }

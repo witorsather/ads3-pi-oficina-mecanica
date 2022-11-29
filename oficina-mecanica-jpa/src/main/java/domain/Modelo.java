@@ -12,8 +12,6 @@ import java.util.List;
 
 @Entity
 public class Modelo {
-
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +37,14 @@ public class Modelo {
 		this.marca = marca;
 	}
 
-	
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
 	public Integer getId() {
 		return id;
 	}
