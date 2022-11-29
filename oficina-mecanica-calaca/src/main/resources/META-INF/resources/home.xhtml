@@ -13,10 +13,7 @@
 
 		<ui:include src="menu.xhtml" />
 		
-	    <p:panel header="Exemplo">
-	        <h:outputText id="msg" value="#{springManagedBean.message}"/>
-	        <p:commandButton update="msg" action="#{springManagedBean.acao}" value="Clique"/>
-	    </p:panel>
+
 	    
 		<p:dataTable var="servico" value="#{springManagedBean.servicos}" allowUnsorting="true" sortMode="single">
 			<p:column sortBy="#{servico.id}" headerText="Id">

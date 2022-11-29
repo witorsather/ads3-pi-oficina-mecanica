@@ -4,34 +4,31 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-
-
-	<p:menubar>
-		
+	
+		<p:menubar  style="background-color: black;">
+			
 		<p:menuitem icon="pi pi-fw pi-home" outcome="home"/>
 
-		<p:submenu label="Cadastro" icon="pi pi-fw pi-file" style="margin-left: 850px;"  >
-			<p:menuitem value="Cliente" icon="pi pi-fw pi-users" />
-			<p:menuitem value="Funcionário" icon="pi pi-fw pi-users" />
-			<p:menuitem value="OS" icon="pi pi-fw pi-users" />
-			<p:menuitem value="Modelo" icon="pi pi-fw pi-pencil" outcome="modelo"/>
-			<p:menuitem value="Veículo" icon="pi pi-fw pi-car" outcome="modelo"/>
+		<p:submenu label="Cadastro" icon="pi pi-fw pi-file" style="margin-left: 42px; width: 7,5%;  ">
+			<p:menuitem value="Pessoa" icon="pi pi-fw pi-users" outcome="pessoa" style="color: white; background-color: black;" />
+			<p:menuitem value="OS" icon="pi pi-fw pi-users" style="color: white; background-color: black;" />
+			<p:menuitem value="Modelo" icon="pi pi-fw pi-pencil" outcome="modelo" style="color: white; background-color: black;"/>
+			<p:menuitem value="Veículo" icon="pi pi-fw pi-car" outcome="veiculo" style="color: white; background-color: black;"/>
 		</p:submenu>
 
-		<p:submenu label="Busca" icon="pi pi-fw pi-search">
-			<p:menuitem value="Veiculo" icon="pi pi-fw pi-home" outcome="veiculo" />
+		<p:submenu label="Busca" icon="pi pi-fw pi-search" style="color: white; background-color: black;">
+			<p:menuitem value="Veiculo" icon="pi pi-fw pi-home" outcome="veiculo" style="color: white; background-color: black;" />
 			<p:menuitem value="Cliente" icon="pi pi-fw pi-pencil"
-				outcome="modelo" />
+				outcome="modelo" style="color: white; background-color: black;" />
 			<p:menuitem value="Ordem Serviço" icon="pi pi-fw pi-pencil"
-				outcome="ordem_servico" />
+				outcome="ordem_servico" style="color: white; background-color: black;" />
 			<p:menuitem value="Produtos" icon="pi pi-fw pi-pencil"
-				outcome="modelo" />
+				outcome="modelo" style="color: white; background-color: black;" />
 		</p:submenu>
 
-		<p:submenu label="Relatorios" icon="pi pi-fw pi-file">
-			<p:menuitem value="Serviços" icon="pi pi-fw pi-home" outcome="home" />
-			<p:menuitem value="Estoque" icon="pi pi-fw pi-pencil"
-				outcome="modelo" />
+		<p:submenu label="Adicionar" icon="pi pi-fw pi-file">
+			<p:menuitem value="Serviço" icon="pi pi-fw pi-home" outcome="home" style="color: white; background-color: black;"  />
+			<p:menuitem value="Estoque" icon="pi pi-fw pi-pencil" outcome="modelo" style="color: white; background-color: black;" />
 		</p:submenu>
 
 	</p:menubar>

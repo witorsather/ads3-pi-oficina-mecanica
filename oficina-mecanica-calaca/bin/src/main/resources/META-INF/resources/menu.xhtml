@@ -8,21 +8,22 @@
 
 	<p:menubar>
 		
-		<p:menuitem icon="pi pi-fw pi-home"/>
+		<p:menuitem icon="pi pi-fw pi-home" outcome="home"/>
 
 		<p:submenu label="Cadastro" icon="pi pi-fw pi-file" style="margin-left: 850px;"  >
-			<p:menuitem value="Modelo" icon="pi pi-fw pi-pencil" outcome="modelo"/>
 			<p:menuitem value="Cliente" icon="pi pi-fw pi-users" />
 			<p:menuitem value="Funcionário" icon="pi pi-fw pi-users" />
 			<p:menuitem value="OS" icon="pi pi-fw pi-users" />
+			<p:menuitem value="Modelo" icon="pi pi-fw pi-pencil" outcome="modelo"/>
+			<p:menuitem value="Veículo" icon="pi pi-fw pi-car" outcome="modelo"/>
 		</p:submenu>
 
 		<p:submenu label="Busca" icon="pi pi-fw pi-search">
-			<p:menuitem value="Veiculo" icon="pi pi-fw pi-home" outcome="home" />
+			<p:menuitem value="Veiculo" icon="pi pi-fw pi-home" outcome="veiculo" />
 			<p:menuitem value="Cliente" icon="pi pi-fw pi-pencil"
 				outcome="modelo" />
 			<p:menuitem value="Ordem Serviço" icon="pi pi-fw pi-pencil"
-				outcome="modelo" />
+				outcome="ordem_servico" />
 			<p:menuitem value="Produtos" icon="pi pi-fw pi-pencil"
 				outcome="modelo" />
 		</p:submenu>
