@@ -6,10 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Modelo {
 
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +25,8 @@ public class Modelo {
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
 	
+	@OneToMany(mappedBy = "modelo")
+	private List<Veiculo> veiculos;
 	
 	public Modelo() {
 
