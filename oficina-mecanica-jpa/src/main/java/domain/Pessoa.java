@@ -1,18 +1,7 @@
-package com.example.oficinaco.jpa.entidade;
+package domain;
 
-import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-@Entity
 public class Pessoa {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;
@@ -23,7 +12,7 @@ public class Pessoa {
 	
 	private String bairro;
 	
-	private Set<String> telefones;
+	private String telefone;
 	
 	private boolean whatsapp;
 	
@@ -31,7 +20,6 @@ public class Pessoa {
 	
 	private boolean funcionario;
 	
-	@ManyToOne
 	private Municipio municipio;
 
 	public Integer getId() {
@@ -74,12 +62,12 @@ public class Pessoa {
 		this.bairro = bairro;
 	}
 
-	public Set<String> getTelefones() {
-		return telefones;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefones(Set<String> telefones) {
-		this.telefones = telefones;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public boolean isWhatsapp() {
