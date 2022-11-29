@@ -1,9 +1,12 @@
-package com.example.oficinaco.jpa.entidade;
+package domain;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
 public class Marca {
 
@@ -15,9 +18,16 @@ public class Marca {
 	
 	
 
+	public Marca() {
+		
+	}
 	
-	
-	
+	public Marca(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Integer getId() {
 		return id;
 	}
