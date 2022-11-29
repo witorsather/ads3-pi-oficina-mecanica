@@ -1,17 +1,39 @@
 package domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Modelo {
+
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nome;
+
+	@ManyToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
 	
-	private String marca;
 	
-	public String toString() {
-		return String.format("%s-%s", marca, nome);
+	public Modelo() {
+
 	}
 
+	public Modelo(Integer id, String nome, Marca marca) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.marca = marca;
+	}
+
+	
 	public Integer getId() {
 		return id;
 	}
@@ -28,13 +50,12 @@ public class Modelo {
 		this.nome = nome;
 	}
 
-	public String getMarca() {
+	public Marca getMarca() {
 		return marca;
 	}
 
-	public void setMarca(String marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
-	
-	
+
 }

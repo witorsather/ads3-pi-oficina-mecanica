@@ -1,11 +1,12 @@
 package domain;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Marca {
@@ -16,6 +17,10 @@ public class Marca {
 	
 	private String nome;
 	
+	
+	@OneToMany(mappedBy = "marca")
+	private List<Modelo> modelos;
+
 	
 
 	public Marca() {
@@ -43,5 +48,21 @@ public class Marca {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Modelo> getModelos() {
+		return modelos;
+	}
+
+	public void setModelos(List<Modelo> modelos) {
+		this.modelos = modelos;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 		
 }
