@@ -1,5 +1,7 @@
 package com.example.oficinaco.jpa.entidade;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +23,7 @@ public class Pessoa {
 	
 	private String bairro;
 	
-	private String telefone;
+	private Set<String> telefones;
 	
 	private boolean whatsapp;
 	
@@ -72,12 +74,12 @@ public class Pessoa {
 		this.bairro = bairro;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public Set<String> getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
 	}
 
 	public boolean isWhatsapp() {
