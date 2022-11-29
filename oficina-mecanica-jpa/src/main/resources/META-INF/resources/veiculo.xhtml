@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Veiculo</title>
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form">
+	
+        <ui:include src="menu.xhtml" />	
+        
+        <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formveiculo').show()" style="border-radius: 20px; top: 11px; background-color: green; color: white;"/>
+
+		<p:dataTable id="listamodelo" var="modelo" value="#" allowUnsorting="true" sortMode="single">
+			<p:column sortBy="#{veiculo.id}" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.id}"  />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="ano" style="background-color: black; color: white;" >
+				<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="ano_modelo" style="background-color: black; color: white;">
+				<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="km rodado" style="background-color: black; color: white;">
+				<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="placa" style="background-color: black; color: white;">
+				<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="modelo_id" style="background-color: black; color: white;">
+				<h:outputText value="#"/>
+			</p:column>
+			
+			
+			<p:column headerText="" style="background-color: black;">
+				<p:commandButton icon="pi pi-pencil" update="form:veiculoDiag" action="#" onclick="PF('formveiculo').show()" value="Editar"
+				style="width: 40%;
+					background: blue;
+					border-radius: 20px;
+					outline: none;
+					border: none;
+					margin-top: 15px;
+					color: white;
+					cursor: pointer;
+					font-size: 16;" 
+				
+				/>
+				<p:commandButton icon="pi pi-trash" update="form:listamodelo" action="#" 
+				style="width: 40%;
+					margin-left: 20px;
+					background: red;
+					border-radius: 20px;
+					outline: none;
+					border: none;
+					margin-top: 15px;
+					color: white;
+					cursor: pointer;
+					font-size: 16;"   
+				
+				value="Excluir"/>
+			</p:column>
+		</p:dataTable>	    
+		
+		
+        
+		<p:dialog header="Veiculo" widgetVar="formveiculo" minHeight="40" showEffect="fade" closeOnEscape="true" style="border-radius: 20px;">
+			<p:panelGrid id="veiculoDiag" columns="2">
+				
+				<h:outputText value="Ano:"  />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Ano Do Modelo:"  />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="KM rodado:"  />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Placa:"  />
+				<p:inputMask value="#" mask="aaa-9*99" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+               <h:outputText value="Marca:"/>
+               <p:selectOneListbox value="#"  >
+                
+                <f:selectItem itemLabel="#{marcas.nome}" itemValue="#{marcas.nome}"/>
+                <f:selectItem itemLabel="FORD" itemValue="FORD"/>
+                <f:selectItem itemLabel="FIAT" itemValue="FIAT"/>
+            </p:selectOneListbox>
+        
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{modeloControl.salvar}" onclick="PF('formveiculo').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
+			
+		</p:dialog> 
+		
+		     
+
+	</h:form>
+</h:body>
+</html>
