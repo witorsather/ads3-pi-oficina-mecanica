@@ -3,33 +3,43 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.SessionScoped;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import domain.Modelo;
 import repository.ModeloRepository;
 
+@Component
+@SessionScoped
 public class ModeloControl {
-
-	private ModeloRepository ModeloRepository;
-
+	
+	@Autowired
+	private ModeloRepository modeloDao;
+	
 	private Modelo modelo = new Modelo();
-
+	
 	private List<Modelo> modelos = new ArrayList<>();
-
+	
+	@PostConstruct
 	public void init() {
 		listar();
 	}
-
+	
 	public void salvar() {
-		ModeloRepository.save(modelo);
+		modeloDao.save(modelo);
 		modelo = new Modelo();
 		listar();
 	}
-
+	
 	public void listar() {
-		modelos = ModeloRepository.findAll();
+		modelos = modeloDao.findAll();
 	}
-
+	
 	public void excluir(Integer id) {
-		ModeloRepository.deleteById(id);
+		modeloDao.deleteById(id);
 		listar();
 	}
 
