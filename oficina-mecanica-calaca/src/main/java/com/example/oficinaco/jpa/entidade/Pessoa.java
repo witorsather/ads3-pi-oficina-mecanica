@@ -23,7 +23,7 @@ public class Pessoa {
 	
 	private String bairro;
 	
-	private Set<String> telefones;
+	private String telefones;
 	
 	private boolean whatsapp;
 	
@@ -74,11 +74,13 @@ public class Pessoa {
 		this.bairro = bairro;
 	}
 
-	public Set<String> getTelefones() {
+	
+
+	public String getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(Set<String> telefones) {
+	public void setTelefones(String telefones) {
 		this.telefones = telefones;
 	}
 

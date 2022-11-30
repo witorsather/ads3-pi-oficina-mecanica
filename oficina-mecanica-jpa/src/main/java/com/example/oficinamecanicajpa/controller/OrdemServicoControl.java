@@ -1,16 +1,15 @@
-package controller;
+package com.example.oficinamecanicajpa.controller;
 
 import java.util.List;
 
-import domain.OrdemServico;
-import domain.OrdemServicoServico;
-import domain.Pessoa;
-import domain.Servico;
-
-import repository.PessoaImplRepository;
-import repository.PessoaRepository;
-import repository.ServicoRepository;
-import repository.VeiculoRepository;
+import com.example.oficinamecanicajpa.domain.OrdemServico;
+import com.example.oficinamecanicajpa.domain.OrdemServicoServico;
+import com.example.oficinamecanicajpa.domain.Pessoa;
+import com.example.oficinamecanicajpa.domain.Servico;
+import com.example.oficinamecanicajpa.repository.PessoaImplRepository;
+import com.example.oficinamecanicajpa.repository.PessoaRepository;
+import com.example.oficinamecanicajpa.repository.ServicoRepository;
+import com.example.oficinamecanicajpa.repository.VeiculoRepository;
 
 public class OrdemServicoControl {
 

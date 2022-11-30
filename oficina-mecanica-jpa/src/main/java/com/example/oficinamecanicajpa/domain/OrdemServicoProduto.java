@@ -1,6 +1,7 @@
-package domain;
+package com.example.oficinamecanicajpa.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,21 +11,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class OrdemServicoServico {
+public class OrdemServicoProduto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToMany(mappedBy = "ordemServicoServico")
-	private Servico servico;
+	@OneToMany(mappedBy = "ordemServicoProduto")
+	private List<Produto> produto;
 
 	private Integer quantidade;
 
 	private BigDecimal preco;
 
-	@OneToOne(mappedBy = "ordemServicoServico")
+	@OneToOne(mappedBy = "ordemServicoProduto")
 	private OrdemServico ordemServico;
+
+	public OrdemServicoProduto() {
+	}
+
+	public OrdemServicoProduto(Integer id, List<Produto> produto, Integer quantidade, BigDecimal preco,
+			OrdemServico ordemServico) {
+		this.id = id;
+		this.produto = produto;
+		this.quantidade = quantidade;
+		this.preco = preco;
+		this.ordemServico = ordemServico;
+	}
 
 	public Integer getId() {
 		return id;
@@ -34,12 +47,12 @@ public class OrdemServicoServico {
 		this.id = id;
 	}
 
-	public Servico getServico() {
-		return servico;
+	public List<Produto> getProduto() {
+		return produto;
 	}
 
-	public void setServico(Servico servico) {
-		this.servico = servico;
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	public Integer getQuantidade() {

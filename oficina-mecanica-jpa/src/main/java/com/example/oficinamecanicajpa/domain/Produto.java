@@ -1,34 +1,28 @@
-package domain;
+package com.example.oficinamecanicajpa.domain;
+
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Marca {
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	private String nome;
-	
-	@OneToMany(mappedBy = "marca")
-	private List<Modelo> modelos;
 
-	public Marca() {
-		
-	}
-	
-	public Marca(Integer id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
+	private String nome;
+
+	private BigDecimal precoVenda;
+
+	@ManyToOne
+	@JoinColumn(name = "produto_id")
+	private OrdemServicoProduto ordemServicoProduto;
 
 	public Integer getId() {
 		return id;
@@ -46,20 +40,12 @@ public class Marca {
 		this.nome = nome;
 	}
 
-	public List<Modelo> getModelos() {
-		return modelos;
+	public BigDecimal getPrecoVenda() {
+		return precoVenda;
 	}
 
-	public void setModelos(List<Modelo> modelos) {
-		this.modelos = modelos;
+	public void setPrecoVenda(BigDecimal precoVenda) {
+		this.precoVenda = precoVenda;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-		
+
 }

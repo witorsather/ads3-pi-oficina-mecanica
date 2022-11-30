@@ -1,4 +1,4 @@
-package domain;
+package com.example.oficinamecanicajpa.domain;
 
 import java.util.List;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class Pessoa {
 	@OneToMany(mappedBy = "pessoa")
 	private List<Endereco> enderecos;
 	
-	private Set<String> telefones;
+	private String telefones;
 	
 	private boolean whatsapp;
 	
@@ -31,12 +31,21 @@ public class Pessoa {
 	@OneToMany(mappedBy = "pessoa")
 	private List<OrdemServico> ordemServicos;
 	
-	public Set<String> getTelefones() {
+
+	public String getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(Set<String> telefones) {
+	public void setTelefones(String telefones) {
 		this.telefones = telefones;
+	}
+
+	public List<OrdemServico> getOrdemServicos() {
+		return ordemServicos;
+	}
+
+	public void setOrdemServicos(List<OrdemServico> ordemServicos) {
+		this.ordemServicos = ordemServicos;
 	}
 
 	public Integer getId() {

@@ -1,16 +1,16 @@
-package controller;
+package com.example.oficinamecanicajpa.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import domain.Servico;
-import repository.ServicoRepository;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.example.oficinamecanicajpa.domain.Servico;
+import com.example.oficinamecanicajpa.repository.ServicoRepository;
 
 
 @Component

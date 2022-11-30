@@ -1,4 +1,4 @@
-package domain;
+package com.example.oficinamecanicajpa.domain;
 
 public enum EnumUf {
 

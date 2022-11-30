@@ -1,4 +1,4 @@
-package controller;
+package com.example.oficinamecanicajpa.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import domain.Modelo;
-import repository.ModeloRepository;
+import com.example.oficinamecanicajpa.domain.Modelo;
+import com.example.oficinamecanicajpa.repository.ModeloRepository;
 
 @Component
 @SessionScoped

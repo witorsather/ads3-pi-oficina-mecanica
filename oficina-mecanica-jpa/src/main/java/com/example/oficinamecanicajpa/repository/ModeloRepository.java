@@ -1,9 +1,9 @@
-package repository;
+package com.example.oficinamecanicajpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Modelo;
+import com.example.oficinamecanicajpa.domain.Modelo;
 
 
 @Repository
