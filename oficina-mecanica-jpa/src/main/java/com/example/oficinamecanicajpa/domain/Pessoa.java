@@ -1,7 +1,6 @@
 package com.example.oficinamecanicajpa.domain;
 
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,27 +9,26 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Pessoa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nome;
-	
+
 	private String cpf;
-	
+
 	@OneToMany(mappedBy = "pessoa")
 	private List<Endereco> enderecos;
-	
+
 	private String telefones;
-	
+
 	private boolean whatsapp;
-	
+
 	private boolean funcionario;
 
 	@OneToMany(mappedBy = "pessoa")
 	private List<OrdemServico> ordemServicos;
-	
 
 	public String getTelefones() {
 		return telefones;
@@ -80,7 +78,6 @@ public class Pessoa {
 		this.enderecos = enderecos;
 	}
 
-
 	public boolean isWhatsapp() {
 		return whatsapp;
 	}
@@ -96,5 +93,5 @@ public class Pessoa {
 	public void setFuncionario(boolean funcionario) {
 		this.funcionario = funcionario;
 	}
-	
+
 }

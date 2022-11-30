@@ -1,7 +1,6 @@
 package com.example.oficinamecanicajpa.domain;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,7 +48,6 @@ public class Servico {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	
 
 	public OrdemServicoServico getOrdemServicoServico() {
 		return ordemServicoServico;
@@ -63,7 +61,5 @@ public class Servico {
 	public String toString() {
 		return String.format("%s - %s", nome, preco);
 	}
-	
-	
-	
+
 }
