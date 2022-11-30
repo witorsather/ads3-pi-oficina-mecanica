@@ -1,12 +1,14 @@
 package domain;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Veiculo {
@@ -14,19 +16,22 @@ public class Veiculo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
 	private Modelo modelo;
-	
+
+	@OneToMany(mappedBy = "veiculo")
+	private List<OrdemServico> ordemServicos;
+
 	private Integer ano;
-	
+
 	private Integer anoModelo;
-	
+
 	private Integer km;
-	
+
 	private String placa;
-	
+
 	public String toString() {
 		return String.format("%s %d %d Km", modelo, ano, km);
 	}
@@ -78,7 +83,5 @@ public class Veiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	
-	
-	
+
 }

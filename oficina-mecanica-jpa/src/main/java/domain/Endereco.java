@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,21 +15,21 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String cep;
-	
+
 	private String logradouro;
-	
+
 	private String numero;
-	
+
 	private String complemento;
-	
+
 	private String bairro;
-	
+
 	@OneToOne
 	@JoinColumn(name = "municipio_id")
 	private Municipio municipio;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
@@ -114,5 +114,5 @@ public class Endereco {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-	
+
 }

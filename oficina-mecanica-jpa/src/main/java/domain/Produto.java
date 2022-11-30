@@ -2,13 +2,20 @@ package domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Produto {
 
 	private Integer id;
-	
+
 	private String nome;
-	
+
 	private BigDecimal precoVenda;
+
+	@ManyToOne
+	@JoinColumn(name = "produto_id")
+	private OrdemServicoProduto ordemServicoProduto;
 
 	public Integer getId() {
 		return id;
@@ -33,5 +40,5 @@ public class Produto {
 	public void setPrecoVenda(BigDecimal precoVenda) {
 		this.precoVenda = precoVenda;
 	}
-	
+
 }

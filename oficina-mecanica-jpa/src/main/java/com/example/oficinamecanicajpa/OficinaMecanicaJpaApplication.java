@@ -21,47 +21,47 @@ import com.sun.faces.config.ConfigureListener;
 import com.sun.faces.config.FacesInitializer;
 
 @SpringBootApplication
-	public class OficinaMecanicaJpaApplication implements ServletContextInitializer{
+public class OficinaMecanicaJpaApplication implements ServletContextInitializer {
 
-		public static void main(String[] args) {
-			SpringApplication.run(OficinaMecanicaJpaApplication.class, args);
-		}
+	public static void main(String[] args) {
+		SpringApplication.run(OficinaMecanicaJpaApplication.class, args);
+	}
+
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
+		servletContext.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", "true");
+
+		servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+		servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
+		servletContext.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
+
+		Set<Class<?>> clazz = new HashSet<Class<?>>();
+
+		clazz.add(OficinaMecanicaJpaApplication.class);
+
+		FacesInitializer facesInitializer = new FacesInitializer();
+		facesInitializer.onStartup(clazz, servletContext);
+	}
+
+	@Bean
+	public ServletListenerRegistrationBean<JsfApplicationObjectConfigureListener> jsfConfigureListener() {
+		return new ServletListenerRegistrationBean<JsfApplicationObjectConfigureListener>(
+				new JsfApplicationObjectConfigureListener());
+	}
+
+	static class JsfApplicationObjectConfigureListener extends ConfigureListener {
 
 		@Override
-		public void onStartup(ServletContext servletContext) throws ServletException {
-			servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
-			servletContext.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", "true");
+		public void contextInitialized(ServletContextEvent sce) {
+			super.contextInitialized(sce);
 
-			servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
-			servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
-			servletContext.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
+			ApplicationFactory factory = (ApplicationFactory) FactoryFinder
+					.getFactory(FactoryFinder.APPLICATION_FACTORY);
+			Application app = factory.getApplication();
 
-			Set<Class<?>> clazz = new HashSet<Class<?>>();
-
-			clazz.add(OficinaMecanicaJpaApplication.class); 
-
-			FacesInitializer facesInitializer = new FacesInitializer();
-			facesInitializer.onStartup(clazz, servletContext);
+			app.addELResolver(new SpringBeanFacesELResolver());
 		}
-
-		@Bean
-		public ServletListenerRegistrationBean<JsfApplicationObjectConfigureListener> jsfConfigureListener() {
-			return new ServletListenerRegistrationBean<JsfApplicationObjectConfigureListener>(
-					new JsfApplicationObjectConfigureListener());
-		}
-
-
-		static class JsfApplicationObjectConfigureListener extends ConfigureListener {
-
-			@Override
-			public void contextInitialized(ServletContextEvent sce) {
-				super.contextInitialized(sce);
-
-				ApplicationFactory factory = (ApplicationFactory) FactoryFinder.getFactory(FactoryFinder.APPLICATION_FACTORY);
-				Application app = factory.getApplication();
-
-				app.addELResolver(new SpringBeanFacesELResolver());
-			}
-		}	
-
 	}
+
+}

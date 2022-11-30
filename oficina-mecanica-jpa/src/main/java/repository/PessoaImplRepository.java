@@ -13,18 +13,17 @@ public class PessoaImplRepository {
 
 	@Autowired
 	private EntityManager em;
-	
-	public List<Pessoa> listarPorNome(String nome, Boolean funcionario){
+
+	public List<Pessoa> listarPorNome(String nome, Boolean funcionario) {
 		String sql = "select * from pessoa p where lower(p.nome) like lower(:nome)";
-		
-		if(funcionario != null) {
+
+		if (funcionario != null) {
 			sql += " and p.funcionario";
 		}
-		
+
 		Query query = em.createNativeQuery(sql, Pessoa.class);
 		query.setParameter("nome", nome);
 		return query.getResultList();
 	}
-	
 
 }

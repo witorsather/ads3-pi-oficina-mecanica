@@ -6,45 +6,45 @@ import domain.OrdemServico;
 import domain.OrdemServicoServico;
 import domain.Pessoa;
 import domain.Servico;
-import domain.Veiculo;
+
 import repository.PessoaImplRepository;
 import repository.PessoaRepository;
 import repository.ServicoRepository;
 import repository.VeiculoRepository;
 
 public class OrdemServicoControl {
-	
+
 	private Integer pessoaId;
 
 	private Integer servicoId;
 
 	private Integer funcionarioId;
-	
-	private PessoaRepository PessoaRepository;
-	
-	private VeiculoRepository veiculoRepository;
-	
-	private String placa;
-	
-	private OrdemServico ordemServico = new OrdemServico();
-	
-	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
-	
-	private PessoaImplRepository PessoaImplRepository;
-	
-	private ServicoRepository servicoRepository;
-	
-    public List<Pessoa> completePessoa(String query) {
-    	return PessoaImplRepository.listarPorNome("%" + query + "%", null);
-    }	
 
-    public List<Servico> completeServico(String query) {
-    	return servicoRepository.listarPorNome("%" + query + "%");
-    }	
-    
-    public List<Pessoa> completeFuncionario(String query) {
-    	return PessoaImplRepository.listarPorNome("%" + query + "%", true);
-    }	
+	private PessoaRepository PessoaRepository;
+
+	private VeiculoRepository veiculoRepository;
+
+	private String placa;
+
+	private OrdemServico ordemServico = new OrdemServico();
+
+	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
+
+	private PessoaImplRepository PessoaImplRepository;
+
+	private ServicoRepository servicoRepository;
+
+	public List<Pessoa> completePessoa(String query) {
+		return PessoaImplRepository.listarPorNome("%" + query + "%", null);
+	}
+
+	public List<Servico> completeServico(String query) {
+		return servicoRepository.listarPorNome("%" + query + "%");
+	}
+
+	public List<Pessoa> completeFuncionario(String query) {
+		return PessoaImplRepository.listarPorNome("%" + query + "%", true);
+	}
 
 	public Integer getPessoaId() {
 		return pessoaId;
@@ -93,5 +93,37 @@ public class OrdemServicoControl {
 	public void setOrdemServicoServico(OrdemServicoServico ordemServicoServico) {
 		this.ordemServicoServico = ordemServicoServico;
 	}
-	
+
+	public PessoaRepository getPessoaRepository() {
+		return PessoaRepository;
+	}
+
+	public void setPessoaRepository(PessoaRepository pessoaRepository) {
+		PessoaRepository = pessoaRepository;
+	}
+
+	public VeiculoRepository getVeiculoRepository() {
+		return veiculoRepository;
+	}
+
+	public void setVeiculoRepository(VeiculoRepository veiculoRepository) {
+		this.veiculoRepository = veiculoRepository;
+	}
+
+	public PessoaImplRepository getPessoaImplRepository() {
+		return PessoaImplRepository;
+	}
+
+	public void setPessoaImplRepository(PessoaImplRepository pessoaImplRepository) {
+		PessoaImplRepository = pessoaImplRepository;
+	}
+
+	public ServicoRepository getServicoRepository() {
+		return servicoRepository;
+	}
+
+	public void setServicoRepository(ServicoRepository servicoRepository) {
+		this.servicoRepository = servicoRepository;
+	}
+
 }
