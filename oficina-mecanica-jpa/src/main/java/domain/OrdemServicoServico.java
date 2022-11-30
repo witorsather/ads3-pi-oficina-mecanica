@@ -2,6 +2,11 @@ package domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class OrdemServicoServico {
 
 	private Integer id;
@@ -11,42 +16,9 @@ public class OrdemServicoServico {
 	private Integer quantidade;
 	
 	private BigDecimal preco;
-
-	public BigDecimal getTotal() {
-		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
-	}
 	
-	public Integer getId() {
-		return id;
-	}
+	@OneToOne(mappedBy = "ordemServicoServico")
+	private OrdemServico ordemServico;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
-	public Servico getServico() {
-		return servico;
-	}
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-	
-	
 }

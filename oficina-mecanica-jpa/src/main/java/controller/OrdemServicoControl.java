@@ -34,23 +34,6 @@ public class OrdemServicoControl {
 	
 	private ServicoRepository servicoRepository;
 	
-	public void atualizarVeiculo() {
-		Veiculo veiculo = veiculoRepository.consultarPorPlaca(placa);
-		ordemServico.setVeiculo(veiculo);
-	}
-	
-	public void selecionarServico() {
-		Servico servico = servicoRepository.findById(servicoId).get();
-		ordemServicoServico.setServico(servico);
-		ordemServicoServico.setPreco(servico.getPreco());
-	}
-	
-	public void addServico() {
-		ordemServico.getServicos().add(ordemServicoServico);
-		servicoId = null;
-		ordemServicoServico = new OrdemServicoServico();
-	}
-	
     public List<Pessoa> completePessoa(String query) {
     	return PessoaImplRepository.listarPorNome("%" + query + "%", null);
     }	

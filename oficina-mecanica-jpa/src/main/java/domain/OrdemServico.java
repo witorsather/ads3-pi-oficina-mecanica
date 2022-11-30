@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class OrdemServico {
@@ -22,122 +25,39 @@ public class OrdemServico {
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
 	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "funcionario_id")
 	private Pessoa funcionario;
 	
 	private Veiculo veiculo;
 	
-	private List<OrdemServicoServico> servicos = new ArrayList<>();
+	@OneToMany
+	@JoinColumn(name = "ordem_servico_servico_id")
+	private List<OrdemServicoServico> ordemServicoServicos;
 
-	private List<OrdemServicoProduto> produtos = new ArrayList<>();
+	@OneToMany
+	@JoinColumn(name = "ordem_servico_produto_id")
+	private List<OrdemServicoProduto> ordemServicoProdutos;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrada;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOs;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicioServico;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFimServico;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrega;
 	
 	private BigDecimal desconto;
-
-	public BigDecimal getTotalServicos() {
-		BigDecimal vlr = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlr = vlr.add(oss.getTotal());
-		}
-		return vlr;
-	}
 	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Pessoa getFuncionario() {
-		return funcionario;
-	}
-
-	public void setFuncionario(Pessoa funcionario) {
-		this.funcionario = funcionario;
-	}
-
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public Date getDataEntrada() {
-		return dataEntrada;
-	}
-
-	public void setDataEntrada(Date dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-
-	public Date getDataOs() {
-		return dataOs;
-	}
-
-	public void setDataOs(Date dataOs) {
-		this.dataOs = dataOs;
-	}
-
-	public Date getDataInicioServico() {
-		return dataInicioServico;
-	}
-
-	public void setDataInicioServico(Date dataInicioServico) {
-		this.dataInicioServico = dataInicioServico;
-	}
-
-	public Date getDataFimServico() {
-		return dataFimServico;
-	}
-
-	public void setDataFimServico(Date dataFimServico) {
-		this.dataFimServico = dataFimServico;
-	}
-
-	public Date getDataEntrega() {
-		return dataEntrega;
-	}
-
-	public void setDataEntrega(Date dataEntrega) {
-		this.dataEntrega = dataEntrega;
-	}
-
-	public BigDecimal getDesconto() {
-		return desconto;
-	}
-
-	public void setDesconto(BigDecimal desconto) {
-		this.desconto = desconto;
-	}
-
-	public List<OrdemServicoServico> getServicos() {
-		return servicos;
-	}
-
-	public List<OrdemServicoProduto> getProdutos() {
-		return produtos;
-	}
 
 }
