@@ -24,19 +24,16 @@ public class OrdemServicoProduto {
 
 	private BigDecimal preco;
 
-	@OneToOne(mappedBy = "ordemServicoProduto")
-	private OrdemServico ordemServico;
 
 	public OrdemServicoProduto() {
 	}
 
-	public OrdemServicoProduto(Integer id, List<Produto> produto, Integer quantidade, BigDecimal preco,
+	public OrdemServicoProduto(Integer id, Integer quantidade, BigDecimal preco,
 			OrdemServico ordemServico) {
 		this.id = id;
-		this.produto = produto;
 		this.quantidade = quantidade;
 		this.preco = preco;
-		this.ordemServico = ordemServico;
+		
 	}
 
 	public Integer getId() {
@@ -71,12 +68,6 @@ public class OrdemServicoProduto {
 		this.preco = preco;
 	}
 
-	public OrdemServico getOrdemServico() {
-		return ordemServico;
-	}
-
-	public void setOrdemServico(OrdemServico ordemServico) {
-		this.ordemServico = ordemServico;
-	}
+	
 
 }

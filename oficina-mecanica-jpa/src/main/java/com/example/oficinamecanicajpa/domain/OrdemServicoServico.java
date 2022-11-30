@@ -24,8 +24,6 @@ public class OrdemServicoServico {
 
 	private BigDecimal preco;
 
-	@OneToOne(mappedBy = "ordemServicoServico")
-	private OrdemServico ordemServico;
 
 	public Integer getId() {
 		return id;
@@ -59,12 +57,5 @@ public class OrdemServicoServico {
 		this.preco = preco;
 	}
 
-	public OrdemServico getOrdemServico() {
-		return ordemServico;
-	}
-
-	public void setOrdemServico(OrdemServico ordemServico) {
-		this.ordemServico = ordemServico;
-	}
-
+	
 }

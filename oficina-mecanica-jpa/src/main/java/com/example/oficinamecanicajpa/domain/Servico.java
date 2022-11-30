@@ -22,7 +22,7 @@ public class Servico {
 	private BigDecimal preco;
 
 	@ManyToOne
-	@JoinColumn(name = "servico")
+	@JoinColumn(name = "servico_id")
 	private OrdemServicoServico ordemServicoServico;
 
 	public Integer getId() {

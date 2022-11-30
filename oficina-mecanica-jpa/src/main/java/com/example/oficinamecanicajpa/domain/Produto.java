@@ -23,6 +23,8 @@ public class Produto {
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
 	private OrdemServicoProduto ordemServicoProduto;
+	
+	
 
 	public Integer getId() {
 		return id;
