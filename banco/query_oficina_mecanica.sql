@@ -146,8 +146,34 @@ INSERT INTO produto (nome, preco_venda)
 VALUES ('pintura do carro', 15, 5);
 select * from servico;
 
+select * from ordem_servico_produto osp ;
+truncate ordem_servico_produto cascade;
+INSERT INTO ordem_servico_produto(preco, quantidade, ordem_servico_produto_id)
+VALUES (100, 1, 5);
+INSERT INTO ordem_servico_produto(preco, quantidade, ordem_servico_produto_id)
+VALUES (256, 2, 6);
+INSERT INTO ordem_servico_produto(preco, quantidade, ordem_servico_produto_id)
+VALUES (456, 6, 7);
+INSERT INTO ordem_servico_produto(preco, quantidade, ordem_servico_produto_id)
+VALUES (152, 5, 8);
+INSERT INTO ordem_servico_produto(preco, quantidade, ordem_servico_produto_id)
+VALUES (45, 10, 9);
 
+select * from ordem_servico_servico oss;
+truncate ordem_servico_servico cascade;
+INSERT INTO ordem_servico_servico(preco, quantidade, ordem_servico_servico_id)
+VALUES (100, 1, 5);
+INSERT INTO ordem_servico_servico(preco, quantidade, ordem_servico_servico_id)
+VALUES (256, 2, 6);
+INSERT INTO ordem_servico_servico(preco, quantidade, ordem_servico_servico_id)
+VALUES (456, 6, 7);
+INSERT INTO ordem_servico_servico(preco, quantidade, ordem_servico_servico_id)
+VALUES (152, 5, 8);
+INSERT INTO ordem_servico_servico(preco, quantidade, ordem_servico_servico_id)
+VALUES (45, 10, 9);
 
-
-
+select * from ordem_servico os;
+truncate ordem_servico cascade;
+INSERT INTO ordem_servico(data, data_entrada, data_entrega, data_fim_servico, data_inicio_servico, data_os, desconto, funcionario_id, pessoa_id, veiculo_id)
+VALUES (100, 1, 5);
 
