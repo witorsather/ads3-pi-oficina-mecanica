@@ -111,3 +111,15 @@ VALUES ('São Francisco', '74445661', 'QD. 4B LT. 25', 'Rua Ferreira', '505', 21
 INSERT INTO endereco (bairro, cep, complemento, logradouro, numero, municipio_id)
 VALUES ('Centro', '74445661', 'QD. 4B LT. 25', 'Rua Ferreira', '5', 2174);
 
+select * from marca ma;
+select * from modelo mo;
+select * from veiculo ve;
+INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
+VALUES (2022, 2020, 50, 'SDU-6085', 5);
+INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
+VALUES (2021, 2021, 40, 'ABD-6085', 6);
+INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
+VALUES (2019, 2020, 30, 'AFG-6085', 7);
+
+
+
