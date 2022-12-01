@@ -22,7 +22,7 @@ public class Municipio {
 	@OneToMany(mappedBy = "municipio")
 	private List<Endereco> enderecos;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private EnumUf uf;
 	
 	private Integer codigoIbge;
