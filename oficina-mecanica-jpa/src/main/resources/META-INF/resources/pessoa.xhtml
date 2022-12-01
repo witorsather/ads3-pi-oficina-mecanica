@@ -13,25 +13,21 @@
 
 		<ui:include src="menu.xhtml" />
 
-		<p:commandButton value="Novo" type="button" icon="pi pi-external-link" style="border-radius: 20px; top: 11px; background-color: green; color: white; "
+		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
 			onclick="PF('pessoaformulario').show()" />
 
-		<p:dataTable id="listapessoa" var="pessoa" value="#" allowUnsorting="true" sortMode="single" style="background-color: black;">
+		<p:dataTable id="listapessoa" var="pessoa" value="#" allowUnsorting="true" sortMode="single" style="background-color: black; ">
 			
 			<p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
-			<h:outputText value="#" />
+			<h:outputText value="#"  />
 			</p:column>
 			
 			<p:column sortBy="#" headerText="Nome" style="background-color: black; color: white;">
 			<h:outputText value="#" />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="Bairro" style="background-color: black; color: white;">
-			<h:outputText value="#" />
-			</p:column>
-			
 			<p:column sortBy="#" headerText="CEP" style="background-color: black; color: white;">
-			<h:outputText value="#"/>
+			<h:outputText value="#" />
 			</p:column>
 			
 			<p:column sortBy="#" headerText="CPF" style="background-color: black; color: white;">
@@ -46,34 +42,27 @@
 			<h:outputText value="#"/>
 			</p:column>
 			
+			<p:column sortBy="#" headerText="Bairro" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Municipio" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
 			<p:column sortBy="#" headerText="Telefone" style="background-color: black; color: white;">
 			<h:outputText value="#"/>
 			</p:column>
 			
+			
+			
 			<p:column headerText="" style="background-color: black;">
-				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#"
-					style="width: 60%;
-					background: blue;
-					border-radius: 20px;
-					outline: none;
-					border: none;
-					margin-top: 15px;
-					color: white;
-					cursor: pointer;
-					font-size: 16;" 
-					onclick="PF('pessoaformulario').show()" value="Editar" />
 				
-				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#"
+				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#" styleClass="ui-button-help mr-2" title="editar"  style=""
 					
-					style="width: 60%;
-					background: red;
-					border-radius: 20px;
-					outline: none;
-					border: none;
-					margin-top: 15px;
-					color: white;
-					cursor: pointer;
-					font-size: 16;"   value="Excluir" />
+					onclick="PF('pessoaformulario').show()"  />
+				
+				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#"  styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" /> 
 			</p:column>
 		</p:dataTable>
 
@@ -84,10 +73,7 @@
 			<p:panelGrid id="pessoaDiag" columns="2"    >
 				<h:outputText value="Nome:" />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
-				
-				<h:outputText value="Bairro:" />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
-				
+						
 				<h:outputText value="CEP:" style="border-radius: 20px;"/>
 				<p:inputMask value="#" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
@@ -101,6 +87,12 @@
 				</p:selectOneRadio>				
 				
 				<h:outputText value="Endereço:"   />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Bairro:"   />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Municipio:"   />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="Telefone:" />

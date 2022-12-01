@@ -14,7 +14,7 @@
 	
         <ui:include src="menu.xhtml" />	
         
-        <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formveiculo').show()" style="border-radius: 20px; top: 11px; background-color: green; color: white;"/>
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formveiculo').show()" style="top: 11px; background-color: green; color: white;"/>
 
 		<p:dataTable id="listamodelo" var="modelo" value="#" allowUnsorting="true" sortMode="single">
 			<p:column sortBy="#{veiculo.id}" headerText="Id" style="background-color: black; color: white;">
@@ -43,31 +43,11 @@
 			
 			
 			<p:column headerText="" style="background-color: black;">
-				<p:commandButton icon="pi pi-pencil" update="form:veiculoDiag" action="#" onclick="PF('formveiculo').show()" value="Editar"
-				style="width: 40%;
-					background: blue;
-					border-radius: 20px;
-					outline: none;
-					border: none;
-					margin-top: 15px;
-					color: white;
-					cursor: pointer;
-					font-size: 16;" 
 				
-				/>
-				<p:commandButton icon="pi pi-trash" update="form:listamodelo" action="#" 
-				style="width: 40%;
-					margin-left: 20px;
-					background: red;
-					border-radius: 20px;
-					outline: none;
-					border: none;
-					margin-top: 15px;
-					color: white;
-					cursor: pointer;
-					font-size: 16;"   
+				<p:commandButton icon="pi pi-pencil" update="form:veiculoDiag" action="#" onclick="PF('formveiculo').show()" styleClass="ui-button-help mr-2" title="editar"  style=""/>
 				
-				value="Excluir"/>
+				<p:commandButton icon="pi pi-trash" update="form:listamodelo" action="#" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
+			
 			</p:column>
 		</p:dataTable>	    
 		
