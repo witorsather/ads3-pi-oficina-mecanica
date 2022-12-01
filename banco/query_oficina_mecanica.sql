@@ -63,7 +63,8 @@ INSERT INTO pessoa (cpf, funcionario, nome, telefones, whatsapp)
 VALUES ('40223146545', false, 'Fernando Diego', '62997563458', false);
 INSERT INTO pessoa (cpf, funcionario, nome, telefones, whatsapp)
 VALUES ('60223146545', false, 'Julia de Oliveira', '62997563458', false);
-select * from endereco p;
+
+select * from endereco e;
 truncate endereco cascade;
 INSERT INTO endereco (bairro, cep, complemento, logradouro, numero, municipio_id)
 VALUES ('São Francisco', '74445661', 'QD. 4B LT. 25', 'Rua Ferreira', '505', 2174);
@@ -101,15 +102,52 @@ INSERT INTO endereco (bairro, cep, complemento, logradouro, numero, municipio_id
 VALUES ('São Francisco', '74445661', 'QD. 4B LT. 25', 'Rua Ferreira', '505', 2174);
 INSERT INTO endereco (bairro, cep, complemento, logradouro, numero, municipio_id)
 VALUES ('Centro', '74445661', 'QD. 4B LT. 25', 'Rua Ferreira', '5', 2174);
-select * from marca ma;
-select * from modelo mo;
-select * from veiculo ve;
+select * from endereco e;
+
+select * from veiculo;
+truncate veiculo cascade;
 INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
 VALUES (2022, 2020, 50, 'SDU-6085', 5);
 INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
 VALUES (2021, 2021, 40, 'ABD-6085', 6);
 INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
 VALUES (2019, 2020, 30, 'AFG-6085', 7);
+INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
+VALUES (2015, 2016, 24, 'BFG-6085', 9);
+INSERT INTO veiculo (ano, ano_modelo, km, placa, veiculo_id)
+VALUES (2010, 2016, 24, 'TFG-6085', 8);
+select * from veiculo;
+
+select * from produto;
+truncate produto cascade;
+INSERT INTO produto (nome, preco_venda)
+VALUES ('óleoo de motor', 56, 5);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('pastilha de freio', 20, 6);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('pneu', 200, 4);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('parafuso de motor', 5, 5);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('retrovisor', 15, 5);
+select * from produto;
+
+select * from servico;
+truncate servico cascade;
+INSERT INTO servico(nome, preco)
+VALUES ('troca de pneu', 56, 5);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('troca de óleo', 20, 6);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('alinhamento de suspensão', 200, 4);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('alinhamento dos bancos', 5, 5);
+INSERT INTO produto (nome, preco_venda)
+VALUES ('pintura do carro', 15, 5);
+select * from servico;
+
+
+
 
 
 
