@@ -16,7 +16,7 @@ public class OrdemServicoProduto {
 	private Integer id;
 	
 	@ManyToOne(optional = false)
-	private Servico servico;
+	private Produto produto;
 	
 	private Integer quantidade;
 	
@@ -28,14 +28,6 @@ public class OrdemServicoProduto {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Servico getServico() {
-		return servico;
-	}
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
 	}
 
 	public Integer getQuantidade() {
@@ -52,6 +44,14 @@ public class OrdemServicoProduto {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 	
 	
