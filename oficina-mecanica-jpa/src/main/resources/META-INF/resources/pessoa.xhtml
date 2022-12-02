@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Pessoa</title>
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form" >
+
+		<ui:include src="menu.xhtml" />
+
+		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
+			onclick="PF('pessoaformulario').show()" />
+
+		<p:dataTable id="listapessoa" var="pessoa" value="#" allowUnsorting="true" sortMode="single" style="background-color: black; ">
+			
+			<p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
+			<h:outputText value="#"  />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Nome" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="CEP" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="CPF" style="background-color: black; color: white;">
+			<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Tipo" style="background-color: black; color: white;">
+			<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Endereço" style="background-color: black; color: white;">
+			<h:outputText value="#"/>
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Bairro" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Municipio" style="background-color: black; color: white;">
+			<h:outputText value="#" />
+			</p:column>
+			
+			<p:column sortBy="#" headerText="Telefone" style="background-color: black; color: white;">
+			<h:outputText value="#"/>
+			</p:column>
+			
+			
+			
+			<p:column headerText="" style="background-color: black;">
+				
+				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#" styleClass="ui-button-help mr-2" title="editar"  style=""
+					
+					onclick="PF('pessoaformulario').show()"  />
+				
+				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#"  styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" /> 
+			</p:column>
+		</p:dataTable>
+
+
+
+		<p:dialog header="Novo Cadastro - Pessoa" widgetVar="pessoaformulario" minHeight="40" style="border-radius: 20px;"
+			showEffect="fade" closeOnEscape="true" >
+			<p:panelGrid id="pessoaDiag" columns="2"    >
+				<h:outputText value="Nome:" />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+						
+				<h:outputText value="CEP:" style="border-radius: 20px;"/>
+				<p:inputMask value="#" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="CPF:" />
+				<p:inputMask value="#" mask="999.999.999-99" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="A pessoa é:" />
+				<p:selectOneRadio id="tipopessoa" value="#">
+					<f:selectItem itemLabel="Cliente" itemValue="Option1" />
+					<f:selectItem itemLabel="Funcionario" itemValue="Option2" />
+				</p:selectOneRadio>				
+				
+				<h:outputText value="Endereço:"   />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Bairro:"   />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Municipio:"   />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Telefone:" />
+				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Qual tipo?" />
+				<p:selectOneRadio id="tipotelefone" value="#">
+					<f:selectItem itemLabel="Telefone Fixo" itemValue="Option3" />
+					<f:selectItem itemLabel="Celular" itemValue="Option4" />
+				</p:selectOneRadio>
+
+
+
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "
+				onclick="PF('pessoaformulario').close()" />
+
+		</p:dialog>
+
+
+
+	</h:form>
+</h:body>
+</html>

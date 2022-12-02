@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Oficinaço - Modelo</title>
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form">
+	
+        <ui:include src="menu.xhtml" />	
+        
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formulario').show()" style="top: 11px; background-color: green; color: white;"/>
+		<p:dataTable id="lista" var="modelo" value="#{modeloControl.modelos}" allowUnsorting="true" sortMode="single">
+			<p:column sortBy="#{modelo.id}" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#{modelo.id}"  />
+			</p:column>
+			<p:column sortBy="#{modelo.nome}" headerText="Nome" style="background-color: black; color: white;" >
+				<h:outputText value="#{modelo.nome}" />
+			</p:column>
+			<p:column sortBy="#{modelo.marca}" headerText="Marca" style="background-color: black; color: white;">
+				<h:outputText value="#{modelo.marca}"/>
+			</p:column>
+			<p:column headerText="" style="background-color: black;">
+				<p:commandButton icon="pi pi-pencil" update="form:modeloDiag" action="#{modeloControl.setModelo(modelo)}" onclick="PF('formulario').show()" styleClass="ui-button-help mr-2" title="editar" />
+				
+				<p:commandButton icon="pi pi-trash" update="form:lista" action="#{modeloControl.excluir(modelo.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
+			</p:column>
+		</p:dataTable>	    
+		
+		
+        
+		<p:dialog header="Modelo" widgetVar="formulario" minHeight="40" showEffect="fade" closeOnEscape="true" style="border-radius: 20px;">
+			<p:panelGrid id="modeloDiag" columns="2">
+				
+			    <h:outputText value="Nome:"  />
+				<p:inputText value="#{modeloControl.modelo.nome}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				<h:outputText value="Marca"/>
+				<p:autoComplete id="marca" value="#{ordemServicoControl.servicoId}" style="width: 100%"
+									completeMethod="#{ordemServicoControl.completeServico}"
+									var="servico" itemLabel="#{servico}" itemValue="#{servico.id}" forceSelection="true" scrollHeight="250">
+				<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarServico}" />  
+				</p:autoComplete>                                
+				
+				<p:commandButton value="Add" action="#{ordemServicoControl.addServico}" update="form"/>
+        
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{modeloControl.salvar}" onclick="PF('formulario').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
+			
+		</p:dialog> 
+		
+		     
+
+	</h:form>
+</h:body>
+</html>

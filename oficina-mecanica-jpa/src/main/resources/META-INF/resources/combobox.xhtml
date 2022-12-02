@@ -1,0 +1,28 @@
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+
+<h:body>
+    <h:form>
+        <p:panel header="Form">
+            <h:panelGrid columns="4" cellpadding="5" styleClass="mb-3">
+               
+             <h:outputLabel for="txt3" value="Text 3"/>
+                <h:selectOneMenu id="txt3" value="#{selectorView.text3}" required="true" label="Text 3">
+                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Option 1" itemValue="1"/>
+                    <f:selectItem itemLabel="Option 2" itemValue="2"/>
+                    <f:selectItem itemLabel="Option 3" itemValue="3"/>
+                </h:selectOneMenu>
+                <p:message for="txt3"/>
+                <h:outputText value="#{selectorView.text3}"/>
+            </h:panelGrid>
+           
+        </p:panel>
+    </h:form>
+    </h:body>
+
+</html>>
