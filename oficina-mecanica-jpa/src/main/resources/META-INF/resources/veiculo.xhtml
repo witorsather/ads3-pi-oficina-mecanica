@@ -70,6 +70,11 @@
 				<p:inputMask value="#{veiculoControl.veiculo.placa}" mask="aaa-9*99" style="width: 280px; height: 40px ; border-radius: 20px; "/>
 				
 				<h:outputText value="Modelo"/>
+				<p:autoComplete id="servico" value="#{ordemServicoControl.servicoId}" style="width: 100%"
+                                completeMethod="#{ordemServicoControl.completeServico}"
+                                var="servico" itemLabel="#{servico}" itemValue="#{servico.id}" forceSelection="true" scrollHeight="250">
+                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarServico}" />  
+			</p:autoComplete>            
 				
 			
         
