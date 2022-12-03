@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import com.example.oficinaco.jpa.dao.ServicoDao;
 import com.example.oficinaco.jpa.entidade.Servico;
