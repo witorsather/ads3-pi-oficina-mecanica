@@ -58,6 +58,10 @@ public class ModeloControl {
 	public void setModelos(List<Modelo> modelos) {
 		this.modelos = modelos;
 	}
+	
+	public List<Modelo> completeModelo(String query) {
+    	return modeloDao.listarPorNome("%" + query + "%");
+    }	
 
 	
 }

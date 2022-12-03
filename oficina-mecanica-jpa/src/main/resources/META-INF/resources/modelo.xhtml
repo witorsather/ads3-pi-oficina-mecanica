@@ -35,10 +35,13 @@
         
 		<p:dialog header="Modelo" widgetVar="formulario" minHeight="40" showEffect="fade" closeOnEscape="true">
 			<p:panelGrid id="modeloDiag" columns="2">
+				
 				<h:outputText value="Nome:"/>
 				<p:inputText value="#{modeloControl.modelo.nome}"/>
+
 				<h:outputText value="Marca:"/>
 				<p:inputText value="#{modeloControl.modelo.marca}"/>
+				
 			</p:panelGrid>
 
 			<p:commandButton value="Salvar" action="#{modeloControl.salvar}" onclick="PF('formulario').close()"/>
