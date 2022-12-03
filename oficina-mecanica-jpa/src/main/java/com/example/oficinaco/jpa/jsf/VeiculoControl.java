@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.example.oficinaco.jpa.dao.ModeloDao;
 import com.example.oficinaco.jpa.dao.VeiculoDao;
 import com.example.oficinaco.jpa.entidade.Modelo;
 import com.example.oficinaco.jpa.entidade.Veiculo;
@@ -27,11 +28,29 @@ private Veiculo veiculo;
 
 private Integer modeloId;
 
+private ModeloDao modeloDao;
+
+
 private List<Veiculo> veiculos = new ArrayList<>();
 
 @PostConstruct
 	public void init() {
 		listar();
+	}
+
+	public void selecionarModelo(){
+		Modelo modelo = modeloDao.findById(modeloId).get();
+		veiculo.setModelo(modelo);
+	}
+
+	public List<Modelo> completeModelo(String query) {
+    	return modeloDao.listarPorNome("%" + query + "%");
+    }	
+
+	public void addModelo() {
+		ordemServico.getServicos().add(ordemServicoServico);
+		servicoId = null;
+		ordemServicoServico = new OrdemServicoServico();
 	}
 	
 	public void salvar() {
@@ -73,10 +92,4 @@ private List<Veiculo> veiculos = new ArrayList<>();
 		this.modeloId = modeloId;
 	}
 
-
-
-
-
-
-    
 }

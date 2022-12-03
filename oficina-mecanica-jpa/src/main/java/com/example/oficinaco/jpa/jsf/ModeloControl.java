@@ -59,10 +59,7 @@ public class ModeloControl {
 		this.modelos = modelos;
 	}
 	
-	public List<Modelo> completeModelo(String query) {
-    	return modeloDao.listarPorNome("%" + query + "%");
-    }	
-
+	
 	
 }
 
