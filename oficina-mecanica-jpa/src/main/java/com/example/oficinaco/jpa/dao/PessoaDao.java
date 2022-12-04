@@ -17,5 +17,7 @@ public interface PessoaDao extends JpaRepository<Pessoa, Integer>{
 	
 	@Query(nativeQuery = true, value = "select * from pessoa p where p.funcionario and lower(p.nome) like lower(:nome)")
 	List<Pessoa> listarFuncionarioPorNome(@Param("nome") String nome);
+
+    Object saveAndFlush(Boolean funcionario);
 	
 }

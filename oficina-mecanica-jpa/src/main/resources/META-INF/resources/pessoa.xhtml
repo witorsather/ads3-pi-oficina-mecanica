@@ -62,16 +62,17 @@
 
 		<p:dialog header="Novo Cadastro - Pessoa" widgetVar="pessoaformulario" minHeight="40" style="border-radius: 20px;"
 			showEffect="fade" closeOnEscape="true" >
+			
 			<p:panelGrid id="pessoaDiag" columns="2"    >
 				<h:outputText value="Nome:" />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<p:inputText value="#{pessoaControl.pessoa.nome}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 						
 				
 				<h:selectOneRadio value="#{beanCPFCNPJ.opcao}">
-                <f:selectItem itemLabel="CPF" itemValue="CPF"/>
-                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ"/>
+                <f:selectItem itemLabel="CPF" itemValue="CPF" value="#{pessoaControl.pessoa.cpf}"/>
+                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ" value="#{pessoaControl.pessoa.cpf}"/>
                 <p:ajax process="@this" update="resultado"/>
-                        </h:selectOneRadio>
+                </h:selectOneRadio>
 
                 <p:outputPanel id="resultado">
                 <p:inputMask id="campoCPF" mask="999.999.999-99"
@@ -84,27 +85,31 @@
                	</p:outputPanel>
 				
 				<h:outputText value="A pessoa é:" />
-				<p:selectOneRadio id="tipopessoa" value="#">
-					<f:selectItem itemLabel="Cliente" itemValue="Option1" />
-					<f:selectItem itemLabel="Funcionario" itemValue="Option2" />
-				</p:selectOneRadio>				
+				<p:selectOneRadio id="tipopessoa" value="#{pessoaControl.pessoa.funcionario}">
+					<f:selectItem itemLabel="Funcionario" itemValue="Option2"/>
+					<f:selectItem itemLabel="Cliente" itemValue="Option2"/>
+				</p:selectOneRadio>		
+				
+				
 				
 				<h:outputText value="Endereço:"   />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<p:inputText value="#{pessoaControl.pessoa.endereco}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="CEP:" style="border-radius: 20px;"/>
-				<p:inputMask value="#" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<p:inputMask value="#{pessoaControl.pessoa.cep}" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="Bairro:"   />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<p:inputText value="#{pessoaControl.pessoa.bairro}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
-			<h:outputText value="Municipio"/>
-        	<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" style="width: 100%"
+				<h:outputText value="Municipio"/>
+        		<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" style="width: 100%"
                                 completeMethod="#{pessoaControl.completeMunicipio}"
-                                var="municipio" itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" forceSelection="true" scrollHeight="250"/>
+                                var="municipio" itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" forceSelection="true" scrollHeight="250">
+						<p:ajax event="itemSelect" listener="#{pessoaControl.selecionarMunicipio}" />  
+				</p:autoComplete>            
 				
 				<h:outputText value="Telefone:" />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<p:inputText value="#{pessoaControl.pessoa.telefone}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="Qual tipo?" />
 				<p:selectOneRadio id="tipotelefone" value="#">
@@ -116,7 +121,7 @@
 
 			</p:panelGrid>
 
-			<p:commandButton value="Salvar" action="#" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "
+			<p:commandButton value="Salvar" action="#{pessoaControl.salvar}" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "
 				onclick="PF('pessoaformulario').close()" />
 
 		</p:dialog>

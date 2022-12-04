@@ -18,23 +18,36 @@ import com.example.oficinaco.jpa.entidade.Pessoa;
 @SessionScope
 public class PessoaControl {
 
-@Autowired
-private PessoaDao pessoaDao;
+	@Autowired
+	private PessoaDao pessoaDao;
 
 	@Autowired
 	private MunicipioDao municipioDao;
 
  	private Integer municipioId;
+	
+	private Boolean funcionario;
 
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
 
 
-@PostConstruct
+	
+
+	@PostConstruct
 	public void init() {
 		listar();
 	}
+
+
+   	public void opcaoFuncionario(){
+	
+		pessoa.setFuncionario(funcionario);
+
+   }
+
+
 
 	public List<Municipio> completeMunicipio(String query){
 
@@ -43,7 +56,7 @@ private PessoaDao pessoaDao;
 
 	public void selecionarMunicipio(){
 		Municipio municipio = municipioDao.findById(municipioId).get();
-		pessoa.setMunicipio(municipio);;
+		pessoa.setMunicipio(municipio);
 	}
 
 	public void salvar() {
@@ -91,6 +104,16 @@ private PessoaDao pessoaDao;
 
 	public void setMunicipioId(Integer municipioId) {
 		this.municipioId = municipioId;
+	}
+
+
+	public Boolean getFuncionario() {
+		return funcionario;
+	}
+
+
+	public void setFuncionario(Boolean funcionario) {
+		this.funcionario = funcionario;
 	}
 
 

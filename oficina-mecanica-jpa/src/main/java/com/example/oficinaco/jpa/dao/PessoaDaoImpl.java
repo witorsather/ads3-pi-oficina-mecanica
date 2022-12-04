@@ -28,6 +28,10 @@ public class PessoaDaoImpl {
 		query.setParameter("nome", nome);
 		return query.getResultList();
 	}
+
+
+
+	
 	
 
 }

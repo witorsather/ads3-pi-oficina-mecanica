@@ -100,7 +100,7 @@ public class Pessoa {
 		return funcionario;
 	}
 
-	public void setFuncionario(boolean funcionario) {
+	public Pessoa setFuncionario(boolean funcionario) {
 		this.funcionario = funcionario;
 	}
 

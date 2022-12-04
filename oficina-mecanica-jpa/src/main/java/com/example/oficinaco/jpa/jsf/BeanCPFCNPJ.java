@@ -6,6 +6,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class BeanCPFCNPJ {
+    
     private String opcao;
     private String campo;
 
