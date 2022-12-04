@@ -46,9 +46,10 @@
 			<h:outputText value="#" />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="Municipio" style="background-color: black; color: white;">
-			<h:outputText value="#" />
-			</p:column>
+			<h:outputText value="Municipio"/>
+        	<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" style="width: 100%"
+                                completeMethod="#{ordemServicoControl.completePessoa}"
+                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250"/>
 			
 			<p:column sortBy="#" headerText="Telefone" style="background-color: black; color: white;">
 			<h:outputText value="#"/>

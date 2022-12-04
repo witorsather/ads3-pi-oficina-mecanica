@@ -21,13 +21,13 @@ public class PessoaControl {
 @Autowired
 private PessoaDao pessoaDao;
 
-private MunicipioDao municipioDao;
+	private MunicipioDao municipioDao;
 
-private Municipio municipio;
+ 	private Integer municipioId;
 
-private Pessoa pessoa = new Pessoa();
+	private Pessoa pessoa = new Pessoa();
 
-private List<Pessoa> pessoas = new ArrayList<>();
+	private List<Pessoa> pessoas = new ArrayList<>();
 
 
 @PostConstruct
@@ -39,6 +39,12 @@ private List<Pessoa> pessoas = new ArrayList<>();
 
 		return municipioDao.listarPorNome("%" + query + "%");
 	}
+
+	public void selecionarMunicipio(){
+		Municipio municipio = municipioDao.findById(municipioId).get();
+		pessoa.setMunicipio(municipio);;
+	}
+
 	public void salvar() {
 		pessoaDao.save(pessoa);
 		pessoa = new Pessoa();
@@ -68,6 +74,22 @@ private List<Pessoa> pessoas = new ArrayList<>();
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
+	}
+
+	public MunicipioDao getMunicipioDao() {
+		return municipioDao;
+	}
+
+	public void setMunicipioDao(MunicipioDao municipioDao) {
+		this.municipioDao = municipioDao;
+	}
+
+	public Integer getMunicipioId() {
+		return municipioId;
+	}
+
+	public void setMunicipioId(Integer municipioId) {
+		this.municipioId = municipioId;
 	}
 
 

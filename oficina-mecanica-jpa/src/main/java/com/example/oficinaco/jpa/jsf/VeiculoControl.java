@@ -24,10 +24,11 @@ public class VeiculoControl {
 @Autowired
 private VeiculoDao veiculoDao;
 
-private Veiculo veiculo;
+private Veiculo veiculo = new Veiculo();
 
 private Integer modeloId;
 
+@Autowired
 private ModeloDao modeloDao;
 
 
@@ -87,5 +88,17 @@ private List<Veiculo> veiculos = new ArrayList<>();
 	public void setModeloId(Integer modeloId) {
 		this.modeloId = modeloId;
 	}
+
+	public ModeloDao getModeloDao() {
+		return modeloDao;
+	}
+
+	public void setModeloDao(ModeloDao modeloDao) {
+		this.modeloDao = modeloDao;
+	}
+
+
+
+	
 
 }
