@@ -84,14 +84,10 @@
                              rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
                	</p:outputPanel>
 				
-				<h:outputText value="A pessoa é:" />
-				<p:selectOneRadio id="tipopessoa" value="#{pessoaControl.pessoa.funcionario}">
-					<f:selectItem itemLabel="Funcionario" itemValue="Option2"/>
-					<f:selectItem itemLabel="Cliente" itemValue="Option2"/>
-				</p:selectOneRadio>		
-				
-				
-				
+				<h:outputText value="É funcionário?" />
+						       
+        		<p:selectBooleanButton onLabel="Yes" offLabel="No" onIcon="pi pi-check" offIcon="pi pi-times" style="width:6rem" />
+					
 				<h:outputText value="Endereço:"   />
 				<p:inputText value="#{pessoaControl.pessoa.endereco}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
