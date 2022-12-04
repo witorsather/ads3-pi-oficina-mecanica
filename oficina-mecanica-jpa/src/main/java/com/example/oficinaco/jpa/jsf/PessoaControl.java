@@ -21,6 +21,7 @@ public class PessoaControl {
 @Autowired
 private PessoaDao pessoaDao;
 
+	@Autowired
 	private MunicipioDao municipioDao;
 
  	private Integer municipioId;

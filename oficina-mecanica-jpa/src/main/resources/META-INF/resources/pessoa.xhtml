@@ -16,46 +16,37 @@
 		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
 			onclick="PF('pessoaformulario').show()" />
 
-		<p:dataTable id="listapessoa" var="pessoa" value="#" allowUnsorting="true" sortMode="single" style="background-color: black; ">
+		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; ">
 			
-			<p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
-			<h:outputText value="#"  />
+			<p:column sortBy="#{pessoa.nome}" headerText="Nome" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.nome}" />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="Nome" style="background-color: black; color: white;">
-			<h:outputText value="#" />
+			<p:column sortBy="#{pessoa.cep}" headerText="CEP" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.cep}" />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="CEP" style="background-color: black; color: white;">
-			<h:outputText value="#" />
-			</p:column>
-			
-			<p:column sortBy="#" headerText="CPF" style="background-color: black; color: white;">
-			<h:outputText value="#"/>
-			</p:column>
-			
-			<p:column sortBy="#" headerText="Tipo" style="background-color: black; color: white;">
-			<h:outputText value="#"/>
-			</p:column>
-			
-			<p:column sortBy="#" headerText="Endereço" style="background-color: black; color: white;">
-			<h:outputText value="#"/>
-			</p:column>
-			
-			<p:column sortBy="#" headerText="Bairro" style="background-color: black; color: white;">
-			<h:outputText value="#" />
-			</p:column>
-			
-			<h:outputText value="Municipio"/>
-        	<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" style="width: 100%"
-                                completeMethod="#{ordemServicoControl.completePessoa}"
-                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250"/>
-			
-			<p:column sortBy="#" headerText="Telefone" style="background-color: black; color: white;">
-			<h:outputText value="#"/>
+			<p:column sortBy="#{pessoa.cpf}" headerText="CPF" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.cpf}"/>
 			</p:column>
 			
 			
+			<p:column sortBy="#{pessoa.endereco}" headerText="Endereço" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.endereco}"/>
+			</p:column>
+			
+			<p:column sortBy="#{pessoa.bairro}" headerText="Bairro" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.bairro}" />
+			</p:column>
+			
+			
+			<p:column sortBy="#{pessoa.telefone}" headerText="Telefone" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.telefone}"/>
+			</p:column>
+
+			<p:column sortBy="#{pessoa.municipio.nome}" headerText="Municipio" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.municipio.nome}"  />
+			</p:column>
 			
 			<p:column headerText="" style="background-color: black;">
 				
@@ -93,8 +84,10 @@
 				<h:outputText value="Bairro:"   />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
-				<h:outputText value="Municipio:"   />
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+			<h:outputText value="Municipio"/>
+        	<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" style="width: 100%"
+                                completeMethod="#{pessoaControl.completeMunicipio}"
+                                var="municipio" itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" forceSelection="true" scrollHeight="250"/>
 				
 				<h:outputText value="Telefone:" />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
