@@ -13,7 +13,7 @@ import com.example.oficinaco.jpa.entidade.Modelo;
 public interface ModeloDao extends JpaRepository<Modelo, Integer>{
 
 
-    @Query(nativeQuery = true, value = "select * from modelo m where (m.nome) like (:nome)")
+    @Query(nativeQuery = true, value = "select * from modelo m where lower(m.nome) like lower(:nome)")
 	List<Modelo> listarPorNome(@Param("nome") String nome);
 
 

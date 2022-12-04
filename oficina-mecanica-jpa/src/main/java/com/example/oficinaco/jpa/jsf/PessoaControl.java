@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.example.oficinaco.jpa.dao.MunicipioDao;
 import com.example.oficinaco.jpa.dao.PessoaDao;
+import com.example.oficinaco.jpa.entidade.Municipio;
 import com.example.oficinaco.jpa.entidade.Pessoa;
 
 @Component
@@ -18,6 +20,10 @@ public class PessoaControl {
 
 @Autowired
 private PessoaDao pessoaDao;
+
+private MunicipioDao municipioDao;
+
+private Municipio municipio;
 
 private Pessoa pessoa = new Pessoa();
 
@@ -28,7 +34,11 @@ private List<Pessoa> pessoas = new ArrayList<>();
 	public void init() {
 		listar();
 	}
-	
+
+	public List<Municipio> completeMunicipio(String query){
+
+		return municipioDao.listarPorNome("%" + query + "%");
+	}
 	public void salvar() {
 		pessoaDao.save(pessoa);
 		pessoa = new Pessoa();

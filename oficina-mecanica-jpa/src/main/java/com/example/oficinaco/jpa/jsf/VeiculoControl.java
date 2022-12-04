@@ -43,16 +43,12 @@ private List<Veiculo> veiculos = new ArrayList<>();
 		veiculo.setModelo(modelo);
 	}
 
-	public List<Modelo> completeModelo(String query) {
+	public List<Modelo>completeModelo(String query) {
     	return modeloDao.listarPorNome("%" + query + "%");
     }	
 
-	public void addModelo() {
-		ordemServico.getServicos().add(ordemServicoServico);
-		servicoId = null;
-		ordemServicoServico = new OrdemServicoServico();
-	}
-	
+
+
 	public void salvar() {
 		veiculoDao.save(veiculo);
 		veiculo = new Veiculo();

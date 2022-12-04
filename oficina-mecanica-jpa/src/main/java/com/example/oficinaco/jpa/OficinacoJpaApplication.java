@@ -36,6 +36,7 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 		servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
 		servletContext.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
 
+		
 		Set<Class<?>> clazz = new HashSet<Class<?>>();
 
 		clazz.add(OficinacoJpaApplication.class); 
