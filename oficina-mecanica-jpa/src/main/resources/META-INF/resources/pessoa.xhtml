@@ -66,11 +66,22 @@
 				<h:outputText value="Nome:" />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
 						
-				<h:outputText value="CEP:" style="border-radius: 20px;"/>
-				<p:inputMask value="#" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
-				<h:outputText value="CPF:" />
-				<p:inputMask value="#" mask="999.999.999-99" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				<h:selectOneRadio value="#{beanCPFCNPJ.opcao}">
+                <f:selectItem itemLabel="CPF" itemValue="CPF"/>
+                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ"/>
+                <p:ajax process="@this" update="resultado"/>
+                        </h:selectOneRadio>
+
+                <p:outputPanel id="resultado">
+                <p:inputMask id="campoCPF" mask="999.999.999-99"
+                             value="#{beanCPFCNPJ.campo}"
+                             rendered="#{beanCPFCNPJ.CPF}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+
+                <p:inputMask id="campoCNJP" mask="999.999.999/9999-99"
+                             value="#{beanCPFCNPJ.campo}"
+                             rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+               	</p:outputPanel>
 				
 				<h:outputText value="A pessoa é:" />
 				<p:selectOneRadio id="tipopessoa" value="#">
@@ -80,6 +91,9 @@
 				
 				<h:outputText value="Endereço:"   />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="CEP:" style="border-radius: 20px;"/>
+				<p:inputMask value="#" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="Bairro:"   />
 				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; " />
