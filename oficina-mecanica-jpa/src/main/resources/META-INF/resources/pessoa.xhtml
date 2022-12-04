@@ -17,7 +17,7 @@
 			onclick="PF('pessoaformulario').show()" />
 
 		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; ">
-			
+
 			<p:column sortBy="#{pessoa.nome}" headerText="Nome" style="background-color: black; color: white;">
 			<h:outputText value="#{pessoa.nome}" />
 			</p:column>
@@ -54,7 +54,7 @@
 					
 					onclick="PF('pessoaformulario').show()"  />
 				
-				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#"  styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" /> 
+				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#{pessoaControl.excluir(pessoa.id)}"  styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" /> 
 			</p:column>
 		</p:dataTable>
 
@@ -85,8 +85,8 @@
                	</p:outputPanel>
 				
 				<h:outputText value="É funcionário?" />
-						       
-        		<p:selectBooleanButton onLabel="Yes" offLabel="No" onIcon="pi pi-check" offIcon="pi pi-times" style="width:6rem" />
+		       
+        		<p:selectBooleanButton onLabel="Sim" offLabel="Não" onIcon="pi pi-check" offIcon="pi pi-times" style="width:6rem" value="pessoaControl.pessoa.funcionario"/>
 					
 				<h:outputText value="Endereço:"   />
 				<p:inputText value="#{pessoaControl.pessoa.endereco}" style="width: 280px; height: 40px ; border-radius: 20px; " />
