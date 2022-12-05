@@ -13,26 +13,32 @@
 	
         <ui:include src="menu.xhtml" />	
         
-        <p:panelGrid columns="7" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-1,ui-grid-col-2">
+      
+        
+        
+        <p:panelGrid columns="2"  style=" margin-top: 10px;" >
         	
         	<h:outputText value="Cliente"/>
-        	<p:autoComplete id="cliente" value="#{ordemServicoControl.pessoaId}" style="width: 100%"
+        	<p:autoComplete id="cliente" value="#{ordemServicoControl.pessoaId}" 
                                 completeMethod="#{ordemServicoControl.completePessoa}"
                                 var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250"/>
         
         	<h:outputText value="Funcionário"/>
-        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.funcionarioId}" style="width: 100%"
+        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.funcionarioId}" 
                                 completeMethod="#{ordemServicoControl.completeFuncionario}"
                                 var="func" itemLabel="#{func.nome}" itemValue="#{func.id}" forceSelection="true" scrollHeight="250"/>
                                 
 			<h:outputText value="Placa"/>
-			<p:inputMask value="#{ordemServicoControl.placa}" style="width:100%" mask="aaa 9*99">
+			<p:inputMask value="#{ordemServicoControl.placa}"  mask="aaa 9*99">
 				<p:ajax event="blur" update="form:veiculo" listener="#{ordemServicoControl.atualizarVeiculo}"/>
 			</p:inputMask>
 			<h:outputText id="veiculo" value="#{ordemServicoControl.ordemServico.veiculo}"/>                                
         </p:panelGrid>
+		 
 		
-        <p:panelGrid columns="5" layout="grid">
+        
+        <p:panelGrid columns="2" style="margin-left: 450px; margin-top: -210px;" >
+        	
         	<h:outputText value="Serviço"/>
         	<p:autoComplete id="servico" value="#{ordemServicoControl.servicoId}" style="width: 100%"
                                 completeMethod="#{ordemServicoControl.completeServico}"
@@ -41,9 +47,9 @@
 			</p:autoComplete>                                
         	<h:outputText value="Quantidade"/>
         	<p:inputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
-        	<p:commandButton value="Add" action="#{ordemServicoControl.addServico}" update="form"/>
-        
+     
         </p:panelGrid>
+        <p:commandButton value="Add" action="#{ordemServicoControl.addServico}" style="background-color: green; margin-left: 735px; margin-top: 10px;" update="form"/>
         
         <p:dataTable value="#{ordemServicoControl.ordemServico.servicos}" var="servico">
 			<p:column>
