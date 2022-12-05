@@ -50,7 +50,7 @@
 			
 			<p:column headerText="" style="background-color: black;">
 				
-				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#" styleClass="ui-button-help mr-2" title="editar"  style=""
+				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#{pessoaControl.setPessoa(pessoa)}" styleClass="ui-button-help mr-2" title="editar"
 					
 					onclick="PF('pessoaformulario').show()"  />
 				
@@ -85,10 +85,13 @@
                	</p:outputPanel>
 				
 				<h:outputText value="É funcionário?" />
-		       
-        		<p:selectBooleanButton onLabel="Sim" offLabel="Não" onIcon="pi pi-check" offIcon="pi pi-times" style="width:6rem" value="pessoaControl.pessoa.funcionario"/>
-					
-				<h:outputText value="Endereço:"   />
+				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" itemLabel="Ajax">
+					<p:ajax listener="#{pessoaControl.opcaoFuncionario}"/>
+       			</p:selectBooleanCheckbox>
+            		
+        		
+
+				<h:outputText value="Endereço:" />
 				<p:inputText value="#{pessoaControl.pessoa.endereco}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="CEP:" style="border-radius: 20px;"/>

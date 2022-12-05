@@ -42,13 +42,21 @@ public class PessoaControl {
 
 
    	public void opcaoFuncionario(){
-	
-		pessoa.setFuncionario(funcionario);
+
+		String summary = funcionario ? "Checked" : "Unchecked";
+		
+		if(summary.equals("'Checked'")){
+
+
+			pessoa.setFuncionario(true);
+
+		}else {
+
+			pessoa.setFuncionario(false);
+
+		}
 
    }
-
-
-
 	public List<Municipio> completeMunicipio(String query){
 
 		return municipioDao.listarPorNome("%" + query + "%");
@@ -115,12 +123,6 @@ public class PessoaControl {
 	public void setFuncionario(Boolean funcionario) {
 		this.funcionario = funcionario;
 	}
-
-
-
-
-
-
 
     
 }
