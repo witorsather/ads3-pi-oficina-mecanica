@@ -30,6 +30,7 @@ public class PessoaControl {
 	
 	private Boolean funcionario;
 
+
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
@@ -41,16 +42,6 @@ public class PessoaControl {
 	public void init() {
 		listar();
 	}
-
-
-     public void retornoOpcao(){
-
-		
-
-
-	 }
-
-
   
 	public void addMessage() {
         String summary = funcionario ? "Checked" : "Unchecked";

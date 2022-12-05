@@ -1,11 +1,9 @@
 package com.example.oficinaco.jpa.jsf;
 
 import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -31,8 +29,8 @@ private Integer modeloId;
 @Autowired
 private ModeloDao modeloDao;
 
-
 private List<Veiculo> veiculos = new ArrayList<>();
+
 
 @PostConstruct
 	public void init() {
