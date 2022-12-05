@@ -102,6 +102,7 @@ public class Pessoa {
 
 	public Pessoa setFuncionario(boolean funcionario) {
 		this.funcionario = funcionario;
+		return null;
 	}
 
 	public Municipio getMunicipio() {

@@ -13,7 +13,7 @@
 </h:head>
 <h:body style="background-color: black;">
 	<h:form id="form" >
-
+		<p:growl id="msg"/>
 		<ui:include src="menu.xhtml" />
 
 		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
@@ -87,9 +87,11 @@
                              rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
                	</p:outputPanel>
 				
+				
+
 				<h:outputText value="É funcionário?" />
-				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" itemLabel="Ajax">
-					<p:ajax listener="#{pessoaControl.opcaoFuncionario}"/>
+				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" >
+					<p:ajax update="msg" listener="#{pessoaControl.addMessage}"/>
        			</p:selectBooleanCheckbox>
             		
         		

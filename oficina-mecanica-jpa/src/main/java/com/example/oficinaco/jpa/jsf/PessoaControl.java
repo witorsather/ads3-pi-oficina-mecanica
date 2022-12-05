@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,22 +43,30 @@ public class PessoaControl {
 	}
 
 
-   	public void opcaoFuncionario(){
+     public void retornoOpcao(){
 
-		String summary = funcionario ? "Checked" : "Unchecked";
 		
-		if(summary.equals("'Checked'")){
 
+
+	 }
+
+
+  
+	public void addMessage() {
+        String summary = funcionario ? "Checked" : "Unchecked";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+
+		if(summary.equals("Checked")){
 
 			pessoa.setFuncionario(true);
+   
+		   }else if(summary.equals("Unchecked")){
+   
+			   pessoa.setFuncionario(false);
+   
+		   }
+    }
 
-		}else {
-
-			pessoa.setFuncionario(false);
-
-		}
-
-   }
 	public List<Municipio> completeMunicipio(String query){
 
 		return municipioDao.listarPorNome("%" + query + "%");

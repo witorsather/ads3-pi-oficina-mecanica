@@ -5,7 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
+
 
 import com.example.oficinaco.jpa.dao.ServicoDao;
 import com.example.oficinaco.jpa.entidade.Servico;
