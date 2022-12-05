@@ -79,16 +79,13 @@
 
                 <p:outputPanel id="resultado">
                 <p:inputMask id="campoCPF" mask="999.999.999-99"
-                             value="#{beanCPFCNPJ.campo}"
+                             value="#{pessoaControl.pessoa.cpf}"
                              rendered="#{beanCPFCNPJ.CPF}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
-
                 <p:inputMask id="campoCNJP" mask="999.999.999/9999-99"
-                             value="#{beanCPFCNPJ.campo}"
+                             value="#{pessoaControl.pessoa.cpf}"
                              rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
                	</p:outputPanel>
 				
-				
-
 				<h:outputText value="É funcionário?" />
 				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" >
 					<p:ajax update="msg" listener="#{pessoaControl.addMessage}"/>
