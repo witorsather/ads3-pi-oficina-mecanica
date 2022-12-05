@@ -8,30 +8,15 @@
 <h:head>
     <title>Hello, Spring and JSF World!</title>
 </h:head>
-<h:body>
+<h:body style="background-color: black;">
 	<h:form>
 
 		<ui:include src="menu.xhtml" />
 		
-	    <p:panel header="Exemplo">
-	        <h:outputText id="msg" value="#{springManagedBean.message}"/>
-	        <p:commandButton update="msg" action="#{springManagedBean.acao}" value="Clique"/>
-	    </p:panel>
-	    
-		<p:dataTable var="servico" value="#{springManagedBean.servicos}" allowUnsorting="true" sortMode="single">
-			<p:column sortBy="#{servico.id}" headerText="Id">
-				<h:outputText value="#{servico.id}"/>
-			</p:column>
-			<p:column sortBy="#{servico.nome}" headerText="Nome">
-				<h:outputText value="#{servico.nome}"/>
-			</p:column>
-			<p:column sortBy="#{servico.preco}" headerText="Preço">
-				<h:outputText value="#{servico.preco}"/>
-			</p:column>
-		</p:dataTable>	    
+	  	    
 	</h:form>
 
-	<iframe title="Meu primeiro Dashboard no Power BI" width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiNDMyODM4ZWQtODFhNS00OGViLWI3ZTAtYjM1NTJkM2UxZjU0IiwidCI6IjRmMTY2NjVmLWFlMTktNDQyMi05ZTk5LTY5NmQ3YjcxZjY1MCJ9" frameborder="0" allowFullScreen="true"></iframe>
+	<iframe title="Meu primeiro Dashboard no Power BI" style="margin-left: 390px; " width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiNDMyODM4ZWQtODFhNS00OGViLWI3ZTAtYjM1NTJkM2UxZjU0IiwidCI6IjRmMTY2NjVmLWFlMTktNDQyMi05ZTk5LTY5NmQ3YjcxZjY1MCJ9" frameborder="0" allowFullScreen="true"></iframe>
 
 </h:body>
 </html>
