@@ -17,25 +17,25 @@
         
         <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formproduto').show()" style="top: 11px; background-color: green; color: white;"/>
 
-		<p:dataTable id="listaproduto" var="produto" value="#" allowUnsorting="true" sortMode="single">
+		<p:dataTable id="listaproduto" var="produto" value="#{produtoControl.produtos}" allowUnsorting="true" sortMode="single">
 			
-			<p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
-				<h:outputText value="#"  />
+			<p:column sortBy="#{produto.id}" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#{produto.id}"  />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="Nome " style="background-color: black; color: white;" >
-				<h:outputText value="#" />
+			<p:column sortBy="#{produto.nome}" headerText="Nome " style="background-color: black; color: white;" >
+				<h:outputText value="#{produto.nome}" />
 			</p:column>
 			
-			<p:column sortBy="#" headerText="Preço De Venda" style="background-color: black; color: white;" >
-				<h:outputText value="#" />
+			<p:column sortBy="#{produto.precoVenda}" headerText="Preço De Venda" style="background-color: black; color: white;" >
+				<h:outputText value="#{produto.precoVenda}" />
 			</p:column>
 			
 			<p:column headerText="" style="background-color: black;">
 				
-				<p:commandButton icon="pi pi-pencil" update="form:produtoDiag" action="#" onclick="PF('formproduto').show()" styleClass="ui-button-help mr-2" title="editar"/>
+				<p:commandButton icon="pi pi-pencil" update="form:produtoDiag" action="#{produtoControl.setProduto(produto)}" onclick="PF('formproduto').show()" styleClass="ui-button-help mr-2" title="editar"/>
 				
-				<p:commandButton icon="pi pi-trash" update="form:listaproduto" action="#" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
+				<p:commandButton icon="pi pi-trash" update="form:listaproduto" action="#{produtoControl.excluir(produto.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
 			
 			</p:column>
 		</p:dataTable>	    
@@ -46,17 +46,17 @@
 			<p:panelGrid id="produtoDiag" columns="2">
 				
 				<h:outputText value="Nome:"/>
-				<p:inputText value="#" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				<p:inputText value="#{produtoControl.produto.nome}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
 				
 				<h:outputText value="Valor  R$"  />
 				
-                <p:inputNumber  id="input2" value="#{inputNumberView.input2}" symbol=" BRL"  
+                <p:inputNumber  id="input2" value="#{produtoControl.produto.precoVenda}" symbol=" BRL"  
                                 symbolPosition="s" decimalSeparator="," thousandSeparator="."  />
             	
 				
 			</p:panelGrid>
 
-			<p:commandButton value="Salvar" action="#" onclick="PF('formproduto').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
+			<p:commandButton value="Salvar" action="#{produtoControl.salvar}" onclick="PF('formproduto').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
 			
 		</p:dialog> 
 		

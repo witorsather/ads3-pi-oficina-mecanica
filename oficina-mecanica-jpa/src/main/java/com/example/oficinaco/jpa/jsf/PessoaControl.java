@@ -59,7 +59,6 @@ public class PessoaControl {
     }
 
 	public List<Municipio> completeMunicipio(String query){
-
 		return municipioDao.listarPorNome("%" + query + "%");
 	}
 
