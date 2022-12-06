@@ -76,8 +76,8 @@
 						
 				
 				<h:selectOneRadio value="#{beanCPFCNPJ.opcao}">
-                <f:selectItem itemLabel="CPF" itemValue="CPF" value="#{pessoaControl.pessoa.cpf}"/>
-                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ" value="#{pessoaControl.pessoa.cpf}"/>
+                <f:selectItem itemLabel="CPF" itemValue="CPF" />
+                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ" />
                 <p:ajax process="@this" update="resultado"/>
                 </h:selectOneRadio>
 
