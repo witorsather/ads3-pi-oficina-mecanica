@@ -32,7 +32,7 @@
 			
 			<p:column headerText="" style="background-color: black;">
 				
-				<p:commandButton icon="pi pi-pencil" update="form:servicoDiag" action="#{servicoControl.setServicos(servico)}" onclick="PF('formservico').show()" styleClass="ui-button-help mr-2" title="editar"/>
+				<p:commandButton icon="pi pi-pencil" update="form:servicoDiag" action="#{servicoControl.setServico(servico)}" onclick="PF('formservico').show()" styleClass="ui-button-help mr-2" title="editar"/>
 				
 				<p:commandButton icon="pi pi-trash" update="form:listaservico" action="#{servicoControl.excluir(servico.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
 			
