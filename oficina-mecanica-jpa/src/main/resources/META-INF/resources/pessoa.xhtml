@@ -108,10 +108,11 @@
 				
 					
 				<h:outputText value="Município"/>
-        		<p:autoComplete id="municipio" value="#{pessoaControl.municipioId}" 
+        		<p:autoComplete id="municipio" value="#{pessoaControl.pessoa.municipio}" 
                                 completeMethod="#{pessoaControl.completeMunicipio}"
-                                var="municipio" itemLabel="#{municipio}" itemValue="#{municipio.id}" forceSelection="true" scrollHeight="250" >
+                                var="municipio" itemLabel="#{municipio.nome}" itemValue="#{municipio}" forceSelection="true" scrollHeight="250">
 						<p:ajax event="itemSelect" listener="#{pessoaControl.selecionarMunicipio}"  />  
+						<f:converter converterId = "converter" />
 				</p:autoComplete>            
 				
 				<h:outputText value="Telefone:" />

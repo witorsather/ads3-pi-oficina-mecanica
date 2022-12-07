@@ -30,10 +30,10 @@ public class PessoaControl {
 	
 	private Boolean funcionario;
 
-
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
+
 
 
 	
@@ -123,6 +123,15 @@ public class PessoaControl {
 	public void setFuncionario(Boolean funcionario) {
 		this.funcionario = funcionario;
 	}
+
+	public PessoaDao getPessoaDao() {
+		return pessoaDao;
+	}
+
+	public void setPessoaDao(PessoaDao pessoaDao) {
+		this.pessoaDao = pessoaDao;
+	}
+
 
     
 }

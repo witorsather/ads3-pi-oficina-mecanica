@@ -17,6 +17,7 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.jsf.el.SpringBeanFacesELResolver;
 
+
 import com.sun.faces.config.ConfigureListener;
 import com.sun.faces.config.FacesInitializer;
 
@@ -62,6 +63,7 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 			Application app = factory.getApplication();
 
 			app.addELResolver(new SpringBeanFacesELResolver());
+			app.addConverter("converter", "com.example.oficinaco.jpa.jsf.GenericConverter");
 		}
 	}	
 
