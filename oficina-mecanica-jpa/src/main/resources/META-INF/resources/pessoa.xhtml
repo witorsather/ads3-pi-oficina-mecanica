@@ -12,6 +12,21 @@
 	
 </h:head>
 <h:body style="background-color: black;">
+<style>
+	body .ui-inputfield {
+    color: #495057;
+    background: #fff;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #ced4da;
+    outline: 0 none;
+    font-size: 1rem;
+    border-radius: 20px;
+    transition: background-color .2s,color .2s,border-color .2s,box-shadow .2s,opacity .2s;
+    -webkit-appearance: none;
+    appearance: none;
+	width: 140%;
+}
+</style>
 	<h:form id="form" >
 		<p:growl id="msg"/>
 		<ui:include src="menu.xhtml" />

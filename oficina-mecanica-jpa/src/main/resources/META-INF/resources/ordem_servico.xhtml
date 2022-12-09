@@ -11,6 +11,73 @@
     <title>Ordem de Serviço</title>
 </h:head>
 <h:body style="background-color: black;">
+	<style>
+body .ui-inputfield {
+    color: #495057;
+    background: #fff;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #ced4da;
+    outline: 0 none;
+    font-size: 1rem;
+    border-radius: 20px;
+    transition: background-color .2s,color .2s,border-color .2s,box-shadow .2s,opacity .2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+body .ui-panelgrid .ui-panelgrid-cell {
+    border: 1px solid #dee2e6;
+    background: black;
+    color: white;
+    padding: 1rem;
+	border-radius: ;
+}
+body .ui-button.ui-state-hover{
+	background: white;
+	border-color: rgb(61, 255, 61);
+	color: white;
+}
+body .ui-button {
+    display: block;
+	background: #2196f3;
+    color: #fff;
+    border: 1px solid white;
+    margin: 0;
+    /* outline: 0 none; */
+    border-radius: 6px;
+    transition: background-color .2s,color .2s,border-color .2s,box-shadow .2s,opacity .2s;	
+	border: 2px solid #333;
+  	letter-spacing: 2px;
+  	text-align: center;
+  	position: relative;
+  transition: all .35s;
+}
+
+body .ui-button span {
+	position: relative;
+ 	 z-index: 2;
+}
+body .ui-button:after {
+position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #045325;
+  transition: all .35s;
+}
+body .ui-button:hover {
+	color: greenyellow;
+}
+body .ui-button:hover:after{
+  width: 100%;
+}
+
+    </style>
+
+	
+
+
 	<h:form id="form">
 	
         <ui:include src="menu.xhtml" />	
@@ -82,11 +149,11 @@
 
 		<p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1300px; margin-top: -330px;"  />
 
-		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: -500px; top: -190px;" update="form"/>
+		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: 1200px; top: -260px;" update="form"/>
 
 		
         
-        <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
+        <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: -50px; width: 25%; margin-left: 570px;">
 			
 		
 			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
