@@ -1,0 +1,6 @@
+id,preco,quantidade,servico_id,ordem_servico_id
+1,65,3,1,1
+2,120,9,2,2
+3,175,15,3,3
+4,230,21,4,4
+5,285,27,5,5
