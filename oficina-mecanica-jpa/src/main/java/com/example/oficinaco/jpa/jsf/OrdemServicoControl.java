@@ -83,11 +83,6 @@ public class OrdemServicoControl {
 		ordemServicoProduto.setPreco(produto.getPrecoVenda());
 	}
 
-	public void selecionarPessoa(){
-		Pessoa pessoa = pessoaDao.findById(pessoaId).get();
-		ordemServico.setCliente(pessoa);
-	}
-
 	public void selecionarFuncionario (){
 		Pessoa funcionario = pessoaDao.findById(funcionarioId).get();
 		ordemServico.setFuncionario(funcionario);

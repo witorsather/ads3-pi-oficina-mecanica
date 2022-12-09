@@ -12,10 +12,7 @@ import com.example.oficinaco.jpa.entidade.Produto;
 @Repository
 public interface ProdutoDao extends JpaRepository<Produto, Integer>{
 
-
     @Query(nativeQuery = true, value = "select * from produto p where lower(p.nome) like lower(:nome)")
 	List<Produto> listarPorNome(@Param("nome") String nome);
-
-
 
 }

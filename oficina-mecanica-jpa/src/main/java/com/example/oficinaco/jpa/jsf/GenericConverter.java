@@ -33,7 +33,11 @@ public class GenericConverter implements Converter{
             String key = String.format("%s:%s", value.getClass().getName(), id.toString());
             mapaObj.put(key, value);
             return key;
-            } catch (Exception e) {
+        } catch (Exception e) {
+            System.out.println(value);
+            if(value != null){
+                System.out.println(value.getClass().getName());
+            }
             e.printStackTrace();
             return null;
         }
