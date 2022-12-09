@@ -25,6 +25,7 @@ public class GenericConverter implements Converter{
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
+        
         try {
             Field field = value.getClass().getDeclaredField("id");
             field.setAccessible(true);

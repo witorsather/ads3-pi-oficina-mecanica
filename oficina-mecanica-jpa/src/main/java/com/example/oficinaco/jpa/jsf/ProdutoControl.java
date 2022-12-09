@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
-
 import com.example.oficinaco.jpa.dao.ProdutoDao;
 import com.example.oficinaco.jpa.entidade.Produto;
 

@@ -34,16 +34,13 @@ public class PessoaControl {
 
 	private List<Pessoa> pessoas = new ArrayList<>();
 
-
-
-	
-
 	@PostConstruct
 	public void init() {
 		listar();
 	}
   
 	public void addMessage() {
+		
         String summary = funcionario ? "Checked" : "Unchecked";
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
 
