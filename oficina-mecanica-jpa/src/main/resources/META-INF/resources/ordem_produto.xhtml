@@ -34,47 +34,59 @@
     Note: A column with a defined styleClass will ignore the styleClass specified in the columnClasses list.
     Note: Note the use of ui-fluid to ensure that components are sized correctly and the use of ui-panelgrid-blank to remove borders.
     -->
-    <p:panelGrid columns="4"
+    <p:panelGrid id="ordemprodutoDiag"
+                columns="4"
                  columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
                  layout="grid"
                  styleClass="ui-panelgrid-blank ui-fluid"
                  style="border:0px none; background-color:black; margin-top: -0px;">
 
-        <p:row styleClass="my-heading-row" >
+        <p:row styleClass="my-heading-row" style="width: 41%;">
             Ordem_ServicoProduto
         </p:row>
 
-        <p:outputLabel for="@next" value="First Name" style="color: white;"/>
-        <p:inputText value="#" style="margin-left: -180px;"/>
+        <p:outputLabel for="@next" value="First Name" style="color: white; " />
+        <p:inputText value="#" style="margin-left: -180px; width: 35%;"/>
 
-        <p:outputLabel for="@next" value="Last Name" style="color: white;"/>
-        <p:inputText value="#" style="margin-left: -180px;"/>
+        <p:outputLabel for="@next" value="Last Name" style="color: white; margin-left: -480px ;"/>
+        <p:inputText value="#" style="margin-left: -180px; width: 35%; margin-left: -700px ;"/>
 
         <p:outputLabel for="@next" value="Phone" style="color: white;"/>
-        <p:inputText value="#" style="margin-left: -180px;"/>
+        <p:inputText value="#" style="margin-left: -180px; width: 35%;"/>
 
-        <p:outputLabel for="@next" value="Email" style="color: white;"/>
-        <p:inputText value="#" style="margin-left: -180px;"/>
+        <p:outputLabel for="@next" value="Email" style="color: white; margin-left: -480px ;"/>
+        <p:inputText value="#" style="margin-left: -180px; width: 35%; margin-left: -700px ;"/>
 
-        <p:outputLabel for="@next" value="Address" style="color: white;"/>
-         <p:inputText value="#" style="margin-left: -180px;"/>
+        
 
-       	<p:commandButton value="Add" action="#{ordemServicoControl.addServico}" style="background-color: green; margin-left: 300px; margin-top: 0px;" update="form"/>
+       	<p:commandButton title="adicionar" icon="pi pi-plus-circle" action="#{ordemServicoControl.addServico}" style="background-color: green; margin-left: 710px; margin-top: 0px; " update="form"/>
     </p:panelGrid>
     
+    <p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1125px; margin-top: -356px;"  />
     
-    <p:dataTable value="#{ordemServicoControl.ordemServico.servicos}" var="servico">
-			<p:column headerText="Marca">
-				<h:outputText value="#"/>
-			</p:column>        
-			<p:column headerText="Marca">
-				<h:outputText value="#"/>
-			</p:column>        
-			<p:column headerText="Marca">
-				<h:outputText value="#"/>
-			</p:column >        
-			<p:column headerText="Marca" >
-				<h:outputText value="#"/>
+    <p:dataTable value="#" var="servico" id="listaordemproduto" allowUnsorting="true" sortMode="single">
+        
+        <p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
+            <h:outputText value="#" />
+        </p:column>
+            
+        <p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#" />
+	    </p:column>      
+		
+        <p:column sortBy="#" headerText="S" style="background-color: black; color: white;">
+				<h:outputText value="#" />
+		</p:column>
+
+        <p:column sortBy="#" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#" />
+		</p:column>
+
+            <p:column headerText="" style="background-color: black;" >
+				
+				<p:commandButton icon="pi pi-pencil" update="form:ordemprodutoDiag" action="#" styleClass="ui-button-help mr-2"  title="editar"/>
+				
+				<p:commandButton icon="pi pi-trash" update="form:listaordemproduto" action="#" styleClass="ui-button-danger"   title="deletar" style="margin-left: 20px;" /> 
 			</p:column>
 			        
         </p:dataTable>
