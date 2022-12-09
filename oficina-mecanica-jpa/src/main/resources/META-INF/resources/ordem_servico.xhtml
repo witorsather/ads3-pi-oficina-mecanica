@@ -8,7 +8,7 @@
 	  >
 
 <h:head>
-    <title>Oficinaço - Ordem de Serviço</title>
+    <title>Ordem de Serviço</title>
 </h:head>
 <h:body style="background-color: black;">
 	<h:form id="form">
@@ -22,21 +22,23 @@
                                 completeMethod="#{ordemServicoControl.completePessoa}"
                                 var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250">		
 		    			<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarPessoa}" />
-						<f:converter converterId = "converter"/>
+						
 			</p:autoComplete>
 			
         	<h:outputText value="Funcionário"/>
         	<p:autoComplete id="funcionario" value="#{ordemServicoControl.funcionarioId}" 
                                 completeMethod="#{ordemServicoControl.completeFuncionario}"
-                                var="func" itemLabel="#{func}" itemValue="#{func.id}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarFuncionario}" /> 
+                                var="func" itemLabel="#{func.nome}" itemValue="#{func.id}" forceSelection="true" scrollHeight="250">
+						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarFuncionario}" />
+						
 			</p:autoComplete>
 
 			<h:outputText value="Placa"/>
 			<p:autoComplete id="veiculo" value="#{ordemServicoControl.veiculoId}" 
                                 completeMethod="#{ordemServicoControl.completeVeiculo}"
                                 var="veiculo" itemLabel="#{veiculo}" itemValue="#{veiculo.id}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarVeiculo}" /> 
+						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarVeiculo}" />
+						
 			</p:autoComplete>
 			
 
