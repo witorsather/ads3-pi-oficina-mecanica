@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Pessoa</title>
+	
+	<link rel="stylesheet" href="css/pessoa.css" />
+	
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form" >
+		<p:growl id="msg"/>
+		<ui:include src="menu.xhtml" />
+
+		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
+			onclick="PF('pessoaformulario').show()" />
+
+		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; ">
+
+			<p:column sortBy="#{pessoa.id}" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#{pessoa.id}" />
+			</p:column>
+
+			<p:column sortBy="#{pessoa.nome}" headerText="Nome" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.nome}" />
+			</p:column>
+			
+			<p:column sortBy="#{pessoa.cep}" headerText="CEP" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.cep}" />
+			</p:column>
+			
+			<p:column sortBy="#{pessoa.cpf}" headerText="CPF" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.cpf}"/>
+			</p:column>
+			
+			
+			<p:column sortBy="#{pessoa.endereco}" headerText="Endereço" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.endereco}"/>
+			</p:column>
+			
+			<p:column sortBy="#{pessoa.bairro}" headerText="Bairro" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.bairro}" />
+			</p:column>
+			
+			
+			<p:column sortBy="#{pessoa.telefone}" headerText="Telefone" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.telefone}"/>
+			</p:column>
+
+			<p:column sortBy="#{pessoa.municipio.nome}" headerText="Municipio" style="background-color: black; color: white;">
+			<h:outputText value="#{pessoa.municipio.nome}"  />
+			</p:column>
+			
+			<p:column headerText="" style="background-color: black;">
+				
+				<p:commandButton icon="pi pi-pencil" update="form:pessoaDiag" action="#{pessoaControl.setPessoa(pessoa)}" styleClass="ui-button-help mr-2" title="editar"
+					
+					onclick="PF('pessoaformulario').show()"  />
+				
+				<p:commandButton icon="pi pi-trash" update="form:listapessoa" action="#{pessoaControl.excluir(pessoa.id)}"  styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" /> 
+			</p:column>
+		</p:dataTable>
+
+
+
+		<p:dialog header="Novo Cadastro - Pessoa" widgetVar="pessoaformulario" minHeight="40" style="border-radius: 20px;"
+			showEffect="fade" closeOnEscape="true" >
+			
+			<p:panelGrid id="pessoaDiag" columns="2"    >
+				<h:outputText value="Nome:" />
+				<p:inputText value="#{pessoaControl.pessoa.nome}" style="width: 280px; height: 40px ; border-radius: 20px; " />
+						
+				
+				<h:selectOneRadio value="#{beanCPFCNPJ.opcao}">
+                <f:selectItem itemLabel="CPF" itemValue="CPF" />
+                <f:selectItem itemLabel="CNPJ" itemValue="CNPJ" />
+                <p:ajax process="@this" update="resultado"/>
+                </h:selectOneRadio>
+
+                <p:outputPanel id="resultado">
+                <p:inputMask id="campoCPF" mask="999.999.999-99"
+                             value="#{pessoaControl.pessoa.cpf}"
+                             rendered="#{beanCPFCNPJ.CPF}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+                <p:inputMask id="campoCNJP" mask="999.999.999/9999-99"
+                             value="#{pessoaControl.pessoa.cpf}"
+                             rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+               	</p:outputPanel>
+				
+				<h:outputText value="Funcionário:" />
+				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" >
+					<p:ajax update="msg" listener="#{pessoaControl.addMessage}"/>
+       			</p:selectBooleanCheckbox>
+            		
+        		
+
+				<h:outputText value="Endereço:" />
+				<p:inputText value="#{pessoaControl.pessoa.endereco}" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="CEP:" style="border-radius: 20px;"/>
+				<p:inputMask value="#{pessoaControl.pessoa.cep}" mask="99999-999" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="Bairro:"   />
+				<p:inputText value="#{pessoaControl.pessoa.bairro}" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+					
+				<h:outputText value="Município"/>
+        		<p:autoComplete id="municipio" value="#{pessoaControl.pessoa.municipio}" 
+                                completeMethod="#{pessoaControl.completeMunicipio}"
+                                var="municipio" itemLabel="#{municipio.nome}" itemValue="#{municipio}" forceSelection="true" scrollHeight="250">
+						<p:ajax event="itemSelect" listener="#{pessoaControl.selecionarMunicipio}"  />  
+						<f:converter converterId = "converter" />
+				</p:autoComplete>            
+				
+				<h:outputText value="Telefone:" />
+				<p:inputText value="#{pessoaControl.pessoa.telefone}" style="width: 280px; height: 40px ; border-radius: 20px; " />
+				
+				<h:outputText value="WhatsApp:" />
+				<p:selectBooleanCheckbox value="#" >
+					<p:ajax update="msg" />
+       			</p:selectBooleanCheckbox>
+
+
+
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{pessoaControl.salvar}" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "
+				onclick="PF('pessoaformulario').close()" />
+
+		</p:dialog>
+
+
+
+	</h:form>
+</h:body>
+</html>

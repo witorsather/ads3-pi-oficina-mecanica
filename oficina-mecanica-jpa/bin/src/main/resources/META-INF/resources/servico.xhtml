@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Serviço</title>
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form">
+	
+        <ui:include src="menu.xhtml" />	
+        
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formservico').show()" style="top: 11px; background-color: green; color: white;"/>
+
+		<p:dataTable id="listaservico" var="servico" value="#{servicoControl.servicos}" allowUnsorting="true" sortMode="single">
+			
+			<p:column sortBy="#{servico.id}" headerText="Id" style="background-color: black; color: white;">
+				<h:outputText value="#{servico.id}"  />
+			</p:column>
+			
+			<p:column sortBy="#{servico.nome}" headerText="Nome" style="background-color: black; color: white;" >
+				<h:outputText value="#{servico.nome}" />
+			</p:column>
+			
+			<p:column sortBy="#{servico.preco}" headerText="Preço" style="background-color: black; color: white;" >
+				<h:outputText value="#{servico.preco}" />
+			</p:column>
+			
+			<p:column headerText="" style="background-color: black;">
+				
+				<p:commandButton icon="pi pi-pencil" update="form:servicoDiag" action="#{servicoControl.setServico(servico)}" onclick="PF('formservico').show()" styleClass="ui-button-help mr-2" title="editar"/>
+				
+				<p:commandButton icon="pi pi-trash" update="form:listaservico" action="#{servicoControl.excluir(servico.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
+			
+			</p:column>
+		</p:dataTable>	    
+		
+		
+        
+		<p:dialog header="Cadastrar Serviço" widgetVar="formservico" minHeight="40" showEffect="fade" closeOnEscape="true" style="border-radius: 20px">
+			<p:panelGrid id="servicoDiag" columns="2">
+				
+				<h:outputText value="Nome:"/>
+				<p:inputText value="#{servicoControl.servico.nome}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Valor  R$"  />
+                <p:inputNumber id="input2" value="#{servicoControl.servico.preco}" symbol=" BRL" 
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="."  />
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{servicoControl.salvar}" onclick="PF('formservico').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
+			
+		</p:dialog> 
+		
+		     
+
+	</h:form>
+</h:body>
+</html>

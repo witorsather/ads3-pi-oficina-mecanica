@@ -12,7 +12,8 @@
 </h:head>
 <h:body style="background-color: black;">
 	<h:form id="form">
-        <ui:include src="menu.xhtml" />
+	
+        <ui:include src="menu.xhtml" />	
 
         <p:panelGrid columns="2"  style=" margin-top: 40px;" >
         	
@@ -25,11 +26,11 @@
 			</p:autoComplete>
 			
         	<h:outputText value="Funcionário"/>
-        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.ordemServico.funcionario}" 
+        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.funcionarioId}" 
                                 completeMethod="#{ordemServicoControl.completeFuncionario}"
-                                var="func" itemLabel="#{func.nome}" itemValue="#{func}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" />
-						<f:converter converterId = "converter" />
+                                var="func" itemLabel="#{func.nome}" itemValue="#{func.id}" forceSelection="true" scrollHeight="250">
+						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarFuncionario}" />
+						
 			</p:autoComplete>
 
 			<h:outputText value="Placa"/>
@@ -39,49 +40,55 @@
 						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarVeiculo}" />
 						
 			</p:autoComplete>
+			
+
 
         </p:panelGrid>
-
-<!--		adicionar serviço e produto-->
+		 
         <p:panelGrid columns="2" style="margin-left: 420px; margin-top: -190px;" >
         	
         	<h:outputText value="Serviço"/>
         	<p:autoComplete id="servico" value="#{ordemServicoControl.servicoId}" style="width: 100%"
                                 completeMethod="#{ordemServicoControl.completeServico}"
                                 var="servico" itemLabel="#{servico}" itemValue="#{servico.id}" forceSelection="true" scrollHeight="250">
-                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarServico}" />
+                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarServico}" />  
 			</p:autoComplete>  
 
         	<h:outputText value="Quantidade"/>
         	<p:inputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
         
 		</p:panelGrid>
+
 		<p:commandButton title="adicionar serviço" icon="pi pi-plus-circle" action="#{ordemServicoControl.adicionarServicoLista}" style="background-color: green; margin-left: 732px; margin-top: 10px;" update="form"/>
+
+		
 
 		<p:panelGrid columns="2" style="margin-left: 800px; margin-top: -195px;" >
     
 			<h:outputText value="Produto"/>
         	<p:autoComplete id="produto" value="#{ordemServicoControl.produtoId}"
                                 completeMethod="#{ordemServicoControl.completeProduto}"
-                                var="produto" itemLabel="#{produto}" itemValue="#{produto.id}" forceSelection="true" scrollHeight="250">
-                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarProduto}" />
+                                var="produto" itemLabel="#{produto.nome}" itemValue="#{produto.id}" forceSelection="true" scrollHeight="250">
+                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarProduto}" />  
 			</p:autoComplete>  
 
         	<h:outputText value="Quantidade"/>
         	<p:inputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}"/>
 
 		</p:panelGrid>
+		
 		<p:commandButton title="adicionar produto" icon="pi pi-plus-circle" action="#{ordemServicoControl.adicionarProdutoLista}" style="background-color: green; margin-left: 1112px; margin-top: 10px;" update="form">
-
 		</p:commandButton>
 
 		<p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1300px; margin-top: -330px;"  />
 
 		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: -500px; top: -190px;" update="form"/>
 
-<!--		tabelas-->
+		
+        
         <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
-
+			
+		
 			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
 				<h:outputText value="#{ordemServicoControl.ordemServicoServico.servico.nome}" />
 			</p:column>
@@ -96,6 +103,8 @@
 			</p:column>     
         
         </p:dataTable>
+
+		
 
 		<p:dataTable id="listaproduto" value="#" var="produto" allowUnsorting="true" sortMode="single" style="margin-top: -220px; width: 25%; margin-left: 1120px;">
 			
@@ -131,7 +140,7 @@
 				
 	</p:dataTable>
 
-<!--	total-->
+	
 	<p:dataTable id="valortotal" value="#" var="valortotal" allowUnsorting="true" sortMode="single" style="margin-top: -110px; width: 9%; margin-left: 1650px;">
 			
 	<p:column headerText="Valor Total R$" footerText="#{ordemServicoControl.ordemServico.totalServicos}"  style=" background-color: black; color: white;"/>

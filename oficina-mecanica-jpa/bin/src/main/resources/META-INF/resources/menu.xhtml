@@ -1,0 +1,37 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    
+    <p:menubar  style="background-color: black;">
+			
+		
+		<p:menuitem  outcome="home" >
+		<p:graphicImage library="images" name="PROJECT (1).png" width="75"  />
+		</p:menuitem>
+
+		<p:submenu label="Cadastro" icon="pi pi-desktop" style="margin-left: 42px; width: 7,5%; color: white;  " >
+			<p:menuitem value="Pessoa" icon="pi pi-fw pi-users" outcome="pessoa" style="color: white; background-color: black;" />
+			<p:menuitem value="Veículo" icon="pi pi-fw pi-car" outcome="veiculo" style="color: white; background-color: black;"/>
+			<p:menuitem value="OS P" icon="pi pi-fw pi-users" outcome="ordem_servico" style="color: white; background-color: black;" />
+		</p:submenu>
+
+		<p:submenu label="Adicionar" icon="pi pi-fw pi-file">
+			<p:menuitem value="Serviço" icon="pi pi-briefcase" outcome="servico" style="color: white; background-color: black;"  />
+			<p:menuitem value="Produto" icon="pi pi-shopping-cart" outcome="produto" style="color: white; background-color: black;" />
+			<p:menuitem value="Modelo" icon="pi pi-car" outcome="modelo" style="color: white; background-color: black;"/>
+		</p:submenu>
+		
+		<!-- <p:submenu label="Busca" icon="pi pi-fw pi-search" style="color: white; background-color: black;">
+			<p:menuitem value="Veiculo" icon="pi pi-car" outcome="veiculo" style="color: white; background-color: black;" />
+			<p:menuitem value="Cliente" icon="pi pi-user" outcome="modelo" style="color: white; background-color: black;" />
+			<p:menuitem value="Ordem Serviço" icon="pi pi-file-o" outcome="ordem_servico" style="color: white; background-color: black;" />
+			<p:menuitem value="Produtos" icon="pi pi-shopping-cart" outcome="ordem_produto" style="color: white; background-color: black;" />
+		</p:submenu> -->
+
+	</p:menubar>
+    
+</ui:composition>
