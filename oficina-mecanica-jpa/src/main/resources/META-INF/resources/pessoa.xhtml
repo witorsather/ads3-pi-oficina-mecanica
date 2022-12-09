@@ -90,7 +90,7 @@
                              rendered="#{beanCPFCNPJ.CNPJ}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
                	</p:outputPanel>
 				
-				<h:outputText value="É funcionário?" />
+				<h:outputText value="Funcionário:" />
 				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" >
 					<p:ajax update="msg" listener="#{pessoaControl.addMessage}"/>
        			</p:selectBooleanCheckbox>
@@ -118,11 +118,10 @@
 				<h:outputText value="Telefone:" />
 				<p:inputText value="#{pessoaControl.pessoa.telefone}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
-				<h:outputText value="Qual tipo?" />
-				<p:selectOneRadio id="tipotelefone" value="#">
-					<f:selectItem itemLabel="Telefone Fixo" itemValue="Option3" />
-					<f:selectItem itemLabel="Celular" itemValue="Option4" />
-				</p:selectOneRadio>
+				<h:outputText value="WhatsApp:" />
+				<p:selectBooleanCheckbox value="#" >
+					<p:ajax update="msg" />
+       			</p:selectBooleanCheckbox>
 
 
 
