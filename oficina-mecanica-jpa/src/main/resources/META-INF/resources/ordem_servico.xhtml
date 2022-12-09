@@ -17,20 +17,20 @@
 
         <p:panelGrid columns="2"  style=" margin-top: 40px;" >
         	
-		
         	<h:outputText value="Cliente"/>
         	<p:autoComplete id="pessoa" value="#{ordemServicoControl.pessoaId}" 
                                 completeMethod="#{ordemServicoControl.completePessoa}"
-                                var="pessoa" itemLabel="#{pessoa}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250">		
-		    			<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarPessoa}" /> 
-			</p:autoComplete> 
+                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa.id}" forceSelection="true" scrollHeight="250">		
+		    			<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarPessoa}" />
+						<f:converter converterId = "converter"/>
+			</p:autoComplete>
 			
         	<h:outputText value="Funcionário"/>
         	<p:autoComplete id="funcionario" value="#{ordemServicoControl.funcionarioId}" 
                                 completeMethod="#{ordemServicoControl.completeFuncionario}"
                                 var="func" itemLabel="#{func}" itemValue="#{func.id}" forceSelection="true" scrollHeight="250">
 						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarFuncionario}" /> 
-			</p:autoComplete> 
+			</p:autoComplete>
 
 			<h:outputText value="Placa"/>
 			<p:autoComplete id="veiculo" value="#{ordemServicoControl.veiculoId}" 
