@@ -26,7 +26,7 @@ public class Veiculo {
 	
 	@Override
 	public String toString() {
-		return String.format("%s", placa);
+		return String.format("%s %d %d Km", modelo, ano, km);
 	}
 
 	public Integer getId() {
@@ -76,5 +76,7 @@ public class Veiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+	
+	
 	
 }
