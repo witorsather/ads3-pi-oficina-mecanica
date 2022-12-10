@@ -156,9 +156,11 @@ body .ui-button:hover:after{
 		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: -500px; top: -190px;" update="form"/>
 >>>>>>> parent of 5f9b1ea (teste)
 
-<!--		tabelas-->
+		
+        
         <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
-
+			
+		
 			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
 				<h:outputText value="#{ordemServicoControl.ordemServicoServico.servico.nome}" />
 			</p:column>
