@@ -59,23 +59,6 @@ public class OrdemServico {
 	private Date dataEntrega;
 	
 	private BigDecimal desconto;
-
-	public BigDecimal getTotalServicos() {
-		BigDecimal vlServico = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlServico = vlServico.add(oss.getTotal());
-		}
-
-		BigDecimal vlProduto = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlProduto = vlProduto.add(oss.getTotal());
-		}
-
-		BigDecimal vlFinal = BigDecimal.ZERO;
-		vlFinal.add(vlServico);
-		vlFinal.add(vlProduto);
-		return vlFinal;
-	}
 	
 	public Integer getId() {
 		return id;
@@ -173,5 +156,21 @@ public class OrdemServico {
 		return produtos;
 	}
 
+	public BigDecimal getTotalServicos() {
+		BigDecimal vlServico = BigDecimal.ZERO;
+		for(OrdemServicoServico oss : servicos) {
+			vlServico = vlServico.add(oss.getTotal());
+		}
+
+		BigDecimal vlProduto = BigDecimal.ZERO;
+		for(OrdemServicoServico oss : servicos) {
+			vlProduto = vlProduto.add(oss.getTotal());
+		}
+
+		BigDecimal vlFinal = BigDecimal.ZERO;
+		vlFinal.add(vlServico);
+		vlFinal.add(vlProduto);
+		return vlFinal;
+	}
 	
 }
