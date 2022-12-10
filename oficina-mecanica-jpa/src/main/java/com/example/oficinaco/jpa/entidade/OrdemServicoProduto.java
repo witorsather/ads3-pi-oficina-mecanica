@@ -53,9 +53,6 @@ public class OrdemServicoProduto {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-
-	public BigDecimal getTotal() {
-		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
-	}
+	
 	
 }

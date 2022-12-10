@@ -60,20 +60,11 @@ public class OrdemServico {
 	private BigDecimal desconto;
 
 	public BigDecimal getTotalServicos() {
-		BigDecimal vlServico = BigDecimal.ZERO;
+		BigDecimal vlr = BigDecimal.ZERO;
 		for(OrdemServicoServico oss : servicos) {
-			vlServico = vlServico.add(oss.getTotal());
+			vlr = vlr.add(oss.getTotal());
 		}
-
-		BigDecimal vlProduto = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlProduto = vlProduto.add(oss.getTotal());
-		}
-
-		BigDecimal vlFinal = BigDecimal.ZERO;
-		vlFinal.add(vlServico);
-		vlFinal.add(vlProduto);
-		return vlFinal;
+		return vlr;
 	}
 	
 	public Integer getId() {

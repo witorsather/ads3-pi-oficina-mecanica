@@ -41,9 +41,7 @@ public class Produto {
 	public void setPrecoVenda(BigDecimal precoVenda) {
 		this.precoVenda = precoVenda;
 	}
-
-	@Override
-	public String toString() {
-		return String.format("%s - %s", nome, precoVenda);
-	}
+	
+	
+	
 }
