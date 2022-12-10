@@ -37,7 +37,7 @@ public class OrdemServico {
 	public List<OrdemServicoServico> servicos = new ArrayList<>();
 
 	@OneToMany(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="ordem_produto_id")
+	@JoinColumn(name="ordem_servico_id")
 	public List<OrdemServicoProduto> produtos = new ArrayList<>();
 	
 	@Temporal(TemporalType.TIMESTAMP)

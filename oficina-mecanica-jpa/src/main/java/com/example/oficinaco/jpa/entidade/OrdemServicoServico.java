@@ -57,6 +57,5 @@ public class OrdemServicoServico {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	
-	
+		
 }
