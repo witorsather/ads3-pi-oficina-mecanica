@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Oficinaço - Marca</title>
+</h:head>
+<h:body style="background-color: black;">
+	<h:form id="form">
+	
+        <ui:include src="menu.xhtml" />	
+        
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formulario').show()" style="top: 11px; background-color: green; color: white;"/>
+
+		<p:dataTable id="lista" var="marca" value="#{marcaControl.marcas}" allowUnsorting="true" sortMode="single">
+
+			<p:column sortBy="#{marca.id}" headerText="Id " style="background-color: black; color: white;">
+				<h:outputText value="#{marca.id}"/>
+			</p:column>
+
+			<p:column sortBy="#{marca.nome}" headerText="Nome" style="background-color: black; color: white;">
+				<h:outputText value="#{marca.nome}"/>
+			</p:column>
+
+			<p:column headerText="" style="background-color: black; color: white;">
+				
+				<p:commandButton icon="pi pi-pencil" update="form:marcaDiag" action="#{marcaControl.setMarca(marca)}" onclick="PF('formulario').show()" styleClass="ui-button-help mr-2" title="editar"/>
+				
+				<p:commandButton icon="pi pi-trash" update="form:lista" action="#{marcaControl.excluir(marca.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;"/>
+			</p:column>
+		</p:dataTable>	    
+		
+		
+        
+		<p:dialog header="Marca" widgetVar="formulario" minHeight="40" showEffect="fade" closeOnEscape="true">
+			<p:panelGrid id="marcaDiag" columns="2">
+
+				<h:outputText value="Marca:"/>
+				<p:inputText value="#{marcaControl.marca.nome}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{marcaControl.salvar}" onclick="PF('formulario').close()" style="border-radius: 20px; top: 14px; margin-left: 22%; width: 60%; background-color:green; color: white; "/>
+			
+		</p:dialog> 
+		
+		     
+
+	</h:form>
+</h:body>
+</html>
