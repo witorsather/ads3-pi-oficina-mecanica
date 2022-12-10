@@ -48,6 +48,7 @@ public class OrdemServicoControl {
 	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
 	
 
+
 	//Classes dao para fazer o crud e instanciar os metodos complete
 	@Autowired
 	private PessoaDaoImpl pessoaDaoImpl;
@@ -75,6 +76,7 @@ public class OrdemServicoControl {
 		Servico servico = servicoDao.findById(servicoId).get();
 		ordemServicoServico.setServico(servico);
 		ordemServicoServico.setPreco(servico.getPreco());
+		
 	}
 
 	public void selecionarProduto(){
@@ -102,6 +104,7 @@ public class OrdemServicoControl {
 		servicoId = null;
 		ordemServicoServico = new OrdemServicoServico();
 		listarServicos();
+
 	}
 
 	public void adicionarProdutoLista() {

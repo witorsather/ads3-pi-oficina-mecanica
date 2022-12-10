@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,13 +32,13 @@ public class OrdemServico {
 	@ManyToOne(optional = false)
 	private Veiculo veiculo;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="ordem_servico_id")
-	private List<OrdemServicoServico> servicos = new ArrayList<>();
+	public List<OrdemServicoServico> servicos = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name="ordem_servico_id")
-	private List<OrdemServicoProduto> produtos = new ArrayList<>();
+	@OneToMany(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="ordem_produto_id")
+	public List<OrdemServicoProduto> produtos = new ArrayList<>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
