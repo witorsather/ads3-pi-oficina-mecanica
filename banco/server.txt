@@ -1,3 +1,5 @@
 140.82.27.182
 root
 7r{KZfecDc4fvEW{
+oficina_mecanica
+postgres
