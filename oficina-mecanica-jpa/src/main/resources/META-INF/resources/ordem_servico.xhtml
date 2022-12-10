@@ -11,6 +11,7 @@
     <title>Ordem de Serviço</title>
 </h:head>
 <h:body style="background-color: black;">
+<<<<<<< HEAD
 	<style>
 body .ui-inputfield {
     color: #495057;
@@ -76,6 +77,8 @@ body .ui-button:hover:after{
     </style>
 
 	
+=======
+>>>>>>> parent of 5f9b1ea (teste)
 	<h:form id="form">
 	
         <ui:include src="menu.xhtml" />	
@@ -147,7 +150,11 @@ body .ui-button:hover:after{
 
 		<p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1300px; margin-top: -330px;"  />
 
+<<<<<<< HEAD
 		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: 1200px; top: -260px;" update="form"/>
+=======
+		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: -500px; top: -190px;" update="form"/>
+>>>>>>> parent of 5f9b1ea (teste)
 
 <!--		tabelas-->
         <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
