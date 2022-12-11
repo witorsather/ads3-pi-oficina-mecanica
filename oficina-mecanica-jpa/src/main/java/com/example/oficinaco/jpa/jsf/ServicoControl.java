@@ -3,6 +3,7 @@ package com.example.oficinaco.jpa.jsf;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.util.LangUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +13,11 @@ import com.example.oficinaco.jpa.entidade.Servico;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Locale;
 
 @Component
 @SessionScoped
 public class ServicoControl {
-
 
 @Autowired
 private ServicoDao servicoDao;
@@ -26,6 +26,26 @@ private Servico servico = new Servico();
 	
 private List<Servico> servicos = new ArrayList<>();
 
+private int getInteger(String string) {
+    try {
+        return Integer.parseInt(string);
+    }
+    catch (NumberFormatException ex) {
+        return 0;
+    }
+}
+
+	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+	    String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+	    if (LangUtils.isBlank(filterText)) {
+	        return true;
+	    }
+	    int filterInt = getInteger(filterText);
+	
+	    Servico servico = (Servico) value;
+	    
+	    return servico.getNome().toLowerCase().contains(filterText);
+	}
 
 	@PostConstruct
 	public void init() {
@@ -62,5 +82,7 @@ private List<Servico> servicos = new ArrayList<>();
     public void setServicos(List<Servico> servicos) {
         this.servicos = servicos;
     }
+    
+    
     
 }
