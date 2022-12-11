@@ -26,6 +26,8 @@ private Servico servico = new Servico();
 	
 private List<Servico> servicos = new ArrayList<>();
 
+private List<Servico> servicosFiltro = new ArrayList<>();
+
 private int getInteger(String string) {
     try {
         return Integer.parseInt(string);
@@ -82,6 +84,14 @@ private int getInteger(String string) {
     public void setServicos(List<Servico> servicos) {
         this.servicos = servicos;
     }
+
+	public List<Servico> getServicosFiltro() {
+		return servicosFiltro;
+	}
+
+	public void setServicosFiltro(List<Servico> servicosFiltro) {
+		this.servicosFiltro = servicosFiltro;
+	}
     
     
     

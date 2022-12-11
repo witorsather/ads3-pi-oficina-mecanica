@@ -33,11 +33,10 @@
 	
 			<p:dataTable id="listaservico" var="servico" value="#{servicoControl.servicos}" allowUnsorting="true" sortMode="single" widgetVar="tableservico"
 				emptyMessage="Nenhum dado encontrado"
-				filteredValue="#{servicoControl.servicos}"
-				globalFilterFunction="#{servicoControl.globalFilterFunction}" >
+				filteredValue="#{servicoControl.servicosFiltro}">
 		
 				<f:facet name="header">
-                <span>List of Customers</span>
+             
             	</f:facet>
 					
 				<p:column sortBy="#{servico.id}" headerText="Id" style="background-color: black; color: white;">
