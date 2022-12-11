@@ -41,10 +41,10 @@ public class OrdemServico {
 	public List<OrdemServicoProduto> produtos = new ArrayList<>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data;
+	private Date data = new Date();
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataEntrada;
+	private Date dataEntrada = new Date();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOs;
@@ -76,7 +76,11 @@ public class OrdemServico {
 		vlFinal.add(vlProduto);
 		return vlFinal;
 	}
-	
+
+	@Override
+	public String toString() {
+		return String.format("%s %s %s", cliente, funcionario, veiculo);
+	}
 	public Integer getId() {
 		return id;
 	}

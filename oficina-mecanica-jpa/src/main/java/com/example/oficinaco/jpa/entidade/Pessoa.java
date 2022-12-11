@@ -32,6 +32,12 @@ public class Pessoa {
 	@ManyToOne
 	private Municipio municipio;
 
+	
+	@Override
+	public String toString() {
+		return String.format("%s", nome);
+	}
+
 	public Integer getId() {
 		return id;
 	}

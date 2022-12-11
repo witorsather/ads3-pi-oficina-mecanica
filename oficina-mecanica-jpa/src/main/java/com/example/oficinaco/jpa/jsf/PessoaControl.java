@@ -30,6 +30,8 @@ public class PessoaControl {
 	
 	private Boolean funcionario;
 
+	private Boolean whatsApp;
+
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
@@ -39,7 +41,7 @@ public class PessoaControl {
 		listar();
 	}
   
-	public void addMessage() {
+	public void addMessageFuncionario() {
 		
         String summary = funcionario ? "Checked" : "Unchecked";
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
@@ -54,6 +56,21 @@ public class PessoaControl {
    
 		   }
     }
+	public void addMessageWhatsApp() {
+		
+        String summary2 = whatsApp ? "Checked" : "Unchecked";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary2));
+
+		if(summary2.equals("Checked")){
+
+			pessoa.setWhatsapp(true);
+   
+		   }else if(summary2.equals("Unchecked")){
+   
+			pessoa.setWhatsapp(false);
+   
+		   }
+    	}
 
 	public List<Municipio> completeMunicipio(String query){
 		return municipioDao.listarPorNome("%" + query + "%");
@@ -127,6 +144,14 @@ public class PessoaControl {
 
 	public void setPessoaDao(PessoaDao pessoaDao) {
 		this.pessoaDao = pessoaDao;
+	}
+
+	public Boolean getWhatsApp() {
+		return whatsApp;
+	}
+
+	public void setWhatsApp(Boolean whatsApp) {
+		this.whatsApp = whatsApp;
 	}
 
 

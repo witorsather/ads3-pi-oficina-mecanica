@@ -99,11 +99,11 @@ body .ui-button:hover:after{
 			</p:autoComplete>
 
 			<h:outputText value="Placa"/>
-			<p:autoComplete id="veiculo" value="#{ordemServicoControl.veiculoId}" 
+			<p:autoComplete id="veiculo" value="#{ordemServicoControl.ordemServico.veiculo}" 
                                 completeMethod="#{ordemServicoControl.completeVeiculo}"
-                                var="veiculo" itemLabel="#{veiculo}" itemValue="#{veiculo.id}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarVeiculo}" />
-						
+                                var="veiculo" itemLabel="#{veiculo.placa}" itemValue="#{veiculo}" forceSelection="true" scrollHeight="250">
+						<p:ajax event="itemSelect" />
+						<f:converter converterId = "converter" />	
 			</p:autoComplete>
 
         </p:panelGrid>
@@ -149,17 +149,17 @@ body .ui-button:hover:after{
 <!--		tabelas-->
         <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
 
-			<p:column sortBy="#{ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoServico.servico.nome}" />
+			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
+				<h:outputText value="#{ordemServicoControl.ordemServicoServico.servico.nome}" />
 			</p:column>
 
-			<p:column sortBy="#{ordemServicoServico.servico.preco}" headerText="Preço" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoServico.servico.preco}"/>
+			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.preco}" headerText="Preço" style=" background-color: black; color: white;" >
+				<h:outputText value="#{ordemServicoControl.ordemServicoServico.preco}"/>
 			</p:column>     
 			
 
-			<p:column sortBy="#{ordemServicoServico.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoServico.quantidade}"/>
+			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
+				<h:outputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
 			</p:column>     
         
         </p:dataTable>

@@ -30,6 +30,7 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
+		
 		servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
 		servletContext.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", "true");
 

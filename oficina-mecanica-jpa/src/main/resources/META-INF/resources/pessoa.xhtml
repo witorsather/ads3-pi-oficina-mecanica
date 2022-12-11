@@ -117,7 +117,7 @@
 				
 				<h:outputText value="Funcionário:" />
 				<p:selectBooleanCheckbox value="#{pessoaControl.funcionario}" >
-					<p:ajax update="msg" listener="#{pessoaControl.addMessage}"/>
+					<p:ajax update="msg" listener="#{pessoaControl.addMessageFuncionario}"/>
        			</p:selectBooleanCheckbox>
             		
         		
@@ -144,8 +144,8 @@
 				<p:inputText value="#{pessoaControl.pessoa.telefone}" style="width: 280px; height: 40px ; border-radius: 20px; " />
 				
 				<h:outputText value="WhatsApp:" />
-				<p:selectBooleanCheckbox value="#" >
-					<p:ajax update="msg" />
+				<p:selectBooleanCheckbox value="#{pessoaControl.whatsApp}" >
+					<p:ajax update="msg" listener="#{pessoaControl.addMessageWhatsApp}"/>
        			</p:selectBooleanCheckbox>
 
 
