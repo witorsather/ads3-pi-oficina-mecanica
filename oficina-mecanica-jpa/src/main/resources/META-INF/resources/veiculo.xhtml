@@ -10,13 +10,37 @@
     <title>Veiculo</title>
 </h:head>
 <h:body style="background-color: black;">
+	<style>
+		body .ui-datatable .ui-datatable-header {
+    background: black;
+    border: 1px solid black;
+    border-width: 1px 0 1px 0;
+    color: #495057;
+    padding: 1rem 1rem;
+    font-weight: 600;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	margin-left: 1450px;
+}
+	</style>
 	<h:form id="form">
 	
         <ui:include src="menu.xhtml" />	
         
-        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formveiculo').show()" style="top: 11px; background-color: green; color: white;"/>
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formveiculo').show()" style="top: 43px; background-color: green; color: white;"/>
 
-		<p:dataTable id="listaveiculo" var="veiculo" value="#{veiculoControl.veiculos}" allowUnsorting="true" sortMode="single">
+		<p:dataTable id="listaveiculo" var="veiculo" value="#{veiculoControl.veiculos}" allowUnsorting="true" sortMode="single"  widgetVar="tablemodelo"
+			
+		emptyMessage="Nenhum dado encontrado"
+		filteredValue=""
+		globalFilterFunction="#" >
+
+		<f:facet name="header">
+			<div class="flex justify-content-end" >
+				<p:inputText id="globalFilter" onkeyup="PF('tablemodelo').filter()" style="width:300px"
+							 placeholder="Digite no campo para buscar" />
+			</div>
+		</f:facet>
 			
 			<p:column sortBy="#{veiculo.id}" headerText="Id" style="background-color: black; color: white;">
 				<h:outputText value="#{veiculo.id}"  />

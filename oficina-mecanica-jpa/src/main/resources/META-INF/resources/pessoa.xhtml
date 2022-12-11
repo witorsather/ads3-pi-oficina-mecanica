@@ -12,14 +12,39 @@
 	
 </h:head>
 <h:body style="background-color: black;">
-	<h:form id="form" >
+	<style>
+		body .ui-datatable .ui-datatable-header {
+    background: black;
+    border: 1px solid black;
+    border-width: 1px 0 1px 0;
+    color: #495057;
+    padding: 1rem 1rem;
+    font-weight: 600;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	margin-left: 1450px;
+}
+	</style>
+<h:form id="form" >
 		<p:growl id="msg"/>
 		<ui:include src="menu.xhtml" />
-
-		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 10px; margin-left: 5px; background-color: green; color: white; "
+		
+		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 43px; margin-left: 5px; background-color: green; color: white; "
 			onclick="PF('pessoaformulario').show()" />
 
-		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; ">
+		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; " widgetVar="tablepessoa"
+			
+			emptyMessage="Nenhum dado encontrado"
+			filteredValue=""
+			globalFilterFunction="#" >
+			
+			<f:facet name="header">
+                <div class="flex justify-content-end" >
+                    <p:inputText id="globalFilter" onkeyup="PF('tablepessoa').filter()" style="width:300px"
+                                 placeholder="Digite no campo para buscar" />
+                </div>
+            </f:facet>
+		
 
 			<p:column sortBy="#{pessoa.id}" headerText="Id" style="background-color: black; color: white;">
 				<h:outputText value="#{pessoa.id}" />
