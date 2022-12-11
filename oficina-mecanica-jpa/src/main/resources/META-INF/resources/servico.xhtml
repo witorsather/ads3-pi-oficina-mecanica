@@ -37,17 +37,14 @@
 				globalFilterFunction="#{servicoControl.globalFilterFunction}" >
 		
 				<f:facet name="header">
-					<div class="flex justify-content-end" >
-						<p:inputText id="globalFilter" onkeyup="PF('tableservico').filter()" style="width:300px"
-									 placeholder="Digite no campo para buscar" />
-					</div>
-				</f:facet>
+                <span>List of Customers</span>
+            	</f:facet>
 					
 				<p:column sortBy="#{servico.id}" headerText="Id" style="background-color: black; color: white;">
 					<h:outputText value="#{servico.id}"  />
 				</p:column>
 				
-				<p:column sortBy="#{servico.nome}" headerText="Nome" style="background-color: black; color: white;" >
+				<p:column sortBy="#{servico.nome}" headerText="Nome" filterBy="#{servico.nome}" style="background-color: black; color: white;" >
 					<h:outputText value="#{servico.nome}" />
 				</p:column>
 				
