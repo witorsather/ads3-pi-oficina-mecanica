@@ -17,12 +17,11 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.jsf.el.SpringBeanFacesELResolver;
 
-
 import com.sun.faces.config.ConfigureListener;
 import com.sun.faces.config.FacesInitializer;
 
 @SpringBootApplication
-public class OficinacoJpaApplication implements ServletContextInitializer{
+public class OficinacoJpaApplication implements ServletContextInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OficinacoJpaApplication.class, args);
@@ -30,7 +29,7 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		
+
 		servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
 		servletContext.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", "true");
 
@@ -38,10 +37,9 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 		servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
 		servletContext.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
 
-		
 		Set<Class<?>> clazz = new HashSet<Class<?>>();
 
-		clazz.add(OficinacoJpaApplication.class); 
+		clazz.add(OficinacoJpaApplication.class);
 
 		FacesInitializer facesInitializer = new FacesInitializer();
 		facesInitializer.onStartup(clazz, servletContext);
@@ -53,19 +51,19 @@ public class OficinacoJpaApplication implements ServletContextInitializer{
 				new JsfApplicationObjectConfigureListener());
 	}
 
-
 	static class JsfApplicationObjectConfigureListener extends ConfigureListener {
 
 		@Override
 		public void contextInitialized(ServletContextEvent sce) {
 			super.contextInitialized(sce);
 
-			ApplicationFactory factory = (ApplicationFactory) FactoryFinder.getFactory(FactoryFinder.APPLICATION_FACTORY);
+			ApplicationFactory factory = (ApplicationFactory) FactoryFinder
+					.getFactory(FactoryFinder.APPLICATION_FACTORY);
 			Application app = factory.getApplication();
 
 			app.addELResolver(new SpringBeanFacesELResolver());
 			app.addConverter("converter", "com.example.oficinaco.jpa.jsf.GenericConverter");
 		}
-	}	
+	}
 
 }

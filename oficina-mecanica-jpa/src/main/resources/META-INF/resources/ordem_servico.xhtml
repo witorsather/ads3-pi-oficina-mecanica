@@ -149,34 +149,33 @@ body .ui-button:hover:after{
 <!--		tabelas-->
         <p:dataTable id="listaservico" value="#{ordemServicoControl.ordemServico.servicos}" var="servico" allowUnsorting="true" sortMode="single" style="margin-top: 20px; width: 25%; margin-left: 570px;">
 
-			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoControl.ordemServicoServico.servico.nome}" />
+			<p:column sortBy="#{servico.servico.nome}" headerText="Serviço" style=" background-color: black; color: white;" >
+				<h:outputText value="#{servico.servico.nome}" />
 			</p:column>
 
-			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.preco}" headerText="Preço" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoControl.ordemServicoServico.preco}"/>
+			<p:column sortBy="#{servico.preco}" headerText="Preço" style=" background-color: black; color: white;" >
+				<h:outputText value="#{servico.preco}"/>
 			</p:column>     
 			
-
-			<p:column sortBy="#{ordemServicoControl.ordemServicoServico.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
+			<p:column sortBy="#{servico.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
+				<h:outputText value="#{servico.quantidade}"/>
 			</p:column>     
         
         </p:dataTable>
 
 		<p:dataTable id="listaproduto" value="#{ordemServicoControl.ordemServico.produtos}" var="produto" allowUnsorting="true" sortMode="single" style="margin-top: -220px; width: 25%; margin-left: 1120px;">
 			
-			<p:column sortBy="#{ordemServicoProduto.produto.nome}" headerText="Produto"  style=" background-color: black; color: white;">
-				<h:outputText value="#{ordemServicoProduto.produto.nome}" />
+			<p:column sortBy="#{produto.produto.nome}" headerText="Produto"  style=" background-color: black; color: white;">
+				<h:outputText value="#{produto.produto.nome}" />
 			</p:column>
 
-			<p:column sortBy="#{ordemServicoProduto.produto.preco}" headerText="Preço" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoProduto.produto.preco}"/>
+			<p:column sortBy="#{produto.preco}" headerText="Preço" style=" background-color: black; color: white;" >
+				<h:outputText value="#{produto.preco}"/>
 			</p:column>     
 			
 
-			<p:column sortBy="#{ordemServicoProduto.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
-				<h:outputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}"/>
+			<p:column sortBy="#{produto.quantidade}" headerText="Quantidade" style=" background-color: black; color: white;" >
+				<h:outputText value="#{produto.quantidade}"/>
 			</p:column>    
 			        
         </p:dataTable>
@@ -199,12 +198,13 @@ body .ui-button:hover:after{
 	</p:dataTable>
 
 <!--	total-->
-	<p:dataTable id="valortotal" value="#" var="valortotal" allowUnsorting="true" sortMode="single" style="margin-top: -110px; width: 9%; margin-left: 1650px;">
+	<p:dataTable id="valortotal" value="#{ordemServico.getTotalServicos}" var="valortotal" allowUnsorting="true" sortMode="single" style="margin-top: -110px; width: 9%; margin-left: 1650px;">
 			
-	<p:column headerText="Valor Total R$" footerText="#{ordemServicoControl.ordemServico.totalServicos}"  style=" background-color: black; color: white;"/>
-    <h:outputText value="#{servico.total}"/>[
+	<p:column headerText="Valor Total R$" style=" background-color: black; color: white;">
+   		 <h:outputText value="#{ordemServico.getTotalServicos}"/>
+	</p:column> 
 			
-</p:dataTable>
+	</p:dataTable>
         
     </h:form>
 </h:body>

@@ -14,13 +14,17 @@ public class OrdemServicoProduto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne(optional = false)
 	private Produto produto;
-	
+
 	private Integer quantidade;
-	
+
 	private BigDecimal preco;
+
+	public BigDecimal getTotalProdutos() {
+		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
+	}
 
 	public Integer getId() {
 		return id;
@@ -57,5 +61,5 @@ public class OrdemServicoProduto {
 	public BigDecimal getTotal() {
 		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
 	}
-	
+
 }

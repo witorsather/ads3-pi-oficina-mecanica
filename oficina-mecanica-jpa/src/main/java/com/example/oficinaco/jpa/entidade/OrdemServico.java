@@ -22,58 +22,59 @@ public class OrdemServico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne(optional = false)
 	private Pessoa cliente;
-	
+
 	@ManyToOne(optional = false)
 	private Pessoa funcionario;
-	
+
 	@ManyToOne(optional = false)
 	private Veiculo veiculo;
-	
-	@OneToMany(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="ordem_servico_id")
+
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "ordem_servico_id")
 	public List<OrdemServicoServico> servicos = new ArrayList<>();
 
-	@OneToMany(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="ordem_servico_id")
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "ordem_servico_id")
 	public List<OrdemServicoProduto> produtos = new ArrayList<>();
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new Date();
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrada = new Date();
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOs;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicioServico;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFimServico;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrega;
-	
+
 	private BigDecimal desconto;
 
 	public BigDecimal getTotalServicos() {
 		BigDecimal vlServico = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlServico = vlServico.add(oss.getTotal());
+		for (OrdemServicoServico oss : servicos) {
+			vlServico = vlServico.add(oss.getTotalServicos());
 		}
 
 		BigDecimal vlProduto = BigDecimal.ZERO;
-		for(OrdemServicoServico oss : servicos) {
-			vlProduto = vlProduto.add(oss.getTotal());
+		for (OrdemServicoProduto osp : produtos) {
+			vlProduto = vlProduto.add(osp.getTotalProdutos());
 		}
 
 		BigDecimal vlFinal = BigDecimal.ZERO;
 		vlFinal.add(vlServico);
 		vlFinal.add(vlProduto);
+
 		return vlFinal;
 	}
 
@@ -81,6 +82,7 @@ public class OrdemServico {
 	public String toString() {
 		return String.format("%s %s %s", cliente, funcionario, veiculo);
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -177,5 +179,4 @@ public class OrdemServico {
 		return produtos;
 	}
 
-	
 }

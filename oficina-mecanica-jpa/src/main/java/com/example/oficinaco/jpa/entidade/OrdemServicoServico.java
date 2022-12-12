@@ -14,18 +14,18 @@ public class OrdemServicoServico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne(optional = false)
 	private Servico servico;
-	
+
 	private Integer quantidade;
-	
+
 	private BigDecimal preco;
 
-	public BigDecimal getTotal() {
+	public BigDecimal getTotalServicos() {
 		return BigDecimal.valueOf(preco.doubleValue() * quantidade);
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -57,5 +57,5 @@ public class OrdemServicoServico {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-		
+
 }

@@ -24,9 +24,8 @@ import com.example.oficinaco.jpa.entidade.Veiculo;
 @Component
 @SessionScoped
 public class OrdemServicoControl {
-	
 
-	//atributos para compor a OS
+	// atributos para compor a OS
 	private Integer pessoaId;
 
 	private Integer servicoId;
@@ -38,72 +37,65 @@ public class OrdemServicoControl {
 	private Integer veiculoId;
 
 	private String placa;
-	
-
 
 	private OrdemServico ordemServico = new OrdemServico();
-   
+
 	private OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
-	
+
 	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
-	
 
-
-	//Classes dao para fazer o crud e instanciar os metodos complete
+	// Classes dao para fazer o crud e instanciar os metodos complete
 	@Autowired
 	private PessoaDaoImpl pessoaDaoImpl;
-	
+
 	@Autowired
 	private ServicoDao servicoDao;
 
 	@Autowired
 	private PessoaDao pessoaDao;
-	
+
 	@Autowired
 	private VeiculoDao veiculoDao;
-	
+
 	@Autowired
 	private ProdutoDao produtoDao;
 
 	@Autowired
 	private OrdemServicoDao ordemServicoDao;
 
-	
-	
-
-	//metodos para selecionar os valores vindo da tela e passar para os atributos da OS
+	// metodos para selecionar os valores vindo da tela e passar para os atributos
+	// da OS
 	public void selecionarServico() {
 		Servico servico = servicoDao.findById(servicoId).get();
 		ordemServicoServico.setServico(servico);
 		ordemServicoServico.setPreco(servico.getPreco());
-		
+
 	}
 
-	public void selecionarProduto(){
-		Produto  produto = produtoDao.findById(produtoId).get();
+	public void selecionarProduto() {
+		Produto produto = produtoDao.findById(produtoId).get();
 		ordemServicoProduto.setProduto(produto);
 		ordemServicoProduto.setPreco(produto.getPrecoVenda());
 	}
 
-	public void selecionarFuncionario (){
+	public void selecionarFuncionario() {
 		Pessoa funcionario = pessoaDao.findById(funcionarioId).get();
 		ordemServico.setFuncionario(funcionario);
 	}
-
 
 	public void selecionarVeiculo() {
 		Veiculo veiculo = veiculoDao.findById(veiculoId).get();
 		ordemServico.setVeiculo(veiculo);
 
-		}
+	}
 
-
-	//metodo para adicionar ordem servico
+	// metodo para adicionar ordem servico
 	public void adicionarServicoLista() {
 		ordemServico.getServicos().add(ordemServicoServico);
 		servicoId = null;
 		ordemServicoServico = new OrdemServicoServico();
 		listarServicos();
+		ordemServico.getTotalServicos();
 
 	}
 
@@ -112,8 +104,8 @@ public class OrdemServicoControl {
 		produtoId = null;
 		ordemServicoProduto = new OrdemServicoProduto();
 		listarProdutos();
+		ordemServico.getTotalServicos();
 	}
-
 
 	// metodo para salvar a OS
 	public void salvar() {
@@ -121,7 +113,7 @@ public class OrdemServicoControl {
 		ordemServico = new OrdemServico();
 	}
 
-	//metodos para retornar lista de produtos e servicos adicionados a OS
+	// metodos para retornar lista de produtos e servicos adicionados a OS
 	public void listarProdutos() {
 		ordemServico.getProdutos();
 	}
@@ -130,29 +122,26 @@ public class OrdemServicoControl {
 		ordemServico.getServicos();
 	}
 
-
-	//metodos para fazer os completes para a tela 
-    public List<Pessoa> completePessoa(String query) {
-    	return pessoaDaoImpl.listarPorNome("%" + query + "%", null);
-    }	
-
-    public List<Servico> completeServico(String query) {
-    	return servicoDao.listarPorNome("%" + query + "%");
-    }	
-
-	public List<Produto> completeProduto(String query){
-		return produtoDao.listarPorNome("%"+ query +"%");
+	// metodos para fazer os completes para a tela
+	public List<Pessoa> completePessoa(String query) {
+		return pessoaDaoImpl.listarPorNome("%" + query + "%", null);
 	}
-    
-    public List<Pessoa> completeFuncionario(String query) {
-    	return pessoaDaoImpl.listarPorNome("%" + query + "%", true);
-    }	
 
-	public List<Veiculo> completeVeiculo(String query){
+	public List<Servico> completeServico(String query) {
+		return servicoDao.listarPorNome("%" + query + "%");
+	}
+
+	public List<Produto> completeProduto(String query) {
+		return produtoDao.listarPorNome("%" + query + "%");
+	}
+
+	public List<Pessoa> completeFuncionario(String query) {
+		return pessoaDaoImpl.listarPorNome("%" + query + "%", true);
+	}
+
+	public List<Veiculo> completeVeiculo(String query) {
 		return veiculoDao.consultarPorPlaca("%" + query + "%");
-     }
-
-
+	}
 
 	// getters and setters dos atributos da OS
 	public Integer getPessoaId() {
@@ -195,7 +184,6 @@ public class OrdemServicoControl {
 		this.ordemServico = ordemServico;
 	}
 
-	
 	public OrdemServicoProduto getOrdemServicoProduto() {
 		return ordemServicoProduto;
 	}
@@ -211,6 +199,7 @@ public class OrdemServicoControl {
 	public void setServicoId(Integer servicoId) {
 		this.servicoId = servicoId;
 	}
+
 	public Integer getProdutoId() {
 		return produtoId;
 	}
@@ -227,5 +216,4 @@ public class OrdemServicoControl {
 		this.ordemServicoServico = ordemServicoServico;
 	}
 
-	
 }
