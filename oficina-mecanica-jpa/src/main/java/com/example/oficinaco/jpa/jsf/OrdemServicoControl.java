@@ -95,8 +95,6 @@ public class OrdemServicoControl {
 		servicoId = null;
 		ordemServicoServico = new OrdemServicoServico();
 		listarServicos();
-		ordemServico.getTotalServicos();
-
 	}
 
 	public void adicionarProdutoLista() {
@@ -104,7 +102,6 @@ public class OrdemServicoControl {
 		produtoId = null;
 		ordemServicoProduto = new OrdemServicoProduto();
 		listarProdutos();
-		ordemServico.getTotalServicos();
 	}
 
 	// metodo para salvar a OS

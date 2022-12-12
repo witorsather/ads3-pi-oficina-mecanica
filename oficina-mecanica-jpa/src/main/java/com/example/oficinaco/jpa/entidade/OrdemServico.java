@@ -61,21 +61,23 @@ public class OrdemServico {
 	private BigDecimal desconto;
 
 	public BigDecimal getTotalServicos() {
-		BigDecimal vlServico = BigDecimal.ZERO;
+		BigDecimal vlr = BigDecimal.ZERO;
 		for (OrdemServicoServico oss : servicos) {
-			vlServico = vlServico.add(oss.getTotalServicos());
+			vlr = vlr.add(oss.getTotalServicos());
 		}
+		return vlr;
+	}
 
-		BigDecimal vlProduto = BigDecimal.ZERO;
+	public BigDecimal getTotalProdutos() {
+		BigDecimal vlr = BigDecimal.ZERO;
 		for (OrdemServicoProduto osp : produtos) {
-			vlProduto = vlProduto.add(osp.getTotalProdutos());
+			vlr = vlr.add(osp.getTotalProdutos());
 		}
+		return vlr;
+	}
 
-		BigDecimal vlFinal = BigDecimal.ZERO;
-		vlFinal.add(vlServico);
-		vlFinal.add(vlProduto);
-
-		return vlFinal;
+	public BigDecimal getTotal() {
+		return (getTotalProdutos().add(getTotalServicos()));
 	}
 
 	@Override

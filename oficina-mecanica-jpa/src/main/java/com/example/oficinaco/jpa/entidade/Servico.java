@@ -9,13 +9,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Servico {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nome;
-	
+
 	private BigDecimal preco;
 
 	public Integer getId() {
@@ -41,7 +41,7 @@ public class Servico {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s - %s", nome, preco);
