@@ -15,6 +15,7 @@ import com.example.oficinaco.jpa.dao.MunicipioDao;
 import com.example.oficinaco.jpa.dao.PessoaDao;
 import com.example.oficinaco.jpa.entidade.Municipio;
 import com.example.oficinaco.jpa.entidade.Pessoa;
+import com.example.oficinaco.jpa.entidade.Servico;
 
 @Component
 @SessionScope
@@ -35,6 +36,8 @@ public class PessoaControl {
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
+	
+	private List<Pessoa> pessoasFiltro = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
@@ -56,6 +59,7 @@ public class PessoaControl {
    
 		   }
     }
+	
 	public void addMessageWhatsApp() {
 		
         String summary2 = whatsApp ? "Checked" : "Unchecked";
@@ -154,6 +158,11 @@ public class PessoaControl {
 		this.whatsApp = whatsApp;
 	}
 
+	public List<Pessoa> getPessoasFiltro() {
+		return pessoasFiltro;
+	}
 
-    
+	public void setPessoasFiltro(List<Pessoa> pessoasFiltro) {
+		this.pessoasFiltro = pessoasFiltro;
+	}
 }

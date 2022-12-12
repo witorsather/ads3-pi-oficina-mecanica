@@ -22,48 +22,49 @@ private Produto produto = new Produto();
 
 private List<Produto> produtos = new ArrayList<>();
 
-    @PostConstruct
+private List<Produto> produtosFiltro = new ArrayList<>();
+
+	@PostConstruct
 	public void init() {
 		listar();
 	}
-
-    public void salvar() {
+	
+	public void salvar() {
 		produtoDao.save(produto);
 		produto = new Produto();
 		listar();
 	}
-
-    public void listar(){
-
-        produtos = produtoDao.findAll();
-    }
-
-    public void excluir(Integer id) {
+	
+	public void listar(){
+	    produtos = produtoDao.findAll();
+	}
+	
+	public void excluir(Integer id) {
 		produtoDao.deleteById(id);
 		listar();
 	}
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
-
-
-
-
-
-
-    
+	
+	public Produto getProduto() {
+	    return produto;
+	}
+	
+	public void setProduto(Produto produto) {
+	    this.produto = produto;
+	}
+	
+	public List<Produto> getProdutos() {
+	    return produtos;
+	}
+	
+	public void setProdutos(List<Produto> produtos) {
+	    this.produtos = produtos;
+	}
+	
+	public List<Produto> getProdutosFiltro() {
+		return produtosFiltro;
+	}
+	
+	public void setProdutosFiltro(List<Produto> produtosFiltro) {
+		this.produtosFiltro = produtosFiltro;
+	}
 }

@@ -11,9 +11,8 @@ import org.springframework.web.context.annotation.SessionScope;
 import com.example.oficinaco.jpa.dao.ModeloDao;
 import com.example.oficinaco.jpa.dao.VeiculoDao;
 import com.example.oficinaco.jpa.entidade.Modelo;
+import com.example.oficinaco.jpa.entidade.Servico;
 import com.example.oficinaco.jpa.entidade.Veiculo;
-
-
 
 @Component
 @SessionScope
@@ -31,6 +30,7 @@ private ModeloDao modeloDao;
 
 private List<Veiculo> veiculos = new ArrayList<>();
 
+private List<Veiculo> veiculosFiltro = new ArrayList<>();
 
 @PostConstruct
 	public void init() {
@@ -45,8 +45,6 @@ private List<Veiculo> veiculos = new ArrayList<>();
 	public List<Modelo>completeModelo(String query) {
     	return modeloDao.listarPorNome("%" + query + "%");
     }	
-
-
 
 	public void salvar() {
 		veiculoDao.save(veiculo);
@@ -95,8 +93,11 @@ private List<Veiculo> veiculos = new ArrayList<>();
 		this.modeloDao = modeloDao;
 	}
 
+	public List<Veiculo> getVeiculosFiltro() {
+		return veiculosFiltro;
+	}
 
-
-	
-
+	public void setVeiculosFiltro(List<Veiculo> veiculosFiltro) {
+		this.veiculosFiltro = veiculosFiltro;
+	}
 }

@@ -11,17 +11,19 @@ import org.springframework.stereotype.Component;
 
 import com.example.oficinaco.jpa.dao.ModeloDao;
 import com.example.oficinaco.jpa.entidade.Modelo;
+import com.example.oficinaco.jpa.entidade.Servico;
 
 @Component
 @SessionScoped
 public class ModeloControl {
-	
 	@Autowired
 	private ModeloDao modeloDao;
 	
 	private Modelo modelo = new Modelo();
 	
 	private List<Modelo> modelos = new ArrayList<>();
+	
+	private List<Modelo> modelosFiltro = new ArrayList<>();
 	
 	@PostConstruct
 	public void init() {
@@ -58,21 +60,12 @@ public class ModeloControl {
 	public void setModelos(List<Modelo> modelos) {
 		this.modelos = modelos;
 	}
-	
-	
-	
+
+	public List<Modelo> getModelosFiltro() {
+		return modelosFiltro;
+	}
+
+	public void setModelosFiltro(List<Modelo> modelosFiltro) {
+		this.modelosFiltro = modelosFiltro;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

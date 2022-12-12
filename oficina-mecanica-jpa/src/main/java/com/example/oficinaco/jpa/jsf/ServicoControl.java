@@ -28,27 +28,6 @@ private List<Servico> servicos = new ArrayList<>();
 
 private List<Servico> servicosFiltro = new ArrayList<>();
 
-private int getInteger(String string) {
-    try {
-        return Integer.parseInt(string);
-    }
-    catch (NumberFormatException ex) {
-        return 0;
-    }
-}
-
-	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
-	    String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
-	    if (LangUtils.isBlank(filterText)) {
-	        return true;
-	    }
-	    int filterInt = getInteger(filterText);
-	
-	    Servico servico = (Servico) value;
-	    
-	    return servico.getNome().toLowerCase().contains(filterText);
-	}
-
 	@PostConstruct
 	public void init() {
 		listar();
@@ -92,7 +71,4 @@ private int getInteger(String string) {
 	public void setServicosFiltro(List<Servico> servicosFiltro) {
 		this.servicosFiltro = servicosFiltro;
 	}
-    
-    
-    
 }
