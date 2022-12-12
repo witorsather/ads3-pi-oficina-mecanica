@@ -7,61 +7,90 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>Serviço</title>
+    <title>Veiculo</title>
 </h:head>
 
 <h:body style="background-color: black;">
 	<style>
 		body .ui-datatable .ui-datatable-header {
-		    background: black;
-		    border: 1px solid black;
-		    border-width: 1px 0 1px 0;
-		    color: #495057;
-		    padding: 1rem 1rem;
-		    font-weight: 600;
-		    border-top-left-radius: 4px;
-		    border-top-right-radius: 4px;
-			margin-left: 1450px;
+	    background: black;
+	    border: 1px solid black;
+	    border-width: 1px 0 1px 0;
+	    color: #495057;
+	    padding: 1rem 1rem;
+	    font-weight: 600;
+	    border-top-left-radius: 4px;
+	    border-top-right-radius: 4px;
+		margin-left: 1450px;
 		}
 	</style>
 	
 	<h:form id="form">
-	        <ui:include src="menu.xhtml" />	
-	        
-	        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formservico').show()" style="top: 43px; background-color: green; color: white;"/>
-	
-			<p:dataTable id="listaservico" var="servico" value="#{servicoControl.servicos}" allowUnsorting="true" sortMode="single" widgetVar="tableservico">
-				<p:column sortBy="#{servico.id}" headerText="Id" filterBy="#{servico.id}" style="background-color: black; color: white;">
-					<h:outputText value="#{servico.id}"  />
-				</p:column>
-				
-				<p:column sortBy="#{servico.nome}" headerText="Nome" filterBy="#{servico.nome}" style="background-color: black; color: white;" >
-					<h:outputText value="#{servico.nome}" />
-				</p:column>
-				
-				<p:column sortBy="#{servico.preco}" headerText="Preço" filterBy="#{servico.preco}" style="background-color: black; color: white;" >
-					<h:outputText value="#{servico.preco}" />
-				</p:column>
-					
-				<p:column headerText="" style="background-color: black;">
-					<p:commandButton icon="pi pi-pencil" update="form:servicoDiag" action="#{servicoControl.setServico(servico)}" onclick="PF('formservico').show()" styleClass="ui-button-help mr-2" title="editar"/>
-					
-					<p:commandButton icon="pi pi-trash" update="form:listaservico" action="#{servicoControl.excluir(servico.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
-				</p:column>
-			</p:dataTable>	    
+        <ui:include src="menu.xhtml" />	
+
+        <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formveiculo').show()" style="top: 43px; background-color: green; color: white;"/>
+
+		<p:dataTable id="listaveiculo" var="veiculo" value="#{veiculoControl.veiculos}" allowUnsorting="true" sortMode="single"  widgetVar="tablemodelo">
+			<p:column sortBy="#{veiculo.id}" headerText="Id" filterBy="#{veiculo.id}" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.id}"  />
+			</p:column>
 			
-			<p:dialog header="Cadastrar Serviço" widgetVar="formservico" minHeight="40" showEffect="fade" closeOnEscape="true" style="border-radius: 20px">
-				<p:panelGrid id="servicoDiag" columns="2">
-					<h:outputText value="Nome:"/>
-					<p:inputText value="#{servicoControl.servico.nome}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
-					
-					<h:outputText value="Valor  R$"  />
-	                <p:inputNumber id="input2" value="#{servicoControl.servico.preco}" symbol=" BRL" 
-	                                symbolPosition="s" decimalSeparator="," thousandSeparator="."  />
-				</p:panelGrid>
-	
-				<p:commandButton value="Salvar" action="#{servicoControl.salvar}" onclick="PF('formservico').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
-			</p:dialog> 
-		</h:form>
+			<p:column sortBy="#{veiculo.ano}" headerText="ano" filterBy="#{veiculo.ano}" style="background-color: black; color: white;" >
+				<h:outputText value="#{veiculo.ano}" />
+			</p:column>
+			
+			<p:column sortBy="#{veiculo.anoModelo}" headerText="ano_modelo" filterBy="#{veiculo.anoModelo}" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.anoModelo}"/>
+			</p:column>
+			
+			<p:column sortBy="#{veiculo.km}" headerText="km rodado" filterBy="#{veiculo.km}" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.km}"/>
+			</p:column>
+			
+			<p:column sortBy="#{veiculo.placa}" headerText="placa" filterBy="#{veiculo.placa}" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.placa}"/>
+			</p:column>
+			
+			<p:column sortBy="#{veiculo.modelo.nome}" headerText="modelo_id" filterBy="#{veiculo.modelo.nome}" style="background-color: black; color: white;">
+				<h:outputText value="#{veiculo.modelo.nome}"/>
+			</p:column>
+			
+			<p:column headerText="" style="background-color: black;">
+				
+				<p:commandButton icon="pi pi-pencil" update="form:veiculoDiag" action="#{veiculoControl.setVeiculo(veiculo)}" onclick="PF('formveiculo').show()" styleClass="ui-button-help mr-2" title="editar"/>
+				
+				<p:commandButton icon="pi pi-trash" update="form:listaveiculo" action="#{veiculoControl.excluir(veiculo.id)}" styleClass="ui-button-danger" title="deletar" style="margin-left: 20px;" />
+			
+			</p:column>
+		</p:dataTable>	    
+		
+		<p:dialog header="Veiculo" widgetVar="formveiculo" minHeight="40" showEffect="fade" closeOnEscape="true" style="border-radius: 20px">
+			<p:panelGrid id="veiculoDiag" columns="2">
+				<h:outputText value="Ano:"/>
+				<p:inputText value="#{veiculoControl.veiculo.ano}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Ano Do Modelo:"  />
+				<p:inputText value="#{veiculoControl.veiculo.anoModelo}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="KM rodado:"  />
+				<p:inputText value="#{veiculoControl.veiculo.km}" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Placa:"  />
+				<p:inputMask value="#{veiculoControl.veiculo.placa}" mask="aaa-9*99" style="width: 280px; height: 40px ; border-radius: 20px; "/>
+				
+				<h:outputText value="Modelo"/>
+				<p:autoComplete id="modelo" value="#{veiculoControl.modeloId}" style="width: 100%"
+                                completeMethod="#{veiculoControl.completeModelo}"
+                                var="modelo" itemLabel="#{modelo}" itemValue="#{modelo.id}" forceSelection="true" scrollHeight="250">
+                 <p:ajax event="itemSelect" listener="#{veiculoControl.selecionarModelo}" />  
+			</p:autoComplete>            
+			
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{veiculoControl.salvar}" onclick="PF('formveiculo').close()" style="border-radius: 20px; top: 14px; margin-left: 24%; width: 60%; "/>
+			
+		</p:dialog> 
+	</h:form>
 </h:body>
+
 </html>
