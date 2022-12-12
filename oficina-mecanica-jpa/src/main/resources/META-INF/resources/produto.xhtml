@@ -30,13 +30,7 @@
 
         <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formproduto').show()" style="top: 43px; background-color: green; color: white;"/>
 
-		<p:dataTable id="listaproduto" var="produto" value="#{produtoControl.produtos}" allowUnsorting="true" sortMode="single" widgetVar="tableproduto"
-			emptyMessage="Nenhum dado encontrado"
-			filteredValue="#{produtoControl.produtosFiltro}">		
-			
-			<f:facet name="header">
-			</f:facet>
-			
+		<p:dataTable id="listaproduto" var="produto" value="#{produtoControl.produtos}" allowUnsorting="true" sortMode="single" widgetVar="tableproduto">
 			<p:column sortBy="#{produto.id}" headerText="Id" filterBy="#{produto.id}" style="background-color: black; color: white;">
 				<h:outputText value="#{produto.id}"  />
 			</p:column>

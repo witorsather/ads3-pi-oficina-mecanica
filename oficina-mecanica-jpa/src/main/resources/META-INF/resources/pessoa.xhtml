@@ -34,13 +34,7 @@
 		<p:commandButton title="novo cadastro" type="button"  icon="pi pi-plus-circle" style="top: 43px; margin-left: 5px; background-color: green; color: white; "
 			onclick="PF('pessoaformulario').show()" />
 
-		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; " widgetVar="tablepessoa"
-			emptyMessage="Nenhum dado encontrado"
-			filteredValue="#{pessoaControl.pessoasFiltro}">
-			
-			<f:facet name="header">
-            </f:facet>
-		
+		<p:dataTable id="listapessoa" var="pessoa" value="#{pessoaControl.pessoas}" allowUnsorting="true" sortMode="single" style="background-color: black; " widgetVar="tablepessoa">			
 			<p:column sortBy="#{pessoa.id}" headerText="Id" filterBy="#{pessoa.id}" style="background-color: black; color: white;">
 				<h:outputText value="#{pessoa.id}" />
 			</p:column>

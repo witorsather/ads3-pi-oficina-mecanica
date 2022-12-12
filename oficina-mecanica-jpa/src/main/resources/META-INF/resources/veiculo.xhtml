@@ -30,11 +30,7 @@
 
         <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formveiculo').show()" style="top: 43px; background-color: green; color: white;"/>
 
-		<p:dataTable id="listaveiculo" var="veiculo" value="#{veiculoControl.veiculos}" allowUnsorting="true" sortMode="single"  widgetVar="tablemodelo"
-			emptyMessage="Nenhum dado encontrado"
-			filteredValue="#{veiculoControl.veiculosFiltro}">
-		<f:facet name="header">
-		</f:facet>
+		<p:dataTable id="listaveiculo" var="veiculo" value="#{veiculoControl.veiculos}" allowUnsorting="true" sortMode="single"  widgetVar="tablemodelo">
 			<p:column sortBy="#{veiculo.id}" headerText="Id" filterBy="#{veiculo.id}" style="background-color: black; color: white;">
 				<h:outputText value="#{veiculo.id}"  />
 			</p:column>
