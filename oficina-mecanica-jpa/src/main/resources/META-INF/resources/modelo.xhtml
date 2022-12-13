@@ -150,6 +150,7 @@ text-shadow:
         <p:commandButton title="novo cadastro" type="button" icon="pi pi-plus-circle" onclick="PF('formulario').show()" style="top: 12px; margin-left: 5px; background-color: green; color: white;"/>
 
 		<p:dataTable id="lista" var="modelo" value="#{modeloControl.modelos}" allowUnsorting="true" sortMode="single" widgetVar="tablemodelo">
+			
 			<p:column sortBy="#{modelo.id}" headerText="Id" filterBy="#{modelo.id}" style="background-color: black; color: white;">
 				<h:outputText value="#{modelo.id}"/>
 			</p:column>
