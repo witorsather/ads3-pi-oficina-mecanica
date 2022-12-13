@@ -13,6 +13,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.example.oficinaco.jpa.dao.MunicipioDao;
 import com.example.oficinaco.jpa.dao.PessoaDao;
+import com.example.oficinaco.jpa.entidade.CpfCnpjValidacao;
 import com.example.oficinaco.jpa.entidade.Municipio;
 import com.example.oficinaco.jpa.entidade.Pessoa;
 import com.example.oficinaco.jpa.entidade.Servico;
@@ -86,6 +87,7 @@ public class PessoaControl {
 	}
 
 	public void salvar() {
+		CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf());
 		pessoaDao.save(pessoa);
 		pessoa = new Pessoa();
 		listar();
