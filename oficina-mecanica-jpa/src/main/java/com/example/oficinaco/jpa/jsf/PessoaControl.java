@@ -87,10 +87,13 @@ public class PessoaControl {
 	}
 
 	public void salvar() {
-		CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf());
-		pessoaDao.save(pessoa);
-		pessoa = new Pessoa();
-		listar();
+		if (CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())){
+			pessoaDao.save(pessoa);
+			pessoa = new Pessoa();
+			listar();
+		}else {
+			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF inválido!"));
+		}
 	}
 	
 	public void listar() {
