@@ -1,5 +1,7 @@
 package com.example.oficinaco.jpa.jsf;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.SessionScoped;
@@ -13,6 +15,7 @@ import com.example.oficinaco.jpa.dao.PessoaDaoImpl;
 import com.example.oficinaco.jpa.dao.ProdutoDao;
 import com.example.oficinaco.jpa.dao.ServicoDao;
 import com.example.oficinaco.jpa.dao.VeiculoDao;
+import com.example.oficinaco.jpa.entidade.EnumOs;
 import com.example.oficinaco.jpa.entidade.OrdemServico;
 import com.example.oficinaco.jpa.entidade.OrdemServicoProduto;
 import com.example.oficinaco.jpa.entidade.OrdemServicoServico;
@@ -43,6 +46,8 @@ public class OrdemServicoControl {
 	private OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
 
 	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
+
+	private List<OrdemServico> ordemServicos = new ArrayList<>();
 
 	// Classes dao para fazer o crud e instanciar os metodos complete
 	@Autowired
@@ -106,8 +111,46 @@ public class OrdemServicoControl {
 
 	// metodo para salvar a OS
 	public void salvar() {
+		ordemServico.setStatus(EnumOs.EMABERTO);
+		ordemServico.setDataOs(new Date());
 		ordemServicoDao.save(ordemServico);
 		ordemServico = new OrdemServico();
+		listar();
+	}
+
+	public void aprovarOS() {
+
+		ordemServico.setStatus(EnumOs.EMEXECUCAO);
+		ordemServico.setDataInicioServico(new Date());
+		ordemServicoDao.save(ordemServico);
+		ordemServico = new OrdemServico();
+		listar();
+
+	}
+
+	public void finalizarOS() {
+
+		ordemServico.setStatus(EnumOs.FINALIZADA);
+		ordemServico.setDataFimServico(new Date());
+		ordemServicoDao.save(ordemServico);
+		ordemServico = new OrdemServico();
+		listar();
+
+	}
+
+	public void cancelarOS() {
+
+		ordemServico.setStatus(EnumOs.CANCELADA);
+		ordemServicoDao.save(ordemServico);
+		ordemServico = new OrdemServico();
+		listar();
+
+	}
+
+	public void listar() {
+
+		ordemServicos = ordemServicoDao.findAll();
+
 	}
 
 	// metodos para retornar lista de produtos e servicos adicionados a OS
@@ -211,6 +254,14 @@ public class OrdemServicoControl {
 
 	public void setOrdemServicoServico(OrdemServicoServico ordemServicoServico) {
 		this.ordemServicoServico = ordemServicoServico;
+	}
+
+	public List<OrdemServico> getOrdemServicos() {
+		return ordemServicos;
+	}
+
+	public void setOrdemServicos(List<OrdemServico> ordemServicos) {
+		this.ordemServicos = ordemServicos;
 	}
 
 }

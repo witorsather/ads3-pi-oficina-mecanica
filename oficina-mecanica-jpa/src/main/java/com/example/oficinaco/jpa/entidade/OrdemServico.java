@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,13 +43,10 @@ public class OrdemServico {
 	public List<OrdemServicoProduto> produtos = new ArrayList<>();
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = new Date();
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataEntrada = new Date();
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOs;
+
+	@Enumerated(EnumType.STRING)
+	private EnumOs status;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicioServico;
@@ -58,7 +57,7 @@ public class OrdemServico {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrega;
 
-	private BigDecimal desconto;
+	private BigDecimal valorTotal = getTotal();
 
 	public BigDecimal getTotalServicos() {
 		BigDecimal vlr = BigDecimal.ZERO;
@@ -117,28 +116,12 @@ public class OrdemServico {
 		this.veiculo = veiculo;
 	}
 
-	public Date getData() {
-		return data;
+	public EnumOs getStatus() {
+		return status;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public Date getDataEntrada() {
-		return dataEntrada;
-	}
-
-	public void setDataEntrada(Date dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-
-	public Date getDataOs() {
-		return dataOs;
-	}
-
-	public void setDataOs(Date dataOs) {
-		this.dataOs = dataOs;
+	public void setStatus(EnumOs status) {
+		this.status = status;
 	}
 
 	public Date getDataInicioServico() {
@@ -165,12 +148,12 @@ public class OrdemServico {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public BigDecimal getDesconto() {
-		return desconto;
+	public BigDecimal getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setDesconto(BigDecimal desconto) {
-		this.desconto = desconto;
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public List<OrdemServicoServico> getServicos() {
@@ -179,6 +162,14 @@ public class OrdemServico {
 
 	public List<OrdemServicoProduto> getProdutos() {
 		return produtos;
+	}
+
+	public Date getDataOs() {
+		return dataOs;
+	}
+
+	public void setDataOs(Date dataOs) {
+		this.dataOs = dataOs;
 	}
 
 }
