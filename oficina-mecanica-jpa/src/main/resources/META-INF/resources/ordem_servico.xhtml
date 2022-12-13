@@ -138,11 +138,13 @@ body .ui-button:hover:after{
         	<p:inputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}"/>
 
 		</p:panelGrid>
+		
 		<p:commandButton title="adicionar produto" icon="pi pi-plus-circle" action="#{ordemServicoControl.adicionarProdutoLista}" style="background-color: green; margin-left: 1112px; margin-top: 10px;" update="form">
 
 		</p:commandButton>
 
 		<p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1300px; margin-top: -330px;"  />
+ 
 
 		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: 1200px; top: -260px;" update="form"/>
 

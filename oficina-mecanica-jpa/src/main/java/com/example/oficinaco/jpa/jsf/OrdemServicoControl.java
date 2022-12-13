@@ -111,6 +111,7 @@ public class OrdemServicoControl {
 
 	// metodo para salvar a OS
 	public void salvar() {
+		ordemServico.setValorTotal(ordemServico.getTotal());
 		ordemServico.setStatus(EnumOs.EMABERTO);
 		ordemServico.setDataOs(new Date());
 		ordemServicoDao.save(ordemServico);

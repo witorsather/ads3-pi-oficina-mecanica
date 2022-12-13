@@ -57,7 +57,7 @@ public class OrdemServico {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataEntrega;
 
-	private BigDecimal valorTotal = getTotal();
+	private BigDecimal valorTotal = BigDecimal.ZERO;
 
 	public BigDecimal getTotalServicos() {
 		BigDecimal vlr = BigDecimal.ZERO;
