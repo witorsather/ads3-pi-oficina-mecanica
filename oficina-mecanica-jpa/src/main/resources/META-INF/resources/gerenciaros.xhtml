@@ -1,182 +1,228 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-    <title>Ordem de Serviço</title>
-</h:head>
-<h:body style="background-color: black;">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<title>Ordem de Serviço</title>
+	</h:head>
+	
+	<h:body style="background-color: black;">
 
 	<style>
-body .ui-inputfield {
-    color: #495057;
-    background: #fff;
-    padding: 0.5rem 0.5rem;
-    border: 1px solid #ced4da;
-    outline: 0 none;
-    font-size: 1rem;
-    border-radius: 20px;
-    transition: background-color .2s,color .2s,border-color .2s,box-shadow .2s,opacity .2s;
-    -webkit-appearance: none;
-    appearance: none;
-}
-body .ui-panelgrid .ui-panelgrid-cell {
-    border: 1px solid #dee2e6;
-    background: black;
-    color: white;
-    padding: 1rem;
-	border-radius: 1px;
-}
-body .ui-button.ui-state-hover{
-	background: white;
-	border-color: rgb(61, 255, 61);
-	color: white;
-}
-body .ui-button {
-    display: block;
-	background: #2196f3;
-    color: #fff;
-    border: 1px solid white;
-    margin: 0;
-    /* outline: 0 none; */
-    border-radius: 6px;
-    transition: background-color .2s,color .2s,border-color .2s,box-shadow .2s,opacity .2s;	
-	border: 2px solid #333;
-  	letter-spacing: 2px;
-  	text-align: center;
-  	position: relative;
-  transition: all .35s;
-}
-
-body .ui-button span {
-	position: relative;
- 	 z-index: 2;
-}
-body .ui-button:after {
-position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: blue;
-  transition: all .35s;
-}
-body .ui-button:hover {
-	color: white;
-}
-body .ui-button:hover:after{
-  width: 100%;
-}
-
-    </style>
-
-	
+		body .ui-inputfield {
+			color: #495057;
+			background: #fff;
+			padding: 0.5rem 0.5rem;
+			border: 1px solid #ced4da;
+			outline: 0 none;
+			font-size: 1rem;
+			border-radius: 20px;
+			transition: background-color .2s, color .2s, border-color .2s,
+				box-shadow .2s, opacity .2s;
+			-webkit-appearance: none;
+			appearance: none;
+		}
+		
+		body .ui-panelgrid .ui-panelgrid-cell {
+			border: 1px solid #dee2e6;
+			background: black;
+			color: white;
+			padding: 1rem;
+			border-radius: 1px;
+		}
+		
+		body .ui-button.ui-state-hover {
+			background: white;
+			border-color: rgb(61, 255, 61);
+			color: white;
+		}
+		
+		body .ui-button {
+			display: block;
+			background: #2196f3;
+			color: #fff;
+			border: 1px solid white;
+			margin: 0;
+			/* outline: 0 none; */
+			border-radius: 6px;
+			transition: background-color .2s, color .2s, border-color .2s,
+				box-shadow .2s, opacity .2s;
+			border: 2px solid #333;
+			letter-spacing: 2px;
+			text-align: center;
+			position: relative;
+			transition: all .35s;
+		}
+		
+		body .ui-button span {
+			position: relative;
+			z-index: 2;
+		}
+		
+		body .ui-button:after {
+			position: absolute;
+			content: "";
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 100%;
+			background: blue;
+			transition: all .35s;
+		}
+		
+		body .ui-button:hover {
+			color: white;
+		}
+		
+		body .ui-button:hover:after {
+			width: 100%;
+		}
+	</style>
 
 	<h:form id="form">
-        <ui:include src="menu.xhtml" />
-		
-        <p:panelGrid columns="2"  style=" margin-top: 40px;" >
-        	
-        	<h:outputText value="Cliente"/>
-        	<p:autoComplete id="pessoa" value="#{ordemServicoControl.ordemServico.cliente}" 
-                                completeMethod="#{ordemServicoControl.completePessoa}"
-                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa}" forceSelection="true" scrollHeight="250">		
-		    			<p:ajax event="itemSelect" />
-						<f:converter converterId = "converter" />
-			</p:autoComplete>
+		<ui:include src="menu.xhtml" />
+
+		<p:panelGrid columns="2" style=" margin-top: 40px;">
+			<h:outputText value="Cliente" />
 			
-        	<h:outputText value="Funcionário"/>
-        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.ordemServico.funcionario}" 
-                                completeMethod="#{ordemServicoControl.completeFuncionario}"
-                                var="func" itemLabel="#{func.nome}" itemValue="#{func}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" />
-						<f:converter converterId = "converter" />
+			<!-- campos inputspessoa -->
+			<p:autoComplete id="pessoa"
+				value="#{ordemServicoControl.ordemServico.cliente}"
+				completeMethod="#{ordemServicoControl.completePessoa}" var="pessoa"
+				itemLabel="#{pessoa.nome}" itemValue="#{pessoa}"
+				forceSelection="true" scrollHeight="250">
+				<p:ajax event="itemSelect" />
+				<f:converter converterId="converter" />
 			</p:autoComplete>
 
-			<h:outputText value="Placa"/>
-			<p:autoComplete id="veiculo" value="#{ordemServicoControl.ordemServico.veiculo}" 
-                                completeMethod="#{ordemServicoControl.completeVeiculo}"
-                                var="veiculo" itemLabel="#{veiculo.placa}" itemValue="#{veiculo}" forceSelection="true" scrollHeight="250">
-						<p:ajax event="itemSelect" />
-						<f:converter converterId = "converter" />	
+			<h:outputText value="Funcionário" />
+			
+			<p:autoComplete id="funcionario"
+				value="#{ordemServicoControl.ordemServico.funcionario}"
+				completeMethod="#{ordemServicoControl.completeFuncionario}"
+				var="func" itemLabel="#{func.nome}" itemValue="#{func}"
+				forceSelection="true" scrollHeight="250">
+				<p:ajax event="itemSelect" />
+				<f:converter converterId="converter" />
 			</p:autoComplete>
 
-        </p:panelGrid>
-
-<!--		adicionar serviço e produto-->
-       
-		<p:panelGrid columns="2" style="margin-left: 420px; margin-top: -190px;" >
-        	
-        	<h:outputText value="Serviço"/>
-        	<p:autoComplete id="servico" value="#{ordemServicoControl.servicoId}" style="width: 100%"
-                                completeMethod="#{ordemServicoControl.completeServico}"
-                                var="servico" itemLabel="#{servico}" itemValue="#{servico.id}" forceSelection="true" scrollHeight="250">
-                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarServico}" />
-			</p:autoComplete>  
-
-        	<h:outputText value="Quantidade"/>
-        	<p:inputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
-        
-		</p:panelGrid>
-
-		<p:commandButton title="adicionar serviço" icon="pi pi-plus-circle" action="#{ordemServicoControl.adicionarServicoLista}" style="background-color: green; margin-left: 732px; margin-top: 10px;" update="form"/>
-
-		<p:panelGrid columns="2" style="margin-left: 800px; margin-top: -195px;" >
-    
-			<h:outputText value="Produto"/>
-        	<p:autoComplete id="produto" value="#{ordemServicoControl.produtoId}"
-                                completeMethod="#{ordemServicoControl.completeProduto}"
-                                var="produto" itemLabel="#{produto}" itemValue="#{produto.id}" forceSelection="true" scrollHeight="250">
-                 <p:ajax event="itemSelect" listener="#{ordemServicoControl.selecionarProduto}" />
-			</p:autoComplete>  
-
-        	<h:outputText value="Quantidade"/>
-        	<p:inputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}"/>
+			<h:outputText value="Placa" />
+			
+			<p:autoComplete id="veiculo"
+				value="#{ordemServicoControl.ordemServico.veiculo}"
+				completeMethod="#{ordemServicoControl.completeVeiculo}"
+				var="veiculo" itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
+				forceSelection="true" scrollHeight="250">
+			
+				<p:ajax event="itemSelect" />
+			
+				<f:converter converterId="converter" />
+			</p:autoComplete>
 
 		</p:panelGrid>
-		<p:commandButton title="adicionar produto" icon="pi pi-plus-circle" action="#{ordemServicoControl.adicionarProdutoLista}" style="background-color: green; margin-left: 1112px; margin-top: 10px;" update="form">
 
+		<!-- campos inputs serviços -->
+		<p:panelGrid columns="2"
+			style="margin-left: 420px; margin-top: -190px;">
+
+			<h:outputText value="Serviço" />
+				<p:autoComplete id="servico" value="#{ordemServicoControl.servicoId}"
+					style="width: 100%"
+					completeMethod="#{ordemServicoControl.completeServico}"
+					var="servico" itemLabel="#{servico}" itemValue="#{servico.id}"
+					forceSelection="true" scrollHeight="250">
+					<p:ajax event="itemSelect"
+						listener="#{ordemServicoControl.selecionarServico}" />
+				</p:autoComplete>
+			<h:outputText value="Quantidade" />
+			
+			<p:inputText
+				value="#{ordemServicoControl.ordemServicoServico.quantidade}" />
+			</p:panelGrid>
+		<p:commandButton title="adicionar serviço" icon="pi pi-plus-circle"
+			action="#{ordemServicoControl.adicionarServicoLista}"
+			style="background-color: green; margin-left: 732px; margin-top: 10px;"
+			update="form" />
+		<!-- campos inputs produtos -->
+		<p:panelGrid columns="2" style="margin-left: 800px; margin-top: -195px;">
+			<h:outputText value="Produto" />
+			
+			<p:autoComplete id="produto" value="#{ordemServicoControl.produtoId}"
+				completeMethod="#{ordemServicoControl.completeProduto}"
+			
+				var="produto" itemLabel="#{produto}" itemValue="#{produto.id}"
+		
+				forceSelection="true" scrollHeight="250">
+			
+				<p:ajax event="itemSelect"
+					listener="#{ordemServicoControl.selecionarProduto}" />
+				</p:autoComplete>
+			<h:outputText value="Quantidade" />
+			
+			<p:inputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}" />
+		</p:panelGrid>
+		
+		<p:commandButton title="adicionar produto" icon="pi pi-plus-circle"
+			action="#{ordemServicoControl.adicionarProdutoLista}"
+			style="background-color: green; margin-left: 1112px; margin-top: 10px;"
+			update="form">
 		</p:commandButton>
 
-		<p:graphicImage library="images" name="ordem servico.png" width="450" style="margin-left: 1300px; margin-top: -330px;"  />
+		<p:graphicImage library="images" name="ordem servico.png" width="450"
+			style="margin-left: 1300px; margin-top: -330px;" />
 
-		<p:commandButton value="Criar OS" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: 1200px; top: -260px;" update="form"/>
-
-<!--		tabelas-->
-		<p:dataTable id="listaos" value="#{ordemServicoControl.ordemServicos}" var="gerenciaros" allowUnsorting="true" sortMode="single" style="margin-top: -113px; width: 95%; margin-left: 10px;">
+		<p:commandButton value="Criar OS"
+			action="#{ordemServicoControl.salvar}"
+			style="background-color: green; margin-left: 1200px; top: -260px;"
+			update="form" />
 			
-		<p:column sortBy="#{gerenciaros.cliente.nome}" headerText="Cliente" style=" background-color: black; color: white;" >
-			<h:outputText value="#{gerenciaros.cliente.nome}" />
-		</p:column>
+		<!-- tabelas os -->
+		<p:dataTable id="listaos" value="#{ordemServicoControl.ordemServicos}"
+			var="gerenciaros" allowUnsorting="true" sortMode="single"
+			style="margin-top: -113px; width: 95%; margin-left: 10px;">
 
-		<p:column sortBy="#{gerenciaros.funcionario.nome}" headerText="Funcionário" style=" background-color: black; color: white;" >
-			<h:outputText value="#{gerenciaros.funcionario.nome}"/>
-		</p:column>     
-		
-		<p:column sortBy="#{gerenciaros.veiculo.placa}" headerText="Placa" style=" background-color: black; color: white;" >
-			<h:outputText value="#{gerenciaros.veiculo.placa}" />
-		</p:column>   
-		
-	
-			<!--	total-->
-			<p:column headerText="Valor Total R$" footerText="#{gerenciaros.valorTotal}"  style=" background-color: black; color: white; ">
-			<h:outputText value="#{gerenciaros.valorTotal}"/>
+			<p:column sortBy="#{gerenciaros.cliente.nome}" headerText="Cliente"
+				style=" background-color: black; color: white;">
+				<h:outputText value="#{gerenciaros.cliente.nome}" />
 			</p:column>
 
-			<p:column headerText="" style="background-color: black; " >
-				<p:commandButton title="editar OS" icon="pi pi-pencil" action="#" style="background-color: purple "/>
-				<p:commandButton title="aprovar OS" icon="pi pi-check-circle" action="#{ordemServicoControl.salvar}" style="background-color: green; margin-left: 50px; top: -41px;"/>
-				<p:commandButton title="cancelar OS" icon="pi pi-minus-circle" action="#{ordemServicoControl.cancelarOS}" style="background-color: red; margin-left: 100px; top: -81px;"/>
-				<p:commandButton title="concluir OS" icon="pi pi-check-circle" action="#{ordemServicoControl.finalizarOS}" style="background-color: green; margin-left: 150px; top: -121px;"/>
+			<p:column sortBy="#{gerenciaros.funcionario.nome}"
+				headerText="Funcionário"
+				style=" background-color: black; color: white;">
+				<h:outputText value="#{gerenciaros.funcionario.nome}" />
 			</p:column>
-	</p:dataTable>
 
-    </h:form>
+			<p:column sortBy="#{gerenciaros.veiculo.placa}" headerText="Placa"
+				style=" background-color: black; color: white;">
+				<h:outputText value="#{gerenciaros.veiculo.placa}" />
+			</p:column>
+
+			<p:column headerText="Valor Total R$"
+				footerText="#{gerenciaros.valorTotal}"
+				style=" background-color: black; color: white; ">
+				
+				<h:outputText value="#{gerenciaros.valorTotal}" />
+			</p:column>
+
+			<p:column headerText="" style="background-color: black; ">
+				<p:commandButton title="editar OS" icon="pi pi-pencil" action="#"
+					style="background-color: purple " />
+				<p:commandButton title="aprovar OS" icon="pi pi-check-circle"
+					action="#{ordemServicoControl.salvar}"
+					style="background-color: green; margin-left: 50px; top: -41px;" />
+				<p:commandButton title="cancelar OS" icon="pi pi-minus-circle"
+					action="#{ordemServicoControl.cancelarOS}"
+					style="background-color: red; margin-left: 100px; top: -81px;" />
+				<p:commandButton title="concluir OS" icon="pi pi-check-circle"
+					action="#{ordemServicoControl.finalizarOS}"
+					style="background-color: green; margin-left: 150px; top: -121px;" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
 </h:body>
 
 </html>
