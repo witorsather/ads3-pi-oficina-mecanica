@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,11 @@ public class OrdemServicoControl {
 	@Autowired
 	private OrdemServicoDao ordemServicoDao;
 
+	@PostConstruct
+	public void init() {
+		listar();
+	}
+
 	// metodos para selecionar os valores vindo da tela e passar para os atributos
 	// da OS
 	public void selecionarServico() {
@@ -119,9 +125,11 @@ public class OrdemServicoControl {
 		listar();
 	}
 
-	public void aprovarOS() {
-
+	public void aprovarOs() {
+		ordemServico.getId();
 		ordemServico.setStatus(EnumOs.EMEXECUCAO);
+		OrdemServico os = ordemServicoDao.findById(pessoaId).get();
+		os.setStatus(EnumOs.EMEXECUCAO);
 		ordemServico.setDataInicioServico(new Date());
 		ordemServicoDao.save(ordemServico);
 		ordemServico = new OrdemServico();
@@ -129,29 +137,23 @@ public class OrdemServicoControl {
 
 	}
 
-	public void finalizarOS() {
-
+	public void finalizarOs() {
 		ordemServico.setStatus(EnumOs.FINALIZADA);
 		ordemServico.setDataFimServico(new Date());
 		ordemServicoDao.save(ordemServico);
 		ordemServico = new OrdemServico();
 		listar();
-
 	}
 
 	public void cancelarOS() {
-
 		ordemServico.setStatus(EnumOs.CANCELADA);
 		ordemServicoDao.save(ordemServico);
 		ordemServico = new OrdemServico();
 		listar();
-
 	}
 
 	public void listar() {
-
 		ordemServicos = ordemServicoDao.findAll();
-
 	}
 
 	// metodos para retornar lista de produtos e servicos adicionados a OS
