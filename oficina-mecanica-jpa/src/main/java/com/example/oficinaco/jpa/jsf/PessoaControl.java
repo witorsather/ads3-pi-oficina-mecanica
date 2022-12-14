@@ -98,19 +98,6 @@ public class PessoaControl {
 		}
 	}
 
-	public void editar() {
-		if (CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())
-				&& CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoasFiltro, pessoa.getCpf())) {
-			pessoaDao.save(pessoa);
-			pessoa = new Pessoa();
-			listar();
-		} else if (!CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoasFiltro, pessoa.getCpf())) {
-			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF já cadastrado!"));
-		} else if (!CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())) {
-			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF inválido!"));
-		}
-	}
-
 	public void listar() {
 		pessoas = pessoaDao.findAll();
 	}
