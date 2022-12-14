@@ -16,7 +16,6 @@ import com.example.oficinaco.jpa.dao.PessoaDao;
 import com.example.oficinaco.jpa.entidade.CpfCnpjValidacao;
 import com.example.oficinaco.jpa.entidade.Municipio;
 import com.example.oficinaco.jpa.entidade.Pessoa;
-import com.example.oficinaco.jpa.entidade.Servico;
 
 @Component
 @SessionScope
@@ -28,8 +27,8 @@ public class PessoaControl {
 	@Autowired
 	private MunicipioDao municipioDao;
 
- 	private Integer municipioId;
-	
+	private Integer municipioId;
+
 	private Boolean funcionario;
 
 	private Boolean whatsApp;
@@ -37,69 +36,85 @@ public class PessoaControl {
 	private Pessoa pessoa = new Pessoa();
 
 	private List<Pessoa> pessoas = new ArrayList<>();
-	
+
 	private List<Pessoa> pessoasFiltro = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
 		listar();
 	}
-  
-	public void addMessageFuncionario() {
-		
-        String summary = funcionario ? "Checked" : "Unchecked";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
 
-		if(summary.equals("Checked")){
+	public void addMessageFuncionario() {
+
+		String summary = funcionario ? "Checked" : "Unchecked";
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+
+		if (summary.equals("Checked")) {
 
 			pessoa.setFuncionario(true);
-   
-		   }else if(summary.equals("Unchecked")){
-   
-			   pessoa.setFuncionario(false);
-   
-		   }
-    }
-	
-	public void addMessageWhatsApp() {
-		
-        String summary2 = whatsApp ? "Checked" : "Unchecked";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary2));
 
-		if(summary2.equals("Checked")){
+		} else if (summary.equals("Unchecked")) {
+
+			pessoa.setFuncionario(false);
+
+		}
+	}
+
+	public void addMessageWhatsApp() {
+
+		String summary2 = whatsApp ? "Checked" : "Unchecked";
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary2));
+
+		if (summary2.equals("Checked")) {
 
 			pessoa.setWhatsapp(true);
-   
-		   }else if(summary2.equals("Unchecked")){
-   
-			pessoa.setWhatsapp(false);
-   
-		   }
-    	}
 
-	public List<Municipio> completeMunicipio(String query){
+		} else if (summary2.equals("Unchecked")) {
+
+			pessoa.setWhatsapp(false);
+
+		}
+	}
+
+	public List<Municipio> completeMunicipio(String query) {
 		return municipioDao.listarPorNome("%" + query + "%");
 	}
 
-	public void selecionarMunicipio(){
+	public void selecionarMunicipio() {
 		Municipio municipio = municipioDao.findById(municipioId).get();
 		pessoa.setMunicipio(municipio);
 	}
 
 	public void salvar() {
-		if (CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())){
+		if (CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())
+				&& CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoas, pessoa.getCpf())) {
 			pessoaDao.save(pessoa);
 			pessoa = new Pessoa();
 			listar();
-		}else {
+		} else if (!CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoas, pessoa.getCpf())) {
+			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF já cadastrado!"));
+		} else if (!CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())) {
 			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF inválido!"));
 		}
 	}
-	
+
+	public void editar() {
+		if (CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())
+				&& CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoasFiltro, pessoa.getCpf())) {
+			pessoaDao.save(pessoa);
+			pessoa = new Pessoa();
+			listar();
+		} else if (!CpfCnpjValidacao.isCpfCnpjValidacaoLista(pessoasFiltro, pessoa.getCpf())) {
+			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF já cadastrado!"));
+		} else if (!CpfCnpjValidacao.isCnpjCpfValid(pessoa.getCpf())) {
+			FacesContext.getCurrentInstance().addMessage("form:campoCPF", new FacesMessage("CPF inválido!"));
+		}
+	}
+
 	public void listar() {
 		pessoas = pessoaDao.findAll();
 	}
-	
+
 	public void excluir(Integer id) {
 		pessoaDao.deleteById(id);
 		listar();
@@ -137,11 +152,9 @@ public class PessoaControl {
 		this.municipioId = municipioId;
 	}
 
-
 	public Boolean getFuncionario() {
 		return funcionario;
 	}
-
 
 	public void setFuncionario(Boolean funcionario) {
 		this.funcionario = funcionario;
